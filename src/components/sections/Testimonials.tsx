@@ -53,40 +53,49 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="glass-card hover:shadow-medium transition-all duration-300 group relative">
-              {testimonial.hasVideo && (
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-10 h-10 bg-tech-accent rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 text-white ml-0.5" />
+            <div key={index} className="group">
+              {/* Video thumbnail style card */}
+              <div className="relative aspect-video bg-gradient-to-br from-primary/10 to-tech-accent/10 rounded-lg overflow-hidden mb-4 cursor-pointer group-hover:scale-105 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-tech-accent/20"></div>
+                
+                {/* Avatar in center */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-tech-accent rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    {testimonial.avatar}
                   </div>
                 </div>
-              )}
-              
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-tech-accent text-tech-accent" />
-                  ))}
+
+                {/* Play button overlay - only show if hasVideo is true */}
+                {testimonial.hasVideo && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm">
+                      <Play className="w-6 h-6 text-white ml-0.5" />
+                    </div>
+                  </div>
+                )}
+
+                {/* Company badge */}
+                <div className="absolute top-3 left-3">
+                  <div className="bg-black/70 backdrop-blur-sm rounded px-2 py-1">
+                    <span className="text-white text-xs font-medium">{testimonial.company}</span>
+                  </div>
                 </div>
-                
-                <blockquote className="text-lg text-foreground mb-6 leading-relaxed">
+              </div>
+
+              {/* Quote and details */}
+              <div className="space-y-3">
+                <blockquote className="text-sm text-foreground leading-relaxed line-clamp-3">
                   "{testimonial.content}"
                 </blockquote>
                 
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-tech-accent rounded-full flex items-center justify-center text-white font-semibold mr-4">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-xs text-tech-accent font-medium">{testimonial.company}</div>
-                  </div>
+                <div>
+                  <div className="font-semibold text-foreground text-sm">{testimonial.name}</div>
+                  <div className="text-xs text-muted-foreground">{testimonial.role}</div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>
