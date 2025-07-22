@@ -1,7 +1,21 @@
 const OurCustomers = () => {
   const customers = [
-    "Microsoft", "Google", "Amazon", "Apple", "Meta", "Netflix", "Tesla", "Uber",
-    "Airbnb", "Spotify", "Adobe", "Oracle", "Salesforce", "IBM", "Intel", "NVIDIA"
+    { name: "Microsoft", logo: "🌐" },
+    { name: "Google", logo: "🔍" },
+    { name: "Amazon", logo: "📦" },
+    { name: "Apple", logo: "🍎" },
+    { name: "Meta", logo: "👥" },
+    { name: "Netflix", logo: "🎬" },
+    { name: "Tesla", logo: "⚡" },
+    { name: "Uber", logo: "🚗" },
+    { name: "Airbnb", logo: "🏠" },
+    { name: "Spotify", logo: "🎵" },
+    { name: "Adobe", logo: "🎨" },
+    { name: "Oracle", logo: "🗃️" },
+    { name: "Salesforce", logo: "☁️" },
+    { name: "IBM", logo: "💼" },
+    { name: "Intel", logo: "🔧" },
+    { name: "NVIDIA", logo: "🎮" }
   ];
 
   return (
@@ -19,15 +33,18 @@ const OurCustomers = () => {
         <div className="space-y-8">
           {/* First row - scrolling right */}
           <div className="overflow-hidden">
-            <div className="flex animate-scroll-right space-x-12 w-fit">
+            <div className="flex animate-scroll-right-slow space-x-12 w-fit">
               {[...customers, ...customers].map((customer, index) => (
                 <div
                   key={`row1-${index}`}
                   className="flex-shrink-0 h-16 w-40 bg-card border border-border rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <span className="text-muted-foreground font-medium text-sm">
-                    {customer}
-                  </span>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl">{customer.logo}</span>
+                    <span className="text-muted-foreground font-medium text-sm">
+                      {customer.name}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -35,15 +52,18 @@ const OurCustomers = () => {
 
           {/* Second row - scrolling left */}
           <div className="overflow-hidden">
-            <div className="flex animate-scroll-left space-x-12 w-fit">
+            <div className="flex animate-scroll-left-slow space-x-12 w-fit">
               {[...customers.reverse(), ...customers.reverse()].map((customer, index) => (
                 <div
                   key={`row2-${index}`}
                   className="flex-shrink-0 h-16 w-40 bg-card border border-border rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <span className="text-muted-foreground font-medium text-sm">
-                    {customer}
-                  </span>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl">{customer.logo}</span>
+                    <span className="text-muted-foreground font-medium text-sm">
+                      {customer.name}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>

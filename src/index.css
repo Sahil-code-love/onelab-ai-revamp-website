@@ -189,6 +189,14 @@
   .animate-scroll-left {
     animation: scroll-left 20s linear infinite;
   }
+  
+  .animate-scroll-right-slow {
+    animation: scroll-right 60s linear infinite;
+  }
+  
+  .animate-scroll-left-slow {
+    animation: scroll-left 60s linear infinite;
+  }
 }
 
 @keyframes fadeUp {
