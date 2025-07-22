@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle, Calendar } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 
 const FinalCTA = () => {
   return (
@@ -25,16 +25,11 @@ const FinalCTA = () => {
             No fluff. No lock-ins. Just intelligent products, built right.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex justify-center items-center mb-12">
             <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4 group">
               <Calendar className="mr-2 h-5 w-5" />
               Book a Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <Button size="lg" variant="outline" className="btn-ghost-tech text-lg px-8 py-4 group">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              WhatsApp Us
             </Button>
           </div>
 

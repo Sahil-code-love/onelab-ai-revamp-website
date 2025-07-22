@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -26,31 +26,32 @@ const Hero = () => {
             and intelligent platforms — fast, lean, and reliable.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex justify-center items-center">
             <Button size="lg" className="btn-tech text-lg px-8 py-4 group">
               Book a Free Consultation
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            
-            <Button size="lg" variant="outline" className="btn-ghost-tech text-lg px-8 py-4 group">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              WhatsApp Us
-            </Button>
           </div>
 
-          {/* Trust indicators */}
+          {/* Key Metrics */}
           <div className="mt-16 animate-fade-in">
-            <p className="text-white/70 text-sm mb-6">Trusted by 100+ founders and enterprise teams</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="text-white font-semibold">AI Startups</div>
-              <div className="w-2 h-2 bg-white/50 rounded-full"></div>
-              <div className="text-white font-semibold">Healthcare</div>
-              <div className="w-2 h-2 bg-white/50 rounded-full"></div>
-              <div className="text-white font-semibold">Fintech</div>
-              <div className="w-2 h-2 bg-white/50 rounded-full"></div>
-              <div className="text-white font-semibold">SaaS</div>
-              <div className="w-2 h-2 bg-white/50 rounded-full"></div>
-              <div className="text-white font-semibold">Enterprise</div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">150+</div>
+                <div className="text-white/80 text-sm">Team Members</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">500+</div>
+                <div className="text-white/80 text-sm">Products Shipped</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">25+</div>
+                <div className="text-white/80 text-sm">Countries Served</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">98%</div>
+                <div className="text-white/80 text-sm">Client Retention</div>
+              </div>
             </div>
           </div>
         </div>
