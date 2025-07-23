@@ -114,18 +114,7 @@ const FeaturedWork = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 gap-3 mb-4">
-                  {project.metrics.map((metric, idx) => (
-                    <div key={idx} className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground flex items-center">
-                        <metric.icon className="w-4 h-4 mr-2 text-tech-accent" />
-                        {metric.label}
-                      </span>
-                      <span className="font-semibold text-foreground">{metric.value}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, idx) => (
                     <span key={idx} className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded">
                       {tag}
