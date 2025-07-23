@@ -43,26 +43,16 @@ const WhatWeBuild = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {offerings.map((offering, index) => (
-            <Card key={index} className="glass-card hover:shadow-medium transition-all duration-300 hover:-translate-y-2 group">
-              <CardHeader className="text-center">
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-tech-accent rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <offering.icon className="w-8 h-8 text-white" />
+            <Card key={index} className="glass-card hover:shadow-strong transition-all duration-300 hover:-translate-y-2 group border-2 hover:border-primary/20">
+              <CardHeader className="text-center p-8">
+                <div className="mx-auto w-20 h-20 bg-gradient-to-br from-primary to-tech-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-medium">
+                  <offering.icon className="w-10 h-10 text-white" />
                 </div>
-                <CardTitle className="text-xl font-space-grotesk">{offering.title}</CardTitle>
-                <CardDescription className="text-muted-foreground">
+                <CardTitle className="text-2xl font-space-grotesk font-bold mb-4 text-foreground group-hover:text-primary transition-colors">{offering.title}</CardTitle>
+                <CardDescription className="text-lg text-muted-foreground leading-relaxed">
                   {offering.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {offering.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-2 h-2 bg-tech-accent rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
             </Card>
           ))}
         </div>
