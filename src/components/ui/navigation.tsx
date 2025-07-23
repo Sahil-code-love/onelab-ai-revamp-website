@@ -33,9 +33,12 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center">
-              <div className="w-32 h-8 bg-gradient-to-r from-teal-400 to-black flex items-center justify-center rounded">
-                <span className="text-white font-bold text-sm">onelab</span>
-              </div>
+              <svg width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="8" width="24" height="4" rx="2" fill="#2dd4bf"/>
+                <rect x="20" y="0" width="4" height="32" rx="2" fill="#000000"/>
+                <text x="32" y="22" fill="#2dd4bf" fontSize="16" fontWeight="600" fontFamily="system-ui">one</text>
+                <text x="60" y="22" fill="#000000" fontSize="16" fontWeight="600" fontFamily="system-ui">lab</text>
+              </svg>
             </a>
           </div>
 

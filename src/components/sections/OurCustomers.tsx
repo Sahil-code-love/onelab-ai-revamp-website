@@ -37,14 +37,14 @@ const OurCustomers = () => {
               {[...customers, ...customers].map((customer, index) => (
                 <div
                   key={`row1-${index}`}
-                  className="flex-shrink-0 h-24 w-48 bg-card border border-border rounded-lg flex flex-col items-center justify-center shadow-sm hover:shadow-md transition-shadow p-4"
+                  className="flex-shrink-0 h-20 w-32 flex flex-col items-center justify-center"
                 >
                   <img 
                     src={customer.logo} 
                     alt={`${customer.name} logo`}
-                    className="h-8 w-auto object-contain mb-2"
+                    className="h-10 w-auto object-contain mb-2 grayscale hover:grayscale-0 transition-all duration-300"
                     onError={(e) => {
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${customer.name}&background=random&color=fff&size=32`;
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${customer.name}&background=f0f0f0&color=666&size=40&format=svg`;
                     }}
                   />
                   <span className="text-muted-foreground font-medium text-xs text-center">
@@ -61,14 +61,14 @@ const OurCustomers = () => {
               {[...customers.reverse(), ...customers.reverse()].map((customer, index) => (
                 <div
                   key={`row2-${index}`}
-                  className="flex-shrink-0 h-24 w-48 bg-card border border-border rounded-lg flex flex-col items-center justify-center shadow-sm hover:shadow-md transition-shadow p-4"
+                  className="flex-shrink-0 h-20 w-32 flex flex-col items-center justify-center"
                 >
                   <img 
                     src={customer.logo} 
                     alt={`${customer.name} logo`}
-                    className="h-8 w-auto object-contain mb-2"
+                    className="h-10 w-auto object-contain mb-2 grayscale hover:grayscale-0 transition-all duration-300"
                     onError={(e) => {
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${customer.name}&background=random&color=fff&size=32`;
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${customer.name}&background=f0f0f0&color=666&size=40&format=svg`;
                     }}
                   />
                   <span className="text-muted-foreground font-medium text-xs text-center">
