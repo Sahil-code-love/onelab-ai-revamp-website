@@ -32,8 +32,10 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-space-grotesk font-bold gradient-primary bg-clip-text text-transparent">
-              OneLab Ventures
+            <a href="/" className="flex items-center">
+              <div className="w-32 h-8 bg-gradient-to-r from-teal-400 to-black flex items-center justify-center rounded">
+                <span className="text-white font-bold text-sm">onelab</span>
+              </div>
             </a>
           </div>
 
@@ -60,9 +62,9 @@ const Navigation = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <DropdownMenu>
+               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center text-foreground hover:text-tech-accent transition-colors font-medium">
-                  AI Solutions
+                  Conversational AI
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 bg-popover border-border shadow-medium">
@@ -123,7 +125,7 @@ const Navigation = () => {
                 ))}
               </div>
               <div className="px-3 py-2">
-                <p className="text-sm font-semibold text-muted-foreground mb-2">AI Solutions</p>
+                <p className="text-sm font-semibold text-muted-foreground mb-2">Conversational AI</p>
                 {aiSolutions.map((solution) => (
                   <a key={solution.name} href={solution.href} className="block px-3 py-1 text-sm text-foreground hover:text-tech-accent transition-colors">
                     {solution.name}

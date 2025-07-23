@@ -37,20 +37,20 @@ const Hero = () => {
           <div className="mt-16 animate-fade-in">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">150+</div>
-                <div className="text-white/80 text-sm">Team Members</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">150+</div>
+                <div className="text-white text-sm font-medium">Team Members</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">500+</div>
-                <div className="text-white/80 text-sm">Products Shipped</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">500+</div>
+                <div className="text-white text-sm font-medium">Products Shipped</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">25+</div>
-                <div className="text-white/80 text-sm">Countries Served</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">25+</div>
+                <div className="text-white text-sm font-medium">Countries Served</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-tech-accent mb-2">98%</div>
-                <div className="text-white/80 text-sm">Client Retention</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">98%</div>
+                <div className="text-white text-sm font-medium">Client Retention</div>
               </div>
             </div>
           </div>

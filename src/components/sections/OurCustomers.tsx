@@ -1,21 +1,21 @@
 const OurCustomers = () => {
   const customers = [
-    { name: "Microsoft", logo: "🌐" },
-    { name: "Google", logo: "🔍" },
-    { name: "Amazon", logo: "📦" },
-    { name: "Apple", logo: "🍎" },
-    { name: "Meta", logo: "👥" },
-    { name: "Netflix", logo: "🎬" },
-    { name: "Tesla", logo: "⚡" },
-    { name: "Uber", logo: "🚗" },
-    { name: "Airbnb", logo: "🏠" },
-    { name: "Spotify", logo: "🎵" },
-    { name: "Adobe", logo: "🎨" },
-    { name: "Oracle", logo: "🗃️" },
-    { name: "Salesforce", logo: "☁️" },
-    { name: "IBM", logo: "💼" },
-    { name: "Intel", logo: "🔧" },
-    { name: "NVIDIA", logo: "🎮" }
+    { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
+    { name: "Google", logo: "https://logo.clearbit.com/google.com" },
+    { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
+    { name: "Apple", logo: "https://logo.clearbit.com/apple.com" },
+    { name: "Meta", logo: "https://logo.clearbit.com/meta.com" },
+    { name: "Netflix", logo: "https://logo.clearbit.com/netflix.com" },
+    { name: "Tesla", logo: "https://logo.clearbit.com/tesla.com" },
+    { name: "Uber", logo: "https://logo.clearbit.com/uber.com" },
+    { name: "Airbnb", logo: "https://logo.clearbit.com/airbnb.com" },
+    { name: "Spotify", logo: "https://logo.clearbit.com/spotify.com" },
+    { name: "Adobe", logo: "https://logo.clearbit.com/adobe.com" },
+    { name: "Oracle", logo: "https://logo.clearbit.com/oracle.com" },
+    { name: "Salesforce", logo: "https://logo.clearbit.com/salesforce.com" },
+    { name: "IBM", logo: "https://logo.clearbit.com/ibm.com" },
+    { name: "Intel", logo: "https://logo.clearbit.com/intel.com" },
+    { name: "NVIDIA", logo: "https://logo.clearbit.com/nvidia.com" }
   ];
 
   return (
@@ -33,18 +33,23 @@ const OurCustomers = () => {
         <div className="space-y-8">
           {/* First row - scrolling right */}
           <div className="overflow-hidden">
-            <div className="flex animate-scroll-right-slow space-x-12 w-fit">
+            <div className="flex animate-scroll-right-slower space-x-16 w-fit">
               {[...customers, ...customers].map((customer, index) => (
                 <div
                   key={`row1-${index}`}
-                  className="flex-shrink-0 h-16 w-40 bg-card border border-border rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow"
+                  className="flex-shrink-0 h-24 w-48 bg-card border border-border rounded-lg flex flex-col items-center justify-center shadow-sm hover:shadow-md transition-shadow p-4"
                 >
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl">{customer.logo}</span>
-                    <span className="text-muted-foreground font-medium text-sm">
-                      {customer.name}
-                    </span>
-                  </div>
+                  <img 
+                    src={customer.logo} 
+                    alt={`${customer.name} logo`}
+                    className="h-8 w-auto object-contain mb-2"
+                    onError={(e) => {
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${customer.name}&background=random&color=fff&size=32`;
+                    }}
+                  />
+                  <span className="text-muted-foreground font-medium text-xs text-center">
+                    {customer.name}
+                  </span>
                 </div>
               ))}
             </div>
@@ -52,18 +57,23 @@ const OurCustomers = () => {
 
           {/* Second row - scrolling left */}
           <div className="overflow-hidden">
-            <div className="flex animate-scroll-left-slow space-x-12 w-fit">
+            <div className="flex animate-scroll-left-slower space-x-16 w-fit">
               {[...customers.reverse(), ...customers.reverse()].map((customer, index) => (
                 <div
                   key={`row2-${index}`}
-                  className="flex-shrink-0 h-16 w-40 bg-card border border-border rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow"
+                  className="flex-shrink-0 h-24 w-48 bg-card border border-border rounded-lg flex flex-col items-center justify-center shadow-sm hover:shadow-md transition-shadow p-4"
                 >
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl">{customer.logo}</span>
-                    <span className="text-muted-foreground font-medium text-sm">
-                      {customer.name}
-                    </span>
-                  </div>
+                  <img 
+                    src={customer.logo} 
+                    alt={`${customer.name} logo`}
+                    className="h-8 w-auto object-contain mb-2"
+                    onError={(e) => {
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${customer.name}&background=random&color=fff&size=32`;
+                    }}
+                  />
+                  <span className="text-muted-foreground font-medium text-xs text-center">
+                    {customer.name}
+                  </span>
                 </div>
               ))}
             </div>
