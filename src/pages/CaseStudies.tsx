@@ -224,6 +224,22 @@ const CaseStudies = () => {
     ? caseStudyCategories 
     : caseStudyCategories.filter(cat => cat.title === activeFilter);
 
+  // Flatten all case studies for "All" view
+  const allCaseStudies = caseStudyCategories.flatMap(category => 
+    category.cases.map(caseStudy => ({
+      ...caseStudy,
+      category: category.title
+    }))
+  );
+
+  const categoryColors = {
+    "Digital Health & MedTech": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "Sales Automation Agents": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200", 
+    "Finance & FinTech": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+    "Data Intelligence & Automation": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+    "Consumer Apps": "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200"
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -261,48 +277,92 @@ const CaseStudies = () => {
       {/* Case Studies Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-20">
-              <h2 className="text-2xl md:text-3xl font-space-grotesk font-bold text-foreground mb-12 text-center">
-                {category.title}
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {category.cases.map((caseStudy, index) => (
-                  <Card key={index} className="glass-card hover:shadow-strong transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
-                    <CardHeader>
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center space-x-3">
-                          <div className="text-2xl">{caseStudy.logo}</div>
-                          <span className="font-medium text-foreground">{caseStudy.company}</span>
-                        </div>
+          {activeFilter === "All" ? (
+            // Show all case studies as individual cards with category tags
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {allCaseStudies.map((caseStudy, index) => (
+                <Card key={index} className="glass-card hover:shadow-strong transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="text-2xl">{caseStudy.logo}</div>
+                        <span className="font-medium text-foreground">{caseStudy.company}</span>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
                         {caseStudy.hasVideo && (
                           <div className="flex items-center space-x-2 opacity-70 group-hover:opacity-100 transition-opacity">
                             <Play className="w-5 h-5 text-tech-accent" />
                             <span className="text-xs text-tech-accent font-medium">Demo Video</span>
                           </div>
                         )}
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${categoryColors[caseStudy.category]}`}>
+                          {caseStudy.category}
+                        </span>
                       </div>
-                      
-                      <CardTitle className="text-xl font-space-grotesk mb-3 group-hover:text-tech-accent transition-colors">
-                        {caseStudy.title}
-                      </CardTitle>
-                      <CardDescription className="text-muted-foreground leading-relaxed">
-                        {caseStudy.description}
-                      </CardDescription>
-                    </CardHeader>
+                    </div>
                     
-                    <CardContent>
-                      <Button variant="ghost" className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent/10 transition-all">
-                        Read case study
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                    <CardTitle className="text-xl font-space-grotesk mb-3 group-hover:text-tech-accent transition-colors">
+                      {caseStudy.title}
+                    </CardTitle>
+                    <CardDescription className="text-muted-foreground leading-relaxed">
+                      {caseStudy.description}
+                    </CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent>
+                    <Button variant="ghost" className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent/10 transition-all">
+                      Read case study
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-          ))}
+          ) : (
+            // Show grouped by category for specific filters
+            filteredCategories.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="mb-20">
+                <h2 className="text-2xl md:text-3xl font-space-grotesk font-bold text-foreground mb-12 text-center">
+                  {category.title}
+                </h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {category.cases.map((caseStudy, index) => (
+                    <Card key={index} className="glass-card hover:shadow-strong transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
+                      <CardHeader>
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex items-center space-x-3">
+                            <div className="text-2xl">{caseStudy.logo}</div>
+                            <span className="font-medium text-foreground">{caseStudy.company}</span>
+                          </div>
+                          {caseStudy.hasVideo && (
+                            <div className="flex items-center space-x-2 opacity-70 group-hover:opacity-100 transition-opacity">
+                              <Play className="w-5 h-5 text-tech-accent" />
+                              <span className="text-xs text-tech-accent font-medium">Demo Video</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        <CardTitle className="text-xl font-space-grotesk mb-3 group-hover:text-tech-accent transition-colors">
+                          {caseStudy.title}
+                        </CardTitle>
+                        <CardDescription className="text-muted-foreground leading-relaxed">
+                          {caseStudy.description}
+                        </CardDescription>
+                      </CardHeader>
+                      
+                      <CardContent>
+                        <Button variant="ghost" className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent/10 transition-all">
+                          Read case study
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
