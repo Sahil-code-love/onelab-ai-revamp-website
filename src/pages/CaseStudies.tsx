@@ -287,18 +287,16 @@ const CaseStudies = () => {
                       <div className="flex items-center space-x-3">
                         <div className="text-2xl">{caseStudy.logo}</div>
                         <span className="font-medium text-foreground">{caseStudy.company}</span>
-                      </div>
-                      <div className="flex flex-col items-end gap-2">
-                        {caseStudy.hasVideo && (
-                          <div className="flex items-center space-x-2 opacity-70 group-hover:opacity-100 transition-opacity">
-                            <Play className="w-5 h-5 text-tech-accent" />
-                            <span className="text-xs text-tech-accent font-medium">Demo Video</span>
-                          </div>
-                        )}
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${categoryColors[caseStudy.category]}`}>
                           {caseStudy.category}
                         </span>
                       </div>
+                      {caseStudy.hasVideo && (
+                        <div className="flex items-center space-x-2 opacity-70 group-hover:opacity-100 transition-opacity">
+                          <Play className="w-5 h-5 text-tech-accent" />
+                          <span className="text-xs text-tech-accent font-medium">Demo Video</span>
+                        </div>
+                      )}
                     </div>
                     
                     <CardTitle className="text-xl font-space-grotesk mb-3 group-hover:text-tech-accent transition-colors">
