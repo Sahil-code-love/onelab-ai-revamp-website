@@ -3,8 +3,11 @@ import Footer from "@/components/sections/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { useState } from "react";
 
 const CaseStudies = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+  
   const caseStudyCategories = [
     {
       title: "Digital Health & MedTech",
@@ -215,6 +218,12 @@ const CaseStudies = () => {
     }
   ];
 
+  const categoryTags = ["All", ...caseStudyCategories.map(cat => cat.title)];
+  
+  const filteredCategories = activeFilter === "All" 
+    ? caseStudyCategories 
+    : caseStudyCategories.filter(cat => cat.title === activeFilter);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -226,16 +235,33 @@ const CaseStudies = () => {
           <h1 className="text-4xl md:text-6xl font-space-grotesk font-bold text-foreground mb-6">
             Case Studies
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
             Don't take our word for it. See how startups use OneLab's AI solutions to get massive impact
           </p>
+          
+          {/* Category Filter Tags */}
+          <div className="flex flex-wrap justify-center gap-3">
+            {categoryTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setActiveFilter(tag)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  activeFilter === tag
+                    ? 'bg-tech-accent text-tech-accent-foreground shadow-sm'
+                    : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground border border-border'
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Case Studies Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {caseStudyCategories.map((category, categoryIndex) => (
+          {filteredCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="mb-20">
               <h2 className="text-2xl md:text-3xl font-space-grotesk font-bold text-foreground mb-12 text-center">
                 {category.title}
