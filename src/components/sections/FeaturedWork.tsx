@@ -121,9 +121,11 @@ const FeaturedWork = () => {
                     </span>
                   ))}
                 </div>
-                <Button variant="ghost" className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent group-hover:text-tech-accent-foreground transition-all">
-                  View Case Study
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                <Button variant="ghost" className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent group-hover:text-tech-accent-foreground transition-all" asChild>
+                  <a href="/case-studies">
+                    View Case Study
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -131,9 +133,11 @@ const FeaturedWork = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" variant="outline" className="btn-ghost-tech">
-            View More Projects
-            <ArrowRight className="ml-2 h-5 w-5" />
+          <Button size="lg" variant="outline" className="btn-ghost-tech" asChild>
+            <a href="/case-studies">
+              View More Projects
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </Button>
         </div>
       </div>
