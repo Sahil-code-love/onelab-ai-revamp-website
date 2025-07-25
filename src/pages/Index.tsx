@@ -5,6 +5,9 @@ import WhatWeBuild from "@/components/sections/WhatWeBuild";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import FeaturedWork from "@/components/sections/FeaturedWork";
 import Testimonials from "@/components/sections/Testimonials";
+import CoreLeadershipTeam from "@/components/sections/CoreLeadershipTeam";
+import AboutUs from "@/components/sections/AboutUs";
+import CompanyEvents from "@/components/sections/CompanyEvents";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 
@@ -18,6 +21,9 @@ const Index = () => {
       <WhyChooseUs />
       <FeaturedWork />
       <Testimonials />
+      <CoreLeadershipTeam />
+      <AboutUs />
+      <CompanyEvents />
       <FinalCTA />
       <Footer />
     </div>
