@@ -12,6 +12,10 @@ import BankingFinance from "./pages/verticals/BankingFinance";
 import DataIntelligence from "./pages/verticals/DataIntelligence";
 import ConsumerApps from "./pages/verticals/ConsumerApps";
 import SalesAutomation from "./pages/verticals/SalesAutomation";
+import CallingAgent from "./pages/ai-solutions/CallingAgent";
+import EmailAutomation from "./pages/ai-solutions/EmailAutomation";
+import WhatsAppAutomation from "./pages/ai-solutions/WhatsAppAutomation";
+import AIChatbot from "./pages/ai-solutions/AIChatbot";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +34,10 @@ const App = () => (
           <Route path="/verticals/data-intelligence" element={<DataIntelligence />} />
           <Route path="/verticals/consumer-apps" element={<ConsumerApps />} />
           <Route path="/verticals/sales-automation" element={<SalesAutomation />} />
+          <Route path="/ai-solutions/calling-agent" element={<CallingAgent />} />
+          <Route path="/ai-solutions/email-automation" element={<EmailAutomation />} />
+          <Route path="/ai-solutions/whatsapp-automation" element={<WhatsAppAutomation />} />
+          <Route path="/ai-solutions/chatbot" element={<AIChatbot />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
