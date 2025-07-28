@@ -1,265 +1,267 @@
 import { useState, useEffect } from "react";
-import { MessageCircle, Send, Users, Globe, Zap, BarChart3, Clock, Shield } from "lucide-react";
+import { MessageCircle, Send, Users, Clock, Zap, CheckCheck, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Navigation from "@/components/ui/navigation";
 import Footer from "@/components/sections/Footer";
 
 const WhatsAppAutomation = () => {
-  const [currentMessage, setCurrentMessage] = useState(0);
+  const [activeChat, setActiveChat] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
+  const [messageIndex, setMessageIndex] = useState(0);
 
-  const chatMessages = [
-    { type: "user", text: "Hi, I need help with my order", time: "2:34 PM" },
-    { type: "bot", text: "Hello! I'd be happy to help you with your order. Can you please share your order number?", time: "2:34 PM" },
-    { type: "user", text: "#12345", time: "2:35 PM" },
-    { type: "bot", text: "Found your order! It's currently being processed and will be shipped within 24 hours. Would you like tracking updates?", time: "2:35 PM" }
-  ];
-
-  const features = [
+  const chatConversations = [
     {
-      icon: <Globe className="h-6 w-6" />,
-      title: "Global Messaging",
-      description: "Reach customers worldwide with WhatsApp Business API integration"
+      id: 1,
+      name: "Sarah Johnson",
+      lastMessage: "Thanks for the quick response!",
+      time: "2 min ago",
+      unread: 0,
+      avatar: "SJ",
+      status: "online"
     },
     {
-      icon: <Shield className="h-6 w-6" />,
-      title: "Secure & Compliant",
-      description: "End-to-end encryption with full WhatsApp Business compliance"
+      id: 2,
+      name: "Mike Chen",
+      lastMessage: "Can you help me with my order?",
+      time: "5 min ago",
+      unread: 2,
+      avatar: "MC",
+      status: "away"
     },
     {
-      icon: <Zap className="h-6 w-6" />,
-      title: "Instant Responses",
-      description: "AI-powered replies within seconds, 24/7 availability"
-    },
-    {
-      icon: <BarChart3 className="h-6 w-6" />,
-      title: "Rich Analytics",
-      description: "Track engagement, response rates, and customer satisfaction"
+      id: 3,
+      name: "Emma Wilson",
+      lastMessage: "Perfect! That's exactly what I needed",
+      time: "12 min ago",
+      unread: 0,
+      avatar: "EW",
+      status: "online"
     }
   ];
 
-  const metrics = [
-    { label: "Messages Sent", value: "2.3M", trend: "+45%" },
-    { label: "Response Rate", value: "94%", trend: "+12%" },
-    { label: "Avg Response Time", value: "1.2s", trend: "-67%" },
-    { label: "Customer Satisfaction", value: "96%", trend: "+8%" }
+  const sampleMessages = [
+    { type: "user", text: "Hi, I need help with my recent order", time: "14:30" },
+    { type: "bot", text: "Hello! I'd be happy to help you with your order. Can you please provide your order number?", time: "14:30" },
+    { type: "user", text: "Sure, it's #12345", time: "14:31" },
+    { type: "bot", text: "Thank you! I found your order. It's currently being processed and will ship within 24 hours. You'll receive a tracking number via email.", time: "14:31" },
+    { type: "user", text: "Great! Can I change the delivery address?", time: "14:32" },
+    { type: "bot", text: "I can help you update the delivery address. Let me transfer you to our shipping specialist who can make that change immediately.", time: "14:32" }
+  ];
+
+  const automationStats = [
+    { label: "Response Time", value: "< 30s", color: "text-green-600" },
+    { label: "Satisfaction Rate", value: "96%", color: "text-blue-600" },
+    { label: "Messages Handled", value: "50K+", color: "text-purple-600" },
+    { label: "Cost Reduction", value: "70%", color: "text-orange-600" }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsTyping(true);
-      setTimeout(() => {
-        setCurrentMessage((prev) => (prev + 1) % chatMessages.length);
-        setIsTyping(false);
-      }, 1500);
-    }, 4000);
+      if (messageIndex < sampleMessages.length - 1) {
+        setIsTyping(true);
+        setTimeout(() => {
+          setMessageIndex(prev => prev + 1);
+          setIsTyping(false);
+        }, 1500);
+      } else {
+        setMessageIndex(0);
+      }
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [messageIndex]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-background to-green-50 dark:from-green-950/20 dark:via-background dark:to-green-950/20">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-background to-emerald-50 dark:from-green-950/20 dark:via-background dark:to-emerald-950/20">
       <Navigation />
       
-      {/* Hero Section with WhatsApp Interface */}
+      {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-5xl font-bold bg-gradient-to-r from-green-600 via-green-500 to-green-600 bg-clip-text text-transparent">
-                  WhatsApp Automation
-                </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  Transform customer conversations with intelligent WhatsApp automation. 
-                  Deliver personalized experiences at scale on the world's most popular messaging platform.
-                </p>
-              </div>
-              
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Start Messaging
-                </Button>
-                <Button variant="outline" size="lg" className="hover-scale border-green-200 text-green-700 hover:bg-green-50">
-                  View Integration
-                </Button>
+          <div className="text-center mb-16">
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 bg-clip-text text-transparent mb-6">
+              WhatsApp Automation
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Transform customer communication with intelligent WhatsApp automation that provides instant, 
+              personalized responses while maintaining the human touch your customers love.
+            </p>
+          </div>
+
+          {/* WhatsApp Interface Mockup */}
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white dark:bg-card rounded-3xl shadow-2xl overflow-hidden border border-green-200 dark:border-green-800">
+              {/* WhatsApp Header */}
+              <div className="bg-green-600 text-white p-4 flex items-center">
+                <MessageCircle className="h-6 w-6 mr-3" />
+                <div className="flex-1">
+                  <h3 className="font-semibold">Business WhatsApp</h3>
+                  <p className="text-sm text-green-100">AI Assistant Active</p>
+                </div>
+                <Badge className="bg-white/20 text-white border-0">Live Demo</Badge>
               </div>
 
-              {/* Live Metrics */}
-              <div className="grid grid-cols-2 gap-4">
-                {metrics.slice(0, 2).map((metric, index) => (
-                  <Card key={index} className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/30 dark:to-green-900/30 border-green-200 dark:border-green-800 hover-scale">
-                    <CardContent className="p-4">
-                      <div className="text-2xl font-bold text-green-600">{metric.value}</div>
-                      <div className="text-sm text-muted-foreground">{metric.label}</div>
-                      <div className="text-xs text-green-600 font-semibold">{metric.trend}</div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            {/* WhatsApp Chat Interface */}
-            <div className="relative flex justify-center">
-              <div className="w-80 h-96 bg-white dark:bg-gray-900 rounded-3xl shadow-elegant overflow-hidden border border-gray-200 dark:border-gray-700">
-                {/* WhatsApp Header */}
-                <div className="bg-green-600 text-white p-4 flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                    <MessageCircle className="h-5 w-5 text-green-600" />
+              <div className="flex h-[500px]">
+                {/* Chat List */}
+                <div className="w-1/3 border-r border-border bg-muted/30">
+                  <div className="p-4 border-b border-border">
+                    <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">Recent Chats</h4>
                   </div>
-                  <div>
-                    <div className="font-semibold">AI Assistant</div>
-                    <div className="text-xs opacity-90">Online</div>
+                  <div className="space-y-1">
+                    {chatConversations.map((chat, index) => (
+                      <div
+                        key={chat.id}
+                        className={`p-4 border-b border-border cursor-pointer transition-colors ${
+                          activeChat === index ? 'bg-green-50 dark:bg-green-950/30' : 'hover:bg-muted/50'
+                        }`}
+                        onClick={() => setActiveChat(index)}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className="relative">
+                            <Avatar className="h-10 w-10">
+                              <AvatarFallback className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
+                                {chat.avatar}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white ${
+                              chat.status === 'online' ? 'bg-green-500' : 'bg-gray-400'
+                            }`}></div>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between">
+                              <p className="text-sm font-medium truncate">{chat.name}</p>
+                              <p className="text-xs text-muted-foreground">{chat.time}</p>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <p className="text-xs text-muted-foreground truncate">{chat.lastMessage}</p>
+                              {chat.unread > 0 && (
+                                <Badge className="bg-green-600 text-white text-xs min-w-5 h-5 rounded-full flex items-center justify-center">
+                                  {chat.unread}
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
                 {/* Chat Messages */}
-                <div className="flex-1 p-4 space-y-3 h-80 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                  {chatMessages.slice(0, currentMessage + 1).map((message, index) => (
-                    <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-xs p-3 rounded-2xl ${
-                        message.type === 'user' 
-                          ? 'bg-green-500 text-white rounded-br-sm' 
-                          : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-bl-sm shadow-sm'
-                      }`}>
-                        <p className="text-sm">{message.text}</p>
-                        <p className={`text-xs mt-1 ${
-                          message.type === 'user' ? 'text-green-100' : 'text-gray-500'
-                        }`}>
-                          {message.time}
-                        </p>
+                <div className="flex-1 flex flex-col">
+                  {/* Chat Header */}
+                  <div className="p-4 border-b border-border bg-muted/30">
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="h-8 w-8">
+                        <AvatarFallback className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
+                          {chatConversations[activeChat].avatar}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-medium">{chatConversations[activeChat].name}</p>
+                        <p className="text-xs text-muted-foreground">Online • AI Assistant Active</p>
                       </div>
                     </div>
-                  ))}
-                  
-                  {/* Typing Indicator */}
-                  {isTyping && (
-                    <div className="flex justify-start">
-                      <div className="bg-white dark:bg-gray-700 p-3 rounded-2xl rounded-bl-sm shadow-sm">
-                        <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  </div>
+
+                  {/* Messages */}
+                  <div className="flex-1 p-4 space-y-4 overflow-y-auto">
+                    {sampleMessages.slice(0, messageIndex + 1).map((message, index) => (
+                      <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
+                        <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${
+                          message.type === 'user' 
+                            ? 'bg-green-600 text-white rounded-br-md' 
+                            : 'bg-muted border rounded-bl-md'
+                        }`}>
+                          <div className="flex items-start space-x-2">
+                            {message.type === 'bot' && (
+                              <Bot className="h-4 w-4 mt-0.5 text-green-600 flex-shrink-0" />
+                            )}
+                            <div className="flex-1">
+                              <p className="text-sm">{message.text}</p>
+                              <div className="flex items-center justify-end mt-1 space-x-1">
+                                <span className={`text-xs ${message.type === 'user' ? 'text-green-100' : 'text-muted-foreground'}`}>
+                                  {message.time}
+                                </span>
+                                {message.type === 'user' && <CheckCheck className="h-3 w-3 text-green-100" />}
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </div>
+                    ))}
+                    
+                    {/* Typing Indicator */}
+                    {isTyping && (
+                      <div className="flex justify-start">
+                        <div className="bg-muted border rounded-2xl rounded-bl-md px-4 py-2">
+                          <div className="flex items-center space-x-2">
+                            <Bot className="h-4 w-4 text-green-600" />
+                            <div className="flex space-x-1">
+                              <div className="w-2 h-2 bg-green-600 rounded-full animate-bounce"></div>
+                              <div className="w-2 h-2 bg-green-600 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                              <div className="w-2 h-2 bg-green-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
-                {/* Message Input */}
-                <div className="p-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center space-x-2">
-                    <div className="flex-1 bg-gray-100 dark:bg-gray-700 rounded-full px-4 py-2">
-                      <input 
-                        type="text" 
-                        placeholder="Type a message..." 
-                        className="w-full bg-transparent text-sm outline-none"
-                        disabled
-                      />
+                  {/* Message Input */}
+                  <div className="p-4 border-t border-border">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-1 bg-muted rounded-full px-4 py-2">
+                        <p className="text-sm text-muted-foreground">AI is handling this conversation...</p>
+                      </div>
+                      <Button size="sm" className="rounded-full bg-green-600 hover:bg-green-700">
+                        <Send className="h-4 w-4" />
+                      </Button>
                     </div>
-                    <Button size="sm" className="rounded-full bg-green-600 hover:bg-green-700 text-white">
-                      <Send className="h-4 w-4" />
-                    </Button>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Floating Status Indicators */}
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
-                <Users className="h-4 w-4 text-white" />
-              </div>
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <Clock className="h-4 w-4 text-white" />
-              </div>
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              {automationStats.map((stat, index) => (
+                <Card key={index} className="bg-white/80 dark:bg-card/80 backdrop-blur border-green-200 dark:border-green-800 hover:scale-105 transition-transform">
+                  <CardContent className="p-4 text-center">
+                    <div className={`text-2xl font-bold mb-1 ${stat.color}`}>{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-gray-900/50">
+      <section className="py-16 px-4 bg-gradient-to-r from-green-100/50 to-emerald-100/50 dark:from-green-950/30 dark:to-emerald-950/30">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">WhatsApp Business Automation</h2>
-            <p className="text-muted-foreground text-lg">Powerful features for seamless customer communication</p>
-          </div>
+          <h2 className="text-4xl font-bold text-center mb-12">WhatsApp Business Features</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <Card key={index} className="hover-scale bg-white/80 dark:bg-card/80 backdrop-blur border-green-100 dark:border-green-800 group">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { icon: <Zap className="h-6 w-6" />, title: "Instant Responses", desc: "Sub-second reply times for all customer inquiries" },
+              { icon: <Users className="h-6 w-6" />, title: "Multi-Agent Support", desc: "Handle thousands of conversations simultaneously" },
+              { icon: <MessageCircle className="h-6 w-6" />, title: "Rich Media", desc: "Send images, documents, and interactive buttons" },
+              { icon: <Clock className="h-6 w-6" />, title: "24/7 Availability", desc: "Round-the-clock customer support automation" },
+              { icon: <CheckCheck className="h-6 w-6" />, title: "Smart Routing", desc: "Intelligent escalation to human agents when needed" },
+              { icon: <Bot className="h-6 w-6" />, title: "AI Learning", desc: "Continuous improvement from every conversation" }
+            ].map((feature, index) => (
+              <Card key={index} className="hover:scale-105 transition-all bg-white/70 dark:bg-card/70 backdrop-blur">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 dark:group-hover:bg-green-900/50 transition-colors">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <div className="text-green-600">{feature.icon}</div>
                   </div>
                   <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Transform Your Business Communication</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Customer Support",
-                description: "Automate support tickets, FAQs, and issue resolution",
-                examples: ["Order status", "Refund requests", "Product information"]
-              },
-              {
-                title: "Marketing Campaigns",
-                description: "Send targeted promotional messages and updates",
-                examples: ["Product launches", "Special offers", "Event notifications"]
-              },
-              {
-                title: "Sales Automation",
-                description: "Qualify leads and guide customers through purchase",
-                examples: ["Lead qualification", "Product demos", "Order processing"]
-              }
-            ].map((useCase, index) => (
-              <Card key={index} className="hover-scale bg-gradient-to-br from-green-50 to-white dark:from-green-950/20 dark:to-card border-green-100 dark:border-green-800">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-3 text-green-700 dark:text-green-400">{useCase.title}</h3>
-                  <p className="text-muted-foreground mb-4">{useCase.description}</p>
-                  <div className="space-y-2">
-                    {useCase.examples.map((example, i) => (
-                      <Badge key={i} variant="secondary" className="mr-2 mb-2 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                        {example}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Performance Metrics */}
-      <section className="py-16 px-4 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Proven Results</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-4 gap-6">
-            {metrics.map((metric, index) => (
-              <Card key={index} className="bg-white/80 dark:bg-card/80 backdrop-blur border-green-200 dark:border-green-700 hover-scale">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-green-600 mb-2">{metric.value}</div>
-                  <div className="text-sm text-muted-foreground mb-1">{metric.label}</div>
-                  <div className="text-xs text-green-600 font-semibold">{metric.trend}</div>
+                  <p className="text-sm text-muted-foreground">{feature.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -268,19 +270,18 @@ const WhatsAppAutomation = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-green-600/10 via-green-500/10 to-green-600/10">
+      <section className="py-20 px-4 bg-gradient-to-r from-green-600/10 via-emerald-600/10 to-green-600/10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Automate WhatsApp?</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Join thousands of businesses using WhatsApp automation to enhance customer experience
+          <h2 className="text-4xl font-bold mb-6">Ready to Automate WhatsApp?</h2>
+          <p className="text-xl text-muted-foreground mb-8">
+            Transform your customer service with intelligent WhatsApp automation that scales with your business.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
-              <MessageCircle className="h-5 w-5 mr-2" />
-              Get Started Now
+          <div className="flex flex-wrap justify-center gap-6">
+            <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8">
+              Start Free Trial
             </Button>
-            <Button variant="outline" size="lg" className="border-green-200 text-green-700 hover:bg-green-50">
-              Request Demo
+            <Button variant="outline" size="lg" className="px-8">
+              See Live Demo
             </Button>
           </div>
         </div>
