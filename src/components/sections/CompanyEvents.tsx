@@ -13,32 +13,54 @@ const CompanyEvents = () => {
     {
       title: "AI Agents Hackathon",
       description: "48-hour innovation sprint where our team built groundbreaking AI solutions. From ideation to implementation, witnessing brilliant minds collaborate and create the future of artificial intelligence.",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop"
+      ],
       date: "March 2024",
       highlight: "Innovation & Creativity"
     },
     {
       title: "All Hands Meeting (Townhall)", 
       description: "Our quarterly gathering bringing the entire team together. Sharing achievements, aligning on vision, and celebrating the milestones that define our journey towards AI excellence.",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&h=600&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800&h=600&fit=crop"
+      ],
       date: "February 2024",
       highlight: "Team Unity & Vision"
     },
     {
       title: "Tech Innovation Summit",
       description: "Diving deep into the latest AI technologies and methodologies. A day of learning, sharing knowledge, and exploring the cutting-edge developments shaping our industry.",
-      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&h=600&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop"
+      ],
       date: "January 2024",
       highlight: "Knowledge & Growth"
     },
     {
       title: "Product Milestone Celebration",
       description: "Commemorating the successful launch of our latest AI product. A moment of pride as we celebrated the culmination of months of hard work and dedication.",
-      image: "https://images.unsplash.com/photo-1721322800607-80022131f5a1?w=800&h=600&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1721322800607-80022131f5a1?w=800&h=600&fit=crop"
+      ],
       date: "December 2023",
       highlight: "Achievement & Success"
     }
   ];
+
+  // Flatten all images for the carousel
+  const allImages = events.flatMap((event, eventIndex) => 
+    event.images.map((image, imageIndex) => ({
+      image,
+      event,
+      eventIndex,
+      imageIndex
+    }))
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -82,13 +104,13 @@ const CompanyEvents = () => {
                 className="w-full"
               >
                 <CarouselContent className="-ml-2">
-                  {events.map((event, index) => (
+                  {allImages.map((item, index) => (
                     <CarouselItem key={index} className="pl-2">
                       <div className="relative group">
                         <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
                           <img
-                            src={event.image}
-                            alt={event.title}
+                            src={item.image}
+                            alt={item.event.title}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                           />
                           {/* Overlay */}
@@ -98,7 +120,7 @@ const CompanyEvents = () => {
                           <div className="absolute top-4 right-4">
                             <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-full">
                               <span className="text-white font-medium text-sm">
-                                {event.date}
+                                {item.event.date}
                               </span>
                             </div>
                           </div>
@@ -106,12 +128,12 @@ const CompanyEvents = () => {
                           {/* Title Overlay */}
                           <div className="absolute bottom-6 left-6 right-6">
                             <h3 className="text-white font-space-grotesk font-bold text-xl mb-2">
-                              {event.title}
+                              {item.event.title}
                             </h3>
                             <div className="flex items-center gap-2">
                               <div className="w-8 h-0.5 bg-primary" />
                               <span className="text-white/90 text-sm font-medium">
-                                {event.highlight}
+                                {item.event.highlight}
                               </span>
                             </div>
                           </div>
@@ -181,29 +203,6 @@ const CompanyEvents = () => {
               </div>
             </div>
 
-            {/* All Events Timeline */}
-            <div className="space-y-4">
-              <h4 className="font-space-grotesk font-bold text-foreground text-lg mb-6">
-                All Our Memories
-              </h4>
-              <div className="grid grid-cols-2 gap-4">
-                {events.map((event, index) => (
-                  <div
-                    key={index}
-                    className={`p-4 rounded-xl border transition-all duration-300 ${
-                      index === currentEventIndex
-                        ? "bg-primary/10 border-primary/30"
-                        : "bg-card/30 border-border hover:border-primary/20"
-                    }`}
-                  >
-                    <h5 className="font-space-grotesk font-semibold text-foreground text-sm mb-1">
-                      {event.title}
-                    </h5>
-                    <p className="text-xs text-muted-foreground">{event.date}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
