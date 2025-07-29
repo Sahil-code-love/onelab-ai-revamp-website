@@ -308,15 +308,7 @@ const CaseStudies = () => {
                   </CardHeader>
                   
                   <CardContent>
-                    <Button 
-                      variant="ghost" 
-                      className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent/10 transition-all"
-                      onClick={() => {
-                        if (caseStudy.company === "Doctor Alliance") {
-                          window.location.href = "/case-studies/doctor-alliance";
-                        }
-                      }}
-                    >
+                    <Button variant="ghost" className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent/10 transition-all">
                       Read case study
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -358,15 +350,7 @@ const CaseStudies = () => {
                       </CardHeader>
                       
                       <CardContent>
-                        <Button 
-                          variant="ghost" 
-                          className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent/10 transition-all"
-                          onClick={() => {
-                            if (caseStudy.company === "Doctor Alliance") {
-                              window.location.href = "/case-studies/doctor-alliance";
-                            }
-                          }}
-                        >
+                        <Button variant="ghost" className="w-full text-tech-accent hover:bg-tech-accent hover:text-tech-accent-foreground group-hover:bg-tech-accent/10 transition-all">
                           Read case study
                           <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>

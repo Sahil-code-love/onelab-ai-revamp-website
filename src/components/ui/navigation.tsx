@@ -84,7 +84,7 @@ const Navigation = () => {
               <a href="/case-studies" className="text-foreground hover:text-tech-accent transition-colors font-medium">
                 Case Studies
               </a>
-              <a href="/about-us" className="text-foreground hover:text-tech-accent transition-colors font-medium">
+              <a href="/about" className="text-foreground hover:text-tech-accent transition-colors font-medium">
                 About Us
               </a>
               <a href="/careers" className="text-foreground hover:text-tech-accent transition-colors font-medium">
@@ -138,7 +138,7 @@ const Navigation = () => {
               <a href="/case-studies" className="block px-3 py-2 text-foreground hover:text-tech-accent transition-colors font-medium">
                 Case Studies
               </a>
-              <a href="/about-us" className="block px-3 py-2 text-foreground hover:text-tech-accent transition-colors font-medium">
+              <a href="/about" className="block px-3 py-2 text-foreground hover:text-tech-accent transition-colors font-medium">
                 About Us
               </a>
               <a href="/careers" className="block px-3 py-2 text-foreground hover:text-tech-accent transition-colors font-medium">
