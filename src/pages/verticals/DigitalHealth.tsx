@@ -8,66 +8,66 @@ const DigitalHealth = () => {
   const marketSegments = [
     {
       icon: Building2,
-      title: "Providers & Health Systems",
-      description: "Hospitals, clinics, and healthcare networks"
+      title: "Hospitals & Health Systems",
+      description: "Enhancing care coordination, operational efficiency, and digital transformation."
     },
     {
       icon: Activity,
-      title: "Health IT",
-      description: "Healthcare technology companies and EMR providers"
+      title: "Health IT & EMR Providers",
+      description: "Supporting platform modernization, interoperability, and AI feature integration."
     },
     {
       icon: Users,
-      title: "Payors",
-      description: "Insurance companies and managed care organizations"
+      title: "Payers & Insurance Organizations",
+      description: "Enabling smarter claims processing, member engagement, and risk analytics."
     },
     {
       icon: Pill,
-      title: "Pharma & Bio-Tech",
-      description: "Pharmaceutical and biotechnology companies"
+      title: "Pharma & BioTech Companies",
+      description: "Powering research data automation, trial efficiency, and regulatory compliance."
     },
     {
       icon: Stethoscope,
-      title: "Med-Tech",
-      description: "Medical device and diagnostic equipment manufacturers"
+      title: "MedTech & Diagnostics Companies",
+      description: "Connecting smart devices, ensuring data security, and building scalable digital layers."
     },
     {
       icon: Heart,
       title: "Digital Health Startups",
-      description: "Innovative health technology companies"
+      description: "Accelerating MVPs, building compliant infrastructure, and supporting go-to-market."
     }
   ];
 
   const services = [
     {
       icon: Brain,
-      title: "AI-Powered Clinical Intelligence",
-      description: "Transform diagnostic accuracy with machine learning models that analyze patient data, predict outcomes, and recommend personalized treatment plans in real-time."
+      title: "Purpose-Built Digital Engineering",
+      description: "Modular and scalable platforms to support clinical and operational workflows."
     },
     {
       icon: Heart,
-      title: "Patient Experience Revolution",
-      description: "Create intuitive, empathy-driven digital interfaces that streamline patient journeys from appointment booking to post-care follow-ups."
+      title: "Human-Centered Product Design",
+      description: "Intuitive, accessible, and clinically aligned experiences for all users."
     },
     {
       icon: Shield,
-      title: "Healthcare Data Analytics",
-      description: "Unlock actionable insights from complex medical data to optimize operations, reduce costs, and improve patient outcomes across your organization."
+      title: "AI & Data Intelligence",
+      description: "Secure, explainable ML models and analytics for diagnostics and decision support."
     },
     {
       icon: Lock,
-      title: "HIPAA-Compliant Security",
-      description: "Enterprise-grade security architecture ensuring complete protection of sensitive health information with zero-trust protocols and end-to-end encryption."
+      title: "Cloud & Infrastructure Modernization",
+      description: "Secure, high-performance cloud environments built for compliance and scale."
     },
     {
       icon: Activity,
-      title: "Scalable Health Infrastructure",
-      description: "Cloud-native solutions that grow with your practice, ensuring 99.9% uptime and seamless integration with existing healthcare systems."
+      title: "Privacy-Centered Data Architecture",
+      description: "End-to-end encryption, role-based access, and HIPAA-first system design."
     },
     {
       icon: CheckCircle,
-      title: "Quality Assurance Excellence",
-      description: "Rigorous testing protocols specifically designed for healthcare applications, ensuring reliability, accuracy, and regulatory compliance."
+      title: "Quality Assurance & Compliance Testing",
+      description: "Rigorous testing aligned with healthcare standards to ensure reliability and audit readiness."
     }
   ];
 
@@ -75,32 +75,32 @@ const DigitalHealth = () => {
     {
       icon: Stethoscope,
       title: "Healthcare Domain Expertise",
-      description: "Deep clinical knowledge combined with cutting-edge technology expertise to deliver solutions that truly understand healthcare workflows."
+      description: "We understand the realities of clinical workflows, stakeholder needs, and tech regulations."
     },
     {
       icon: Shield,
-      title: "HIPAA-Compliant Development",
-      description: "Dedicated secure development environment with strict access controls and comprehensive audit trails for complete compliance."
-    },
-    {
-      icon: Lock,
-      title: "Enterprise Security Framework",
-      description: "SOC 2 Type 2 certified processes with multi-layered security controls protecting your most sensitive patient data."
+      title: "Built-In Compliance & Security",
+      description: "HIPAA, SOC 2, ISO — every build aligns with the latest industry standards."
     },
     {
       icon: Activity,
-      title: "Interoperability Mastery",
-      description: "Expert implementation of FHIR, HL7, and modern healthcare standards ensuring seamless data exchange across systems."
+      title: "Interoperability Focus",
+      description: "Built using HL7, FHIR, DICOM, and other healthcare data standards."
+    },
+    {
+      icon: Lock,
+      title: "Scalable & Modular Architecture",
+      description: "Systems designed to evolve with your needs, not lock you in."
     },
     {
       icon: Brain,
-      title: "AI/ML Healthcare Specialization",
-      description: "Advanced machine learning capabilities specifically trained on medical datasets to deliver accurate, actionable healthcare insights."
+      title: "Applied AI Expertise",
+      description: "From pilot to production — we build explainable, reliable AI."
     },
     {
       icon: Zap,
-      title: "Rapid Innovation Delivery",
-      description: "Agile development methodology designed for healthcare's unique requirements, delivering secure solutions faster than traditional approaches."
+      title: "Collaborative Delivery",
+      description: "Agile teams that work closely with your in-house product and tech leaders."
     }
   ];
 
@@ -108,17 +108,17 @@ const DigitalHealth = () => {
     {
       icon: Shield,
       title: "HIPAA Compliant",
-      description: "Protecting the privacy, security, and integrity of patient's health information"
+      description: "Protecting patient privacy through strict access controls and encryption."
     },
     {
       icon: FileText,
       title: "SOC 2 Type 2",
-      description: "Safeguarding customer data by strict implementation of security reports"
+      description: "Infrastructure built to meet enterprise-grade operational standards."
     },
     {
       icon: CheckCircle,
       title: "ISO Compliant",
-      description: "We adhere to the requirements of ISO standards, without the firm listed."
+      description: "Supporting globally recognized quality and security certifications."
     }
   ];
 
@@ -136,20 +136,17 @@ const DigitalHealth = () => {
                 Digital Health & MedTech
               </Badge>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                Custom Healthcare Solutions 
-                <span className="text-tech-accent block"> Built for You</span>
+                Empowering Healthcare Innovation Through 
+                <span className="text-tech-accent block">Custom-Built Digital Solutions</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                Transform healthcare with fully customizable AI solutions designed from the ground up to meet your unique clinical requirements and patient needs.
+                At Onelab, we partner with healthcare organizations to design, build, and scale AI-powered, secure, and patient-centered platforms — tailored to fit unique clinical, operational, and regulatory needs.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="btn-tech">
-                Build Custom Healthcare AI
+                Start Building with Onelab
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="btn-ghost-tech">
-                See Custom Solutions
               </Button>
             </div>
           </div>
@@ -166,7 +163,7 @@ const DigitalHealth = () => {
                   Market Segments <span className="text-tech-accent">We Serve</span>
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  We offer custom software and advanced product engineering services to advance the digital healthcare industry.
+                  We collaborate with healthcare innovators across the ecosystem to modernize systems, streamline care, and drive better outcomes through tailored technology.
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-4">
@@ -210,7 +207,7 @@ const DigitalHealth = () => {
               Our <span className="text-tech-accent">Services</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We offer custom software and advanced product engineering services to advance the digital healthcare industry.
+              We build digital products and platforms that solve healthcare's unique challenges — with a strong foundation in compliance, UX, and technical depth.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -236,10 +233,10 @@ const DigitalHealth = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Why Choose <span className="text-tech-accent">OneLib</span>?
+              Why Choose <span className="text-tech-accent">Onelab</span>?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Proven expertise in delivering healthcare solutions that transform patient outcomes and streamline operations.
+              We bring product innovation, healthcare expertise, and collaborative delivery to every engagement.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -268,7 +265,7 @@ const DigitalHealth = () => {
               <span className="text-tech-accent">Compliances</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Enterprise-grade compliance and security certifications ensuring the highest standards of data protection and regulatory adherence.
+              We build systems that meet the highest standards of patient data protection and regulatory readiness.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -295,19 +292,16 @@ const DigitalHealth = () => {
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Ready to Transform Healthcare?
+                Ready to Build the Future of Healthcare?
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Join leading healthcare organizations using our AI solutions to improve patient outcomes
+                Let's co-create solutions that meet your needs today — and grow with your goals tomorrow.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="btn-tech">
-                Start Free Consultation
+                Start Building with Onelab
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="btn-ghost-tech">
-                Download Healthcare AI Guide
               </Button>
             </div>
           </div>
