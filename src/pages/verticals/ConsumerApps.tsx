@@ -222,10 +222,10 @@ const ConsumerApps = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300">
+              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300 border-l-4 border-l-tech-accent bg-gradient-to-br from-card to-card/50">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
-                    <service.icon className="w-6 h-6 text-tech-accent" />
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tech-accent to-tech-accent/70 flex items-center justify-center mb-6">
+                    <service.icon className="w-6 h-6 text-white" />
                   </div>
                   <CardTitle className="text-xl mb-4">{service.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
@@ -251,9 +251,9 @@ const ConsumerApps = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300">
+              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300 bg-secondary/20 border-2 border-dashed border-tech-accent/30 hover:border-tech-accent/60">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-tech-accent/5 border border-tech-accent/20 flex items-center justify-center mb-6">
                     <benefit.icon className="w-6 h-6 text-tech-accent" />
                   </div>
                   <CardTitle className="text-xl mb-3">{benefit.title}</CardTitle>
@@ -278,12 +278,12 @@ const ConsumerApps = () => {
               In consumer products, <strong>experience is everything</strong>. We design systems that perform well under pressure and respond gracefully at every touchpoint.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {features.map((feature, index) => (
-              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300">
+              <Card key={index} className="text-center shadow-soft hover:shadow-medium transition-all duration-300 bg-gradient-to-t from-tech-accent/5 to-transparent border-t-4 border-t-tech-accent">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
-                    <feature.icon className="w-6 h-6 text-tech-accent" />
+                  <div className="w-16 h-16 rounded-full bg-tech-accent/10 border-2 border-tech-accent/20 flex items-center justify-center mx-auto mb-6">
+                    <feature.icon className="w-8 h-8 text-tech-accent" />
                   </div>
                   <CardTitle className="text-xl mb-3">{feature.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
