@@ -136,20 +136,20 @@ const DigitalHealth = () => {
                 Digital Health & MedTech
               </Badge>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                The Future of Healthcare is 
-                <span className="text-tech-accent block"> Intelligent</span>
+                Custom Healthcare Solutions 
+                <span className="text-tech-accent block"> Built for You</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                Revolutionize patient care with AI-powered solutions that predict, prevent, and personalize healthcare experiences at every touchpoint.
+                Transform healthcare with fully customizable AI solutions designed from the ground up to meet your unique clinical requirements and patient needs.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="btn-tech">
-                Start Your AI Journey
+                Build Custom Healthcare AI
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg" className="btn-ghost-tech">
-                See Live Demo
+                See Custom Solutions
               </Button>
             </div>
           </div>
