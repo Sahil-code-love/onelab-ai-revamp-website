@@ -2,123 +2,118 @@ import Navigation from "@/components/ui/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Database, BarChart3, Cpu, Zap, Settings, CheckCircle, ArrowRight, Building2, Factory, ShoppingCart, TrendingUp, Users, Brain } from "lucide-react";
+import { Users, Target, TrendingUp, Rocket, Database, BarChart3, Brain, Zap, Settings, HeadphonesIcon, Eye, Puzzle, CheckCircle, Shield, ArrowRight } from "lucide-react";
 
 const DataIntelligence = () => {
-  const marketSegments = [
+  const whoWeWorkWith = [
     {
-      icon: Building2,
-      title: "Enterprise Organizations",
-      description: "Large corporations with complex data ecosystems"
+      icon: Users,
+      title: "Product-Led Teams",
+      description: "Helping product teams use data to personalize experiences and make features more useful."
     },
     {
-      icon: Factory,
-      title: "Manufacturing & Supply Chain",
-      description: "Production and logistics optimization"
+      icon: Settings,
+      title: "Operations & Support Teams",
+      description: "Reducing repetitive work and improving service quality through thoughtful automation."
     },
     {
-      icon: ShoppingCart,
-      title: "Retail & E-commerce",
-      description: "Customer behavior and inventory analytics"
+      icon: Target,
+      title: "Leadership & Strategy",
+      description: "Enabling leaders to track what matters — with dashboards that drive action."
     },
     {
-      icon: TrendingUp,
-      title: "Financial Services",
-      description: "Risk analysis and investment intelligence"
+      icon: Rocket,
+      title: "Founders & Growth Teams",
+      description: "Setting up lean, reliable systems to unlock early momentum and scale confidently."
+    }
+  ];
+
+  const whatWeBuild = [
+    {
+      icon: Database,
+      title: "Clean & Reliable Data Pipelines",
+      description: "Connecting the dots between tools and teams, so your data is always ready when you need it."
+    },
+    {
+      icon: BarChart3,
+      title: "Custom Dashboards & Reporting",
+      description: "Real-time views that help your team stay aligned and act quickly."
+    },
+    {
+      icon: Brain,
+      title: "Tailored Machine Learning Models",
+      description: "Solving specific problems — like predicting churn, classifying tickets, or scoring leads."
+    },
+    {
+      icon: Zap,
+      title: "Smart Workflows & Automations",
+      description: "Replacing manual tasks with intelligent systems that save time and reduce errors."
+    },
+    {
+      icon: Settings,
+      title: "AI-Powered Product Features",
+      description: "From recommendations to auto-tagging — we build subtle, smart features that improve user experience."
+    },
+    {
+      icon: HeadphonesIcon,
+      title: "Ongoing Support & Monitoring",
+      description: "Keeping systems healthy and improving over time, with retraining and real-world feedback."
+    }
+  ];
+
+  const howWeWork = [
+    {
+      step: "1",
+      title: "Understand What Matters",
+      description: "We start by learning your priorities, challenges, and what a meaningful result looks like for you."
+    },
+    {
+      step: "2",
+      title: "Design the Right Approach",
+      description: "We map out a clean, reliable setup — choosing the right tools and structure for your needs."
+    },
+    {
+      step: "3",
+      title: "Build & Deliver Use-Case Value",
+      description: "We focus on what will actually help your team — not just reports or features no one uses."
+    },
+    {
+      step: "4",
+      title: "Support, Evolve & Improve",
+      description: "We stay with you post-launch to ensure everything stays valuable as your needs grow."
+    }
+  ];
+
+  const whyChooseUs = [
+    {
+      icon: Puzzle,
+      title: "Built for Your Context",
+      description: "We don't use templates — every solution is grounded in your unique use case."
+    },
+    {
+      icon: Eye,
+      title: "Clear & Modular Thinking",
+      description: "We break complexity into small, manageable steps — so you can build with clarity."
+    },
+    {
+      icon: Shield,
+      title: "Transparent & Explainable",
+      description: "We make sure what we build is understandable — not a black box."
     },
     {
       icon: Users,
-      title: "Marketing Agencies",
-      description: "Campaign performance and audience insights"
+      title: "Cross-Functional by Nature",
+      description: "We speak the language of both business and tech — so everyone stays aligned."
     },
     {
-      icon: Brain,
-      title: "Research Organizations",
-      description: "Academic and scientific data analysis"
-    }
-  ];
-
-  const services = [
-    {
-      icon: Database,
-      title: "Custom Data Architecture",
-      description: "Build tailored data pipelines and infrastructure designed specifically for your unique data sources, volume, and processing requirements."
+      icon: HeadphonesIcon,
+      title: "Thoughtful Ongoing Support",
+      description: "Beyond delivery, we help you keep things running and improving."
     },
     {
-      icon: BarChart3,
-      title: "Personalized Analytics Dashboards",
-      description: "Create custom visualization and reporting solutions that display exactly the insights and KPIs most critical to your business decisions."
-    },
-    {
-      icon: Brain,
-      title: "Custom AI Models",
-      description: "Develop bespoke machine learning models trained on your specific data to solve your unique business challenges and prediction needs."
-    },
-    {
-      icon: Zap,
-      title: "Real-time Processing Solutions",
-      description: "Build custom real-time data processing systems that deliver instant insights and automated responses to changing conditions."
-    },
-    {
-      icon: Settings,
-      title: "Process Automation Design",
-      description: "Create tailored workflow automation that streamlines your specific business processes and decision-making workflows."
-    },
-    {
-      icon: CheckCircle,
-      title: "Data Quality & Governance",
-      description: "Implement custom data quality frameworks and governance systems designed for your compliance and accuracy requirements."
-    }
-  ];
-
-  const benefits = [
-    {
-      icon: Database,
-      title: "Data Engineering Expertise",
-      description: "Deep technical knowledge in building scalable, reliable data infrastructure and processing systems."
-    },
-    {
-      icon: Brain,
-      title: "AI/ML Specialization",
-      description: "Advanced expertise in developing custom machine learning models and AI solutions for data intelligence."
-    },
-    {
-      icon: Zap,
-      title: "Performance Optimization",
-      description: "Custom solutions optimized for speed, accuracy, and efficiency in processing large-scale data."
-    },
-    {
-      icon: Settings,
-      title: "Integration Mastery",
-      description: "Seamless integration of custom solutions with your existing data sources and business systems."
-    },
-    {
-      icon: BarChart3,
-      title: "Visualization Excellence",
-      description: "Beautiful, interactive dashboards and reports that make complex data insights accessible and actionable."
-    },
-    {
-      icon: CheckCircle,
-      title: "Scalable Architecture",
-      description: "Custom solutions built to grow with your data volume and evolving analytical requirements."
-    }
-  ];
-
-  const capabilities = [
-    {
-      icon: Database,
-      title: "Custom ETL Pipelines",
-      description: "Tailored data extraction, transformation, and loading processes"
-    },
-    {
-      icon: Brain,
-      title: "Predictive Analytics",
-      description: "Custom forecasting and prediction models for your specific use cases"
-    },
-    {
-      icon: BarChart3,
-      title: "Interactive Dashboards",
-      description: "Custom visualization solutions with real-time data updates"
+      icon: TrendingUp,
+      title: "Built to Scale With You",
+      description: "What we create today is designed to grow with your team — not hold it back later."
     }
   ];
 
@@ -136,93 +131,134 @@ const DataIntelligence = () => {
                 Data Intelligence & Automation
               </Badge>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                Custom Data Solutions 
-                <span className="text-tech-accent block"> Built for Your Needs</span>
+                Helping You Make Better Decisions
+                <span className="text-tech-accent block">with Data That Works for You</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                Transform your data into actionable insights with fully customizable analytics platforms, AI models, and automation solutions designed specifically for your business.
+                At Onelab, we build tailored solutions that turn scattered data into clear insights — and manual work into smart, streamlined processes.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="btn-tech">
-                Build Custom Data Solution
+                Start Building with Onelab
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="btn-ghost-tech">
-                See Custom Analytics
-              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Market Segments Section */}
+      {/* Who We Work With Section */}
       <section className="py-20 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                  Industries <span className="text-tech-accent">We Analyze For</span>
-                </h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  We build end-to-end customizable data intelligence solutions for every industry and analytical challenge.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 gap-4">
-                {marketSegments.map((segment, index) => (
-                  <div key={index} className="flex items-center space-x-4 p-4 rounded-lg bg-card border hover:shadow-medium transition-all duration-300">
-                    <div className="w-10 h-10 rounded-lg bg-tech-accent/10 flex items-center justify-center flex-shrink-0">
-                      <segment.icon className="w-5 h-5 text-tech-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">{segment.title}</h3>
-                      <p className="text-sm text-muted-foreground">{segment.description}</p>
-                    </div>
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Who We Work With
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              We support growing teams and established organizations alike — helping them get more value from their data, with less complexity.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whoWeWorkWith.map((item, index) => (
+              <Card key={index} className="h-full bg-gradient-to-br from-primary/5 to-secondary/20 border-primary/20 hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="w-6 h-6 text-primary" />
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-tech-accent/20 to-purple-500/20 p-8 flex items-center justify-center">
-                <div className="w-full h-full rounded-xl bg-card/80 backdrop-blur-sm border shadow-2xl flex items-center justify-center">
+                  <CardTitle className="text-lg mb-3 text-primary">{item.title}</CardTitle>
+                  <CardDescription className="text-sm leading-relaxed">
+                    {item.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What We Help You Build Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              What We Help You Build
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Every solution is designed around your needs — whether you're just starting or scaling something that works.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whatWeBuild.map((item, index) => (
+              <Card key={index} className="h-full border-l-4 border-l-accent bg-accent/5 hover:bg-accent/10 transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-6">
+                    <item.icon className="w-6 h-6 text-accent" />
+                  </div>
+                  <CardTitle className="text-xl mb-4 text-accent">{item.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    {item.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work With You Section */}
+      <section className="py-20 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              How We Work With You
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              We keep things simple, collaborative, and grounded in your real goals — not just technical possibilities.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {howWeWork.map((step, index) => (
+              <div key={index} className="relative">
+                <div className="bg-card rounded-xl border-2 border-dashed border-muted-foreground/20 p-6 h-full hover:border-muted-foreground/40 transition-all duration-300">
                   <div className="text-center space-y-4">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-tech-accent/10 flex items-center justify-center">
-                      <Database className="w-10 h-10 text-tech-accent" />
+                    <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center mx-auto font-bold text-lg">
+                      {step.step}
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground">Custom Data Intelligence</h3>
-                      <p className="text-muted-foreground">Tailored to your data</p>
-                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
                   </div>
                 </div>
+                {index < howWeWork.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-muted-foreground/20"></div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Our Services Section */}
+      {/* Why Teams Choose Onelab Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Our Custom <span className="text-tech-accent">Data Solutions</span>
+              Why Teams Choose Onelab
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              End-to-end customizable data intelligence solutions built specifically for your unique data challenges and business objectives.
+              We bring technical depth with a human approach — helping your team feel supported, heard, and ready to act on your data.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300">
+            {whyChooseUs.map((item, index) => (
+              <Card key={index} className="h-full bg-gradient-to-br from-secondary to-muted/30 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
-                    <service.icon className="w-6 h-6 text-tech-accent" />
+                  <div className="w-12 h-12 rounded-lg bg-foreground/10 flex items-center justify-center mb-6">
+                    <item.icon className="w-6 h-6 text-foreground" />
                   </div>
-                  <CardTitle className="text-xl mb-4">{service.title}</CardTitle>
+                  <CardTitle className="text-xl mb-4">{item.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
-                    {service.description}
+                    {item.description}
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -231,83 +267,22 @@ const DataIntelligence = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-secondary/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Why Choose <span className="text-tech-accent">OneLib</span>?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Proven expertise in delivering custom data intelligence solutions that transform raw data into competitive advantages.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
-                    <benefit.icon className="w-6 h-6 text-tech-accent" />
-                  </div>
-                  <CardTitle className="text-xl mb-3">{benefit.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {benefit.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              <span className="text-tech-accent">Custom Capabilities</span> We Build
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Specialized data processing and analytics capabilities designed specifically for your requirements.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {capabilities.map((capability, index) => (
-              <Card key={index} className="text-center shadow-soft hover:shadow-medium transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="w-16 h-16 rounded-full bg-tech-accent/10 flex items-center justify-center mx-auto mb-6">
-                    <capability.icon className="w-8 h-8 text-tech-accent" />
-                  </div>
-                  <CardTitle className="text-xl mb-3">{capability.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {capability.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
+      {/* Final CTA Section */}
       <section className="py-20 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Ready for Your Custom Data Solution?
+                Ready to Make Your Data Work Smarter?
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Let's build a completely customized data intelligence platform that transforms your data into actionable business insights.
+                We'll help you unlock insights, reduce manual work, and build the kind of systems that actually make life easier.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="btn-tech">
-                Start Custom Data Consultation
+                Start Building with Onelab
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="btn-ghost-tech">
-                Download Custom Analytics Guide
               </Button>
             </div>
           </div>
