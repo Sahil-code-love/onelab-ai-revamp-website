@@ -158,31 +158,48 @@ const DataIntelligence = () => {
         </div>
       </section>
 
-      {/* Market Segments We Serve Section */}
+      {/* Market Segments Section */}
       <section className="py-20 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Market Segments We Serve
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We work across data-intensive industries — where operational visibility, speed, and scale matter.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {marketSegments.map((item, index) => (
-              <Card key={index} className="h-full bg-gradient-to-br from-primary/5 to-secondary/20 border-primary/20 hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-6 h-6 text-primary" />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                  Market Segments <span className="text-tech-accent">We Serve</span>
+                </h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  We work across data-intensive industries — where operational visibility, speed, and scale matter.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                {marketSegments.map((segment, index) => (
+                  <div key={index} className="flex items-center space-x-4 p-4 rounded-lg bg-card border hover:shadow-medium transition-all duration-300">
+                    <div className="w-10 h-10 rounded-lg bg-tech-accent/10 flex items-center justify-center flex-shrink-0">
+                      <segment.icon className="w-5 h-5 text-tech-accent" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">{segment.title}</h3>
+                      <p className="text-sm text-muted-foreground">{segment.description}</p>
+                    </div>
                   </div>
-                  <CardTitle className="text-lg mb-3 text-primary">{item.title}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
-                    {item.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-tech-accent/20 to-purple-500/20 p-8 flex items-center justify-center">
+                <div className="w-full h-full rounded-xl bg-card/80 backdrop-blur-sm border shadow-2xl flex items-center justify-center">
+                  <div className="text-center space-y-4">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-tech-accent/10 flex items-center justify-center">
+                      <Brain className="w-10 h-10 text-tech-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground">Data Intelligence</h3>
+                      <p className="text-muted-foreground">Turning chaos into clarity</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -192,22 +209,22 @@ const DataIntelligence = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Our Services
+              Our <span className="text-tech-accent">Services</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We design intelligent systems that are easy to adopt, flexible to scale, and built for long-term clarity and control.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {ourServices.map((item, index) => (
-              <Card key={index} className="h-full border-l-4 border-l-accent bg-accent/5 hover:bg-accent/10 transition-all duration-300">
+            {ourServices.map((service, index) => (
+              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300 border-l-4 border-l-tech-accent bg-gradient-to-br from-card to-card/50">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-6">
-                    <item.icon className="w-6 h-6 text-accent" />
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tech-accent to-tech-accent/70 flex items-center justify-center mb-6">
+                    <service.icon className="w-6 h-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl mb-4 text-accent">{item.title}</CardTitle>
+                  <CardTitle className="text-xl mb-4">{service.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
-                    {item.description}
+                    {service.description}
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -217,26 +234,26 @@ const DataIntelligence = () => {
       </section>
 
       {/* Why Choose Onelab Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Why Choose Onelab?
+              Why Choose <span className="text-tech-accent">Onelab</span>?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're not just building tools — we're building systems that align with your people, process, and performance needs.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whyChooseUs.map((item, index) => (
-              <Card key={index} className="h-full bg-gradient-to-br from-secondary to-muted/30 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+            {whyChooseUs.map((benefit, index) => (
+              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300 bg-secondary/20 border-2 border-dashed border-tech-accent/30 hover:border-tech-accent/60">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-foreground/10 flex items-center justify-center mb-6">
-                    <item.icon className="w-6 h-6 text-foreground" />
+                  <div className="w-12 h-12 rounded-xl bg-tech-accent/5 border border-tech-accent/20 flex items-center justify-center mb-6">
+                    <benefit.icon className="w-6 h-6 text-tech-accent" />
                   </div>
-                  <CardTitle className="text-xl mb-4">{item.title}</CardTitle>
+                  <CardTitle className="text-xl mb-3">{benefit.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
-                    {item.description}
+                    {benefit.description}
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -250,7 +267,7 @@ const DataIntelligence = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Governance & Control Layers in Intelligent Systems
+              <span className="text-tech-accent">Governance & Control Layers</span> in Intelligent Systems
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Automation should never feel risky or invisible. We build in transparency, safety nets, and clear human oversight.
@@ -258,12 +275,12 @@ const DataIntelligence = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {governanceLayers.map((item, index) => (
-              <Card key={index} className="h-full border-2 border-tech-accent/20 bg-tech-accent/5 hover:bg-tech-accent/10 hover:border-tech-accent/30 transition-all duration-300">
+              <Card key={index} className="text-center shadow-soft hover:shadow-medium transition-all duration-300 bg-gradient-to-t from-tech-accent/5 to-transparent border-t-4 border-t-tech-accent">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-full bg-tech-accent/10 flex items-center justify-center mb-6">
-                    <item.icon className="w-6 h-6 text-tech-accent" />
+                  <div className="w-16 h-16 rounded-full bg-tech-accent/10 border-2 border-tech-accent/20 flex items-center justify-center mx-auto mb-6">
+                    <item.icon className="w-8 h-8 text-tech-accent" />
                   </div>
-                  <CardTitle className="text-xl mb-4 text-tech-accent">{item.title}</CardTitle>
+                  <CardTitle className="text-xl mb-3">{item.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
                     {item.description}
                   </CardDescription>

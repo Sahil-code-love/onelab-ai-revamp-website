@@ -179,28 +179,45 @@ const BankingFinance = () => {
       {/* Market Segments Section */}
       <section className="py-20 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Market Segments <span className="text-tech-accent">We Serve</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We support a wide range of financial organizations — from banks to emerging fintech players — helping them modernize systems, reduce risks, and improve customer experiences through tailored technology.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {marketSegments.map((segment, index) => (
-              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300 border border-tech-accent/20 bg-gradient-to-br from-card to-tech-accent/5">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 border border-tech-accent/20 flex items-center justify-center mb-6">
-                    <segment.icon className="w-6 h-6 text-tech-accent" />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                  Market Segments <span className="text-tech-accent">We Serve</span>
+                </h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  We support a wide range of financial organizations — from banks to emerging fintech players — helping them modernize systems, reduce risks, and improve customer experiences through tailored technology.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                {marketSegments.map((segment, index) => (
+                  <div key={index} className="flex items-center space-x-4 p-4 rounded-lg bg-card border hover:shadow-medium transition-all duration-300">
+                    <div className="w-10 h-10 rounded-lg bg-tech-accent/10 flex items-center justify-center flex-shrink-0">
+                      <segment.icon className="w-5 h-5 text-tech-accent" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">{segment.title}</h3>
+                      <p className="text-sm text-muted-foreground">{segment.description}</p>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl mb-4">{segment.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {segment.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-tech-accent/20 to-purple-500/20 p-8 flex items-center justify-center">
+                <div className="w-full h-full rounded-xl bg-card/80 backdrop-blur-sm border shadow-2xl flex items-center justify-center">
+                  <div className="text-center space-y-4">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-tech-accent/10 flex items-center justify-center">
+                      <Shield className="w-10 h-10 text-tech-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground">Financial Innovation</h3>
+                      <p className="text-muted-foreground">Building trust through technology</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
