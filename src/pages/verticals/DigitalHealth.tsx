@@ -41,33 +41,33 @@ const DigitalHealth = () => {
   const services = [
     {
       icon: Brain,
-      title: "Next-Gen Engineering for Smarter Healthcare Delivery",
-      description: "We bring advanced AI engineering and data science capabilities to modernize healthcare systems, optimizing PHRs and refining care coordination to integrating advanced telehealth innovations, all while ensuring interoperability and streamlined workflows as they are all core."
+      title: "AI-Powered Clinical Intelligence",
+      description: "Transform diagnostic accuracy with machine learning models that analyze patient data, predict outcomes, and recommend personalized treatment plans in real-time."
     },
     {
       icon: Heart,
-      title: "Empathy-Driven Digital Experience Design",
-      description: "A thoughtful UX healthcare experience design considers the emotional and technical needs of patients, providers and administrators. We create intuitive designs with empowered processes to ensure digital solutions that are not only functional but also emotionally resonant throughout critical healthcare information technology strategies that boost care in all of ways."
+      title: "Patient Experience Revolution",
+      description: "Create intuitive, empathy-driven digital interfaces that streamline patient journeys from appointment booking to post-care follow-ups."
     },
     {
       icon: Shield,
-      title: "Insightful AI-Powered Healthcare Analytics",
-      description: "We develop enterprise-grade strategic assist with comprehensive healthcare compliance to uncover critical data, actionable insights, driving smarter decisions across quality and scheduling personalized care while enhancing clinical efficiency and patient outcomes across software a new era of data-empowered healthcare."
+      title: "Healthcare Data Analytics",
+      description: "Unlock actionable insights from complex medical data to optimize operations, reduce costs, and improve patient outcomes across your organization."
     },
     {
       icon: Lock,
-      title: "Security and Compliance for Sensitive Health Information",
-      description: "Healthcare involves the management of highly personal data. Therefore cybersecurity measures are comprehensive throughout the overall process. We ensure sensitive data and ensure strict safest of the regulatory requirements and our teams and organizations we work with under key NIST, PCI, SOC2, HL7, and GDPR norms security and compliance are good."
+      title: "HIPAA-Compliant Security",
+      description: "Enterprise-grade security architecture ensuring complete protection of sensitive health information with zero-trust protocols and end-to-end encryption."
     },
     {
       icon: Activity,
-      title: "DevOps for Scalable Health Systems",
-      description: "Good tech ops are the perfect architecture to secure optimal technology care digital platforms provide, cloud-optimized healthcare solutions, ensuring better infrastructure reliability, operational consistency, and robust data security to elevate health system performance in your healthcare delivery."
+      title: "Scalable Health Infrastructure",
+      description: "Cloud-native solutions that grow with your practice, ensuring 99.9% uptime and seamless integration with existing healthcare systems."
     },
     {
       icon: CheckCircle,
-      title: "Quality-Assured HealthTech",
-      description: "Content in accordance with our rigorous quality assurance that meticulous testing and analysis ensures every healthcare digital solution undergoes the maximum standard of excellence. Our processes. Thanks to comprehensive software technology that completes digital and pharmaceutical production which comprehensive software solutions in ensuring production and compliance and effective healthcare industry is."
+      title: "Quality Assurance Excellence",
+      description: "Rigorous testing protocols specifically designed for healthcare applications, ensuring reliability, accuracy, and regulatory compliance."
     }
   ];
 
@@ -75,32 +75,32 @@ const DigitalHealth = () => {
     {
       icon: Stethoscope,
       title: "Healthcare Domain Expertise",
-      description: "Deep understanding of healthcare workflows, regulations, and clinical needs"
+      description: "Deep clinical knowledge combined with cutting-edge technology expertise to deliver solutions that truly understand healthcare workflows."
     },
     {
       icon: Shield,
-      title: "HIPAA-Compliant ODC",
-      description: "Dedicated offshore development centers with stringent security measures and full HIPAA compliance to handle patient information"
+      title: "HIPAA-Compliant Development",
+      description: "Dedicated secure development environment with strict access controls and comprehensive audit trails for complete compliance."
     },
     {
       icon: Lock,
-      title: "Robust Security Framework",
-      description: "We follow SOC 2 certification process to provide comprehensive financial controls and a state-of-the-art cyber intrusion context to secure data placement"
+      title: "Enterprise Security Framework",
+      description: "SOC 2 Type 2 certified processes with multi-layered security controls protecting your most sensitive patient data."
     },
     {
       icon: Activity,
       title: "Interoperability Mastery",
-      description: "Expertise in FHIR, HL7, and other healthcare interoperability standards including HL7 SQL and HCFA EDI forms"
+      description: "Expert implementation of FHIR, HL7, and modern healthcare standards ensuring seamless data exchange across systems."
     },
     {
       icon: Brain,
-      title: "Certified Proficiency in Leading Cloud Technologies",
-      description: "We have a core team of specialization certified in AWS, Google Cloud, and Red Hat, positioning us at the forefront of cloud computing innovations"
+      title: "AI/ML Healthcare Specialization",
+      description: "Advanced machine learning capabilities specifically trained on medical datasets to deliver accurate, actionable healthcare insights."
     },
     {
       icon: Zap,
-      title: "Advanced AI/ML Capabilities for Healthcare Innovation",
-      description: "Our twenty-strong strong team excels at the implementation of sophisticated AI and ML capabilities offering a team of trained experts and AI automation to empower healthcare."
+      title: "Rapid Innovation Delivery",
+      description: "Agile development methodology designed for healthcare's unique requirements, delivering secure solutions faster than traditional approaches."
     }
   ];
 
@@ -127,60 +127,30 @@ const DigitalHealth = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 overflow-hidden">
+      <section className="relative pt-20 pb-20 overflow-hidden">
         <div className="absolute inset-0 gradient-hero opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <Badge variant="outline" className="border-tech-accent text-tech-accent">
-                  Digital Health & MedTech
-                </Badge>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Revolutionizing Healthcare with 
-                  <span className="text-tech-accent"> AI Intelligence</span>
-                </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  Transform patient care, streamline operations, and improve outcomes with our 
-                  cutting-edge AI solutions designed specifically for healthcare and medical technology.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-tech">
-                  Schedule Demo
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button variant="outline" size="lg" className="btn-ghost-tech">
-                  View Case Studies
-                </Button>
-              </div>
+          <div className="text-center space-y-8 max-w-4xl mx-auto">
+            <div className="space-y-6">
+              <Badge variant="outline" className="border-tech-accent text-tech-accent mx-auto">
+                Digital Health & MedTech
+              </Badge>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+                The Future of Healthcare is 
+                <span className="text-tech-accent block"> Intelligent</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                Revolutionize patient care with AI-powered solutions that predict, prevent, and personalize healthcare experiences at every touchpoint.
+              </p>
             </div>
-            <div className="relative">
-              <div className="glass-card p-8 space-y-6">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 rounded-full bg-tech-accent/10 flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-tech-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">AI Health Assistant</h3>
-                    <p className="text-sm text-muted-foreground">Active now</p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span className="text-sm">Patient vitals analyzed</span>
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span className="text-sm">Drug interactions checked</span>
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span className="text-sm">Treatment plan optimized</span>
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="btn-tech">
+                Start Your AI Journey
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button variant="outline" size="lg" className="btn-ghost-tech">
+                See Live Demo
+              </Button>
             </div>
           </div>
         </div>
@@ -266,10 +236,10 @@ const DigitalHealth = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Why Choose <span className="text-tech-accent">Coditas</span>?
+              Why Choose <span className="text-tech-accent">OneLib</span>?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We offer a unique blend of technical expertise and industry-specific knowledge to provide exceptional value to clients.
+              Proven expertise in delivering healthcare solutions that transform patient outcomes and streamline operations.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -298,7 +268,7 @@ const DigitalHealth = () => {
               <span className="text-tech-accent">Compliances</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We are certified in AWS, Google Cloud, and Red Hat to implement best practices, reduce downtimes, and optimize system performance.
+              Enterprise-grade compliance and security certifications ensuring the highest standards of data protection and regulatory adherence.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
