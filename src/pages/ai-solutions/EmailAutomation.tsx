@@ -8,48 +8,18 @@ import Navigation from "@/components/ui/navigation";
 import Footer from "@/components/sections/Footer";
 
 const EmailAutomation = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  const [emailProgress, setEmailProgress] = useState(0);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [currentEmail, setCurrentEmail] = useState(0);
-
-  const demoEmails = [
-    {
-      from: "sarah@customer.com",
-      subject: "Order #1234 - Delivery Question",
-      content: "Hi, I need to change my delivery address for order #1234. Can you help?",
-      aiResponse: "Hi Sarah! I'd be happy to help you update the delivery address for order #1234. I can see your order is currently being prepared. Let me update that for you right away...",
-      context: "Order found • Status: Processing • Address change allowed"
-    },
-    {
-      from: "mike@lead.com", 
-      subject: "Interested in your services",
-      content: "Hello, I saw your recent case study and I'm interested in learning more about your AI solutions for our e-commerce platform.",
-      aiResponse: "Hi Mike! Thank you for your interest in our AI solutions. I'd love to schedule a personalized demo to show you how we've helped similar e-commerce platforms increase conversion rates by 35%...",
-      context: "Lead detected • Industry: E-commerce • Demo request identified"
-    },
-    {
-      from: "team@internal.com",
-      subject: "Ticket #5678 - System Integration Issue", 
-      content: "The new payment integration is causing checkout failures on mobile. Priority: High",
-      aiResponse: "Alert: High priority ticket detected. I've automatically escalated this to the engineering team and created a Slack notification. ETA for resolution: 2 hours based on similar issues...",
-      context: "Internal ticket • Auto-escalated • Team notified"
-    }
-  ];
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % 4);
-      setEmailProgress((prev) => (prev >= 100 ? 0 : prev + Math.random() * 15));
-      setCurrentEmail((prev) => (prev + 1) % demoEmails.length);
-      
-      // Simulate AI generation
-      if (Math.random() > 0.7) {
-        setIsGenerating(true);
-        setTimeout(() => setIsGenerating(false), 1500);
-      }
-    }, 3000);
+      setCurrentStep((prev) => {
+        const next = (prev + 1) % 3;
+        if (next === 2) setIsTyping(true);
+        else setIsTyping(false);
+        return next;
+      });
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);
@@ -131,145 +101,102 @@ const EmailAutomation = () => {
         </div>
       </section>
 
-      {/* Demo Clips Section */}
+      {/* Interactive Demo Section */}
       <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">🎬 DEMO CLIPS</h2>
-            <p className="text-lg text-muted-foreground">
-              See how our email automation system works in real-time
-            </p>
-          </div>
-          
-          {/* Interactive Email Demo */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Email Interface */}
-            <Card className="bg-white/90 dark:bg-card/90 backdrop-blur">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold flex items-center">
-                    <Mail className="h-5 w-5 mr-2 text-blue-600" />
-                    Inbox - AI Assistant Active
-                  </h3>
-                  <Badge variant="secondary" className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                    Live
-                  </Badge>
+        <div className="max-w-5xl mx-auto">
+          {/* Simple Email Demo */}
+          <Card className="border-0 shadow-lg bg-white/95 dark:bg-card/95 backdrop-blur">
+            <CardContent className="p-0">
+              <div className="grid lg:grid-cols-2">
+                {/* Incoming Email */}
+                <div className="p-8 border-r dark:border-border/50">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg font-semibold text-muted-foreground">Incoming Email</h3>
+                    <Badge variant="outline" className="text-xs">
+                      Customer Support
+                    </Badge>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-muted/50 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm font-medium">sarah@customer.com</span>
+                        <span className="text-xs text-muted-foreground">Just now</span>
+                      </div>
+                      <h4 className="font-medium mb-2 text-foreground">Order Status Question</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Hi, I placed order #1234 yesterday and haven't received any updates. 
+                        Could you please let me know the current status? Thanks!
+                      </p>
+                    </div>
+                    
+                    {/* AI Processing Indicator */}
+                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800/50">
+                      <div className="flex items-center space-x-2">
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentStep >= 1 ? 'bg-blue-500' : 'bg-muted-foreground/30'
+                        }`}></div>
+                        <span className="text-sm text-muted-foreground">Reading email...</span>
+                      </div>
+                      <div className="flex items-center space-x-2 mt-2">
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentStep >= 2 ? 'bg-blue-500' : 'bg-muted-foreground/30'
+                        }`}></div>
+                        <span className="text-sm text-muted-foreground">Finding order details...</span>
+                      </div>
+                      <div className="flex items-center space-x-2 mt-2">
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentStep >= 0 ? 'bg-blue-500 animate-pulse' : 'bg-muted-foreground/30'
+                        } ${isTyping ? 'animate-pulse' : ''}`}></div>
+                        <span className="text-sm text-muted-foreground">Generating response...</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Email Thread */}
-                <div className="space-y-4">
-                  <div className="bg-muted/50 rounded-lg p-4 border-l-4 border-l-blue-500">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-blue-600">{demoEmails[currentEmail].from}</span>
-                      <span className="text-xs text-muted-foreground">2 min ago</span>
-                    </div>
-                    <h4 className="font-medium mb-2">{demoEmails[currentEmail].subject}</h4>
-                    <p className="text-sm text-muted-foreground">{demoEmails[currentEmail].content}</p>
+                {/* AI Generated Response */}
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg font-semibold text-muted-foreground">AI Generated Reply</h3>
+                    <Badge className="text-xs">
+                      Ready to Send
+                    </Badge>
                   </div>
-
-                  {/* AI Context Understanding */}
-                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 rounded-lg p-4 border border-purple-200 dark:border-purple-800">
-                    <div className="flex items-center mb-2">
-                      <Brain className="h-4 w-4 text-purple-600 mr-2" />
-                      <span className="text-sm font-medium text-purple-600">AI Context Analysis</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{demoEmails[currentEmail].context}</p>
-                  </div>
-
-                  {/* AI Generated Response */}
-                  <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-950/30 dark:to-green-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center">
-                        <Zap className="h-4 w-4 text-green-600 mr-2" />
-                        <span className="text-sm font-medium text-green-600">AI Generated Reply</span>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/30 dark:to-blue-950/30 rounded-lg p-4 border border-green-200 dark:border-green-800/50">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm font-medium">support@yourcompany.com</span>
+                        <span className="text-xs text-muted-foreground">Draft</span>
                       </div>
-                      {isGenerating && <div className="animate-spin rounded-full h-4 w-4 border-2 border-green-500 border-t-transparent"></div>}
+                      <h4 className="font-medium mb-2 text-foreground">Re: Order Status Question</h4>
+                      <div className="text-sm text-muted-foreground leading-relaxed space-y-2">
+                        <p>Hi Sarah,</p>
+                        <p>Thank you for reaching out! I've located your order #1234 placed yesterday.</p>
+                        <p>Great news - your order is currently being packed at our fulfillment center and will ship today. You'll receive a tracking number via email within the next 2 hours.</p>
+                        <p>Expected delivery: Tomorrow by 3 PM</p>
+                        <p>Let me know if you have any other questions!</p>
+                        <p>Best regards,<br/>Customer Support Team</p>
+                      </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">{demoEmails[currentEmail].aiResponse}</p>
-                    <div className="mt-3 flex space-x-2">
+                    
+                    <div className="flex space-x-3">
                       <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
-                        <Send className="h-3 w-3 mr-1" />
-                        Send
+                        <Send className="h-3 w-3 mr-2" />
+                        Send Reply
                       </Button>
                       <Button size="sm" variant="outline">
-                        <Settings className="h-3 w-3 mr-1" />
                         Edit
+                      </Button>
+                      <Button size="sm" variant="outline">
+                        Review
                       </Button>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            {/* Processing Steps */}
-            <Card className="bg-white/90 dark:bg-card/90 backdrop-blur">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-6 flex items-center">
-                  <TrendingUp className="h-5 w-5 mr-2 text-purple-600" />
-                  AI Processing Pipeline
-                </h3>
-                
-                <div className="space-y-4">
-                  {[
-                    { step: "Email Reception", icon: <Inbox className="h-4 w-4" />, status: "complete" },
-                    { step: "Context Analysis", icon: <Brain className="h-4 w-4" />, status: currentStep >= 1 ? "complete" : "processing" },
-                    { step: "Response Generation", icon: <MessageSquare className="h-4 w-4" />, status: currentStep >= 2 ? "complete" : "pending" },
-                    { step: "Human Review", icon: <Users className="h-4 w-4" />, status: currentStep >= 3 ? "complete" : "pending" }
-                  ].map((item, index) => (
-                    <div key={index} className={`flex items-center space-x-3 p-3 rounded-lg transition-all ${
-                      item.status === 'complete' ? 'bg-green-50 dark:bg-green-950/30' :
-                      item.status === 'processing' ? 'bg-blue-50 dark:bg-blue-950/30' :
-                      'bg-muted/30'
-                    }`}>
-                      <div className={`p-2 rounded-lg ${
-                        item.status === 'complete' ? 'bg-green-500 text-white' :
-                        item.status === 'processing' ? 'bg-blue-500 text-white animate-pulse' :
-                        'bg-muted text-muted-foreground'
-                      }`}>
-                        {item.icon}
-                      </div>
-                      <div className="flex-1">
-                        <span className="font-medium">{item.step}</span>
-                        <div className="w-full bg-muted rounded-full h-2 mt-1">
-                          <div 
-                            className={`h-2 rounded-full transition-all duration-1000 ${
-                              item.status === 'complete' ? 'bg-green-500 w-full' :
-                              item.status === 'processing' ? 'bg-blue-500 w-3/4' :
-                              'bg-muted w-0'
-                            }`}
-                          ></div>
-                        </div>
-                      </div>
-                      <Badge variant={
-                        item.status === 'complete' ? 'default' :
-                        item.status === 'processing' ? 'secondary' : 'outline'
-                      } className="text-xs">
-                        {item.status}
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium">Processing Speed</span>
-                    <span className="text-sm text-muted-foreground">{Math.round(emailProgress)}%</span>
-                  </div>
-                  <Progress value={emailProgress} className="h-2" />
-                  <p className="text-xs text-muted-foreground mt-2">
-                    Average response time: 1.2 seconds
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center mt-8">
-            <Badge variant="secondary" className="text-sm">
-              🔄 Auto-cycling through different email scenarios • Interactive demo
-            </Badge>
-          </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -277,7 +204,7 @@ const EmailAutomation = () => {
       <section className="py-16 px-4 bg-gradient-to-r from-blue-50/50 to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">💼 USE CASES & EXAMPLES</h2>
+            <h2 className="text-4xl font-bold mb-4">USE CASES & EXAMPLES</h2>
             <h3 className="text-2xl font-semibold text-tech-accent mb-4">
               Where Email Automation Makes the Biggest Difference
             </h3>
@@ -305,7 +232,7 @@ const EmailAutomation = () => {
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">🔌 Fits Right Into Your Workflow</h2>
+            <h2 className="text-4xl font-bold mb-4">Fits Right Into Your Workflow</h2>
             <h3 className="text-2xl font-semibold text-tech-accent mb-4">
               No Need to Start from Scratch
             </h3>
@@ -337,7 +264,7 @@ const EmailAutomation = () => {
       <section className="py-16 px-4 bg-gradient-to-r from-blue-50/50 to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">✅ WHY ONELAB?</h2>
+            <h2 className="text-4xl font-bold mb-4">WHY ONELAB?</h2>
             <h3 className="text-2xl font-semibold text-tech-accent mb-4">
               Smarter Email, Without the Complexity
             </h3>
@@ -353,7 +280,7 @@ const EmailAutomation = () => {
                   <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
                     <div className="text-tech-accent">{benefit.icon}</div>
                   </div>
-                  <CardTitle className="text-xl mb-4">🚀 {benefit.title}</CardTitle>
+                  <CardTitle className="text-xl mb-4">{benefit.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
                     {benefit.description}
                   </CardDescription>
