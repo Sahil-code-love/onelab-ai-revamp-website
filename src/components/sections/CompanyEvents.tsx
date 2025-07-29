@@ -1,84 +1,210 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const CompanyEvents = () => {
+  const [currentEventIndex, setCurrentEventIndex] = useState(0);
+
   const events = [
     {
-      title: "AI Hackathon 2024",
-      description: "48-hour innovation sprint building AI solutions",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
-      category: "Innovation"
+      title: "AI Agents Hackathon",
+      description: "48-hour innovation sprint where our team built groundbreaking AI solutions. From ideation to implementation, witnessing brilliant minds collaborate and create the future of artificial intelligence.",
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop",
+      date: "March 2024",
+      highlight: "Innovation & Creativity"
     },
     {
-      title: "All Hands Meeting Q1", 
-      description: "Quarterly team gathering and strategy alignment",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=300&fit=crop",
-      category: "Team Building"
+      title: "All Hands Meeting (Townhall)", 
+      description: "Our quarterly gathering bringing the entire team together. Sharing achievements, aligning on vision, and celebrating the milestones that define our journey towards AI excellence.",
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&h=600&fit=crop",
+      date: "February 2024",
+      highlight: "Team Unity & Vision"
     },
     {
-      title: "Tech Talk Series",
-      description: "Weekly knowledge sharing sessions",
-      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=300&fit=crop",
-      category: "Learning"
+      title: "Tech Innovation Summit",
+      description: "Diving deep into the latest AI technologies and methodologies. A day of learning, sharing knowledge, and exploring the cutting-edge developments shaping our industry.",
+      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&h=600&fit=crop",
+      date: "January 2024",
+      highlight: "Knowledge & Growth"
     },
     {
-      title: "Product Launch Event",
-      description: "Celebrating our latest AI product release",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
-      category: "Product"
-    },
-    {
-      title: "Team Offsite Retreat",
-      description: "Annual team building and planning retreat",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=300&fit=crop",
-      category: "Culture"
-    },
-    {
-      title: "Innovation Workshop",
-      description: "Collaborative brainstorming and ideation sessions",
-      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=300&fit=crop",
-      category: "Innovation"
+      title: "Product Milestone Celebration",
+      description: "Commemorating the successful launch of our latest AI product. A moment of pride as we celebrated the culmination of months of hard work and dedication.",
+      image: "https://images.unsplash.com/photo-1721322800607-80022131f5a1?w=800&h=600&fit=crop",
+      date: "December 2023",
+      highlight: "Achievement & Success"
     }
   ];
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentEventIndex((prev) => (prev + 1) % events.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [events.length]);
+
+  const currentEvent = events[currentEventIndex];
+
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-24 bg-gradient-to-br from-background via-muted/20 to-primary/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-up">
+        {/* Header */}
+        <div className="text-center mb-20 animate-fade-up">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-foreground mb-6">
-            Company Events
+            Our Memories
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Moments from our journey - capturing the innovation, collaboration, and culture that drives us forward.
+            Capturing the moments that define our journey - from innovation sprints to team celebrations
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event, index) => (
-            <Card key={index} className="glass-card group hover:shadow-strong transition-all duration-300 border-2 hover:border-primary/20 overflow-hidden">
-              <div className="relative">
-                <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        {/* Main Memory Layout */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+          {/* Auto-scrolling Images - Left Side */}
+          <div className="w-full lg:w-1/2">
+            <div className="relative">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                plugins={[
+                  Autoplay({
+                    delay: 4000,
+                    stopOnInteraction: false,
+                  }),
+                ]}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2">
+                  {events.map((event, index) => (
+                    <CarouselItem key={index} className="pl-2">
+                      <div className="relative group">
+                        <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
+                          <img
+                            src={event.image}
+                            alt={event.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          {/* Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                          
+                          {/* Date Badge */}
+                          <div className="absolute top-4 right-4">
+                            <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-full">
+                              <span className="text-white font-medium text-sm">
+                                {event.date}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          {/* Title Overlay */}
+                          <div className="absolute bottom-6 left-6 right-6">
+                            <h3 className="text-white font-space-grotesk font-bold text-xl mb-2">
+                              {event.title}
+                            </h3>
+                            <div className="flex items-center gap-2">
+                              <div className="w-8 h-0.5 bg-primary" />
+                              <span className="text-white/90 text-sm font-medium">
+                                {event.highlight}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+
+              {/* Progress Indicators */}
+              <div className="flex justify-center gap-3 mt-8">
+                {events.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                      index === currentEventIndex
+                        ? "bg-primary scale-125"
+                        : "bg-muted-foreground/30"
+                    }`}
                   />
-                </div>
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
-                    {event.category}
-                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Event Details - Right Side */}
+          <div className="w-full lg:w-1/2 space-y-8">
+            <div className="relative">
+              {/* Background Decoration */}
+              <div className="absolute -top-8 -left-8 w-24 h-24 bg-primary/10 rounded-full blur-xl" />
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-accent/10 rounded-full blur-xl" />
+              
+              <div className="relative bg-card/50 backdrop-blur-sm border border-primary/10 rounded-3xl p-8 shadow-xl">
+                <div className="space-y-6">
+                  {/* Current Event Title */}
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                      Featured Memory
+                    </div>
+                    <h3 className="text-3xl font-space-grotesk font-bold text-foreground mb-3">
+                      {currentEvent.title}
+                    </h3>
+                    <div className="flex items-center gap-4 text-muted-foreground mb-6">
+                      <span className="text-lg font-medium">{currentEvent.date}</span>
+                      <div className="w-1 h-1 bg-muted-foreground rounded-full" />
+                      <span className="text-sm">{currentEvent.highlight}</span>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {currentEvent.description}
+                  </p>
+
+                  {/* Highlight Section */}
+                  <div className="bg-muted/30 rounded-2xl p-6 border-l-4 border-primary">
+                    <h4 className="font-space-grotesk font-bold text-foreground mb-2">
+                      Memory Highlight
+                    </h4>
+                    <p className="text-muted-foreground">
+                      {currentEvent.highlight} - {currentEvent.description.split('.')[0]}.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-space-grotesk font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {event.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {event.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+            </div>
+
+            {/* All Events Timeline */}
+            <div className="space-y-4">
+              <h4 className="font-space-grotesk font-bold text-foreground text-lg mb-6">
+                All Our Memories
+              </h4>
+              <div className="grid grid-cols-2 gap-4">
+                {events.map((event, index) => (
+                  <div
+                    key={index}
+                    className={`p-4 rounded-xl border transition-all duration-300 ${
+                      index === currentEventIndex
+                        ? "bg-primary/10 border-primary/30"
+                        : "bg-card/30 border-border hover:border-primary/20"
+                    }`}
+                  >
+                    <h5 className="font-space-grotesk font-semibold text-foreground text-sm mb-1">
+                      {event.title}
+                    </h5>
+                    <p className="text-xs text-muted-foreground">{event.date}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
