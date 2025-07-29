@@ -16,6 +16,7 @@ import CallingAgent from "./pages/ai-solutions/CallingAgent";
 import EmailAutomation from "./pages/ai-solutions/EmailAutomation";
 import WhatsAppAutomation from "./pages/ai-solutions/WhatsAppAutomation";
 import AIChatbot from "./pages/ai-solutions/AIChatbot";
+import DoctorAlliance from "./pages/case-studies/DoctorAlliance";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/ai-solutions/email-automation" element={<EmailAutomation />} />
           <Route path="/ai-solutions/whatsapp-automation" element={<WhatsAppAutomation />} />
           <Route path="/ai-solutions/chatbot" element={<AIChatbot />} />
+          <Route path="/case-studies/doctor-alliance" element={<DoctorAlliance />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
