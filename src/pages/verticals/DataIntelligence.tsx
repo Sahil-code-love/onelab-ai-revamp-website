@@ -5,115 +5,125 @@ import { Badge } from "@/components/ui/badge";
 import { Users, Target, TrendingUp, Rocket, Database, BarChart3, Brain, Zap, Settings, HeadphonesIcon, Eye, Puzzle, CheckCircle, Shield, ArrowRight } from "lucide-react";
 
 const DataIntelligence = () => {
-  const whoWeWorkWith = [
+  const marketSegments = [
     {
       icon: Users,
-      title: "Product-Led Teams",
-      description: "Helping product teams use data to personalize experiences and make features more useful."
+      title: "Retail & E-Commerce",
+      description: "Enabling smart inventory planning, customer segmentation, and real-time performance tracking."
     },
     {
       icon: Settings,
-      title: "Operations & Support Teams",
-      description: "Reducing repetitive work and improving service quality through thoughtful automation."
+      title: "Healthcare & Life Sciences",
+      description: "Structuring clinical data, automating documentation, and supporting compliance workflows."
     },
     {
       icon: Target,
-      title: "Leadership & Strategy",
-      description: "Enabling leaders to track what matters — with dashboards that drive action."
+      title: "Banking & Insurance",
+      description: "Powering fraud detection, risk modeling, and internal workflow automation with secure systems."
     },
     {
       icon: Rocket,
-      title: "Founders & Growth Teams",
-      description: "Setting up lean, reliable systems to unlock early momentum and scale confidently."
+      title: "Logistics & Supply Chain",
+      description: "Building data-backed dispatch, tracking, and demand planning systems."
+    },
+    {
+      icon: Database,
+      title: "Product & SaaS Platforms",
+      description: "Creating internal analytics tools, automation flows, and ML-based recommendations."
     }
   ];
 
-  const whatWeBuild = [
+  const ourServices = [
     {
       icon: Database,
-      title: "Clean & Reliable Data Pipelines",
-      description: "Connecting the dots between tools and teams, so your data is always ready when you need it."
+      title: "Data Engineering & Integration",
+      description: "We consolidate messy data from different sources into structured pipelines and unified views."
     },
     {
       icon: BarChart3,
-      title: "Custom Dashboards & Reporting",
-      description: "Real-time views that help your team stay aligned and act quickly."
+      title: "Analytics Dashboards & Visibility Tools",
+      description: "We build simple, powerful dashboards that support fast, data-informed decisions."
     },
     {
       icon: Brain,
-      title: "Tailored Machine Learning Models",
-      description: "Solving specific problems — like predicting churn, classifying tickets, or scoring leads."
+      title: "Machine Learning Applications",
+      description: "We design clear, production-ready models to detect patterns, forecast demand, or reduce churn."
     },
     {
       icon: Zap,
-      title: "Smart Workflows & Automations",
-      description: "Replacing manual tasks with intelligent systems that save time and reduce errors."
+      title: "Internal Tools & Workflow Automation",
+      description: "We replace spreadsheets, emails, and manual tasks with logic-driven, connected systems."
     },
     {
       icon: Settings,
-      title: "AI-Powered Product Features",
-      description: "From recommendations to auto-tagging — we build subtle, smart features that improve user experience."
+      title: "Smart Ops Assistants & Agents",
+      description: "We create AI-based tools to support ops teams with triage, summarization, and routing."
     },
     {
       icon: HeadphonesIcon,
-      title: "Ongoing Support & Monitoring",
-      description: "Keeping systems healthy and improving over time, with retraining and real-world feedback."
-    }
-  ];
-
-  const howWeWork = [
-    {
-      step: "1",
-      title: "Understand What Matters",
-      description: "We start by learning your priorities, challenges, and what a meaningful result looks like for you."
-    },
-    {
-      step: "2",
-      title: "Design the Right Approach",
-      description: "We map out a clean, reliable setup — choosing the right tools and structure for your needs."
-    },
-    {
-      step: "3",
-      title: "Build & Deliver Use-Case Value",
-      description: "We focus on what will actually help your team — not just reports or features no one uses."
-    },
-    {
-      step: "4",
-      title: "Support, Evolve & Improve",
-      description: "We stay with you post-launch to ensure everything stays valuable as your needs grow."
+      title: "Model Monitoring & Optimization",
+      description: "We ensure systems stay reliable over time with performance tracking and feedback loops."
     }
   ];
 
   const whyChooseUs = [
     {
       icon: Puzzle,
-      title: "Built for Your Context",
-      description: "We don't use templates — every solution is grounded in your unique use case."
+      title: "Works with Your Stack",
+      description: "Our solutions adapt to your existing tools, systems, and workflows — no forced migrations."
     },
     {
       icon: Eye,
-      title: "Clear & Modular Thinking",
-      description: "We break complexity into small, manageable steps — so you can build with clarity."
+      title: "Designed for Adoption",
+      description: "Our interfaces are made for real users — not just analysts or engineers."
     },
     {
       icon: Shield,
-      title: "Transparent & Explainable",
-      description: "We make sure what we build is understandable — not a black box."
+      title: "Explainable AI, Not Black Boxes",
+      description: "We keep logic visible and interpretable — so your team understands how the system works."
+    },
+    {
+      icon: Zap,
+      title: "Practical Automation",
+      description: "We automate with intent — freeing up time where it matters and leaving decisions in your hands when needed."
+    },
+    {
+      icon: Database,
+      title: "Modular Architecture",
+      description: "Systems are built to scale and evolve without lock-in or bloat."
     },
     {
       icon: Users,
-      title: "Cross-Functional by Nature",
-      description: "We speak the language of both business and tech — so everyone stays aligned."
+      title: "Collaborative Delivery",
+      description: "We embed alongside your team — from design through launch and beyond."
+    }
+  ];
+
+  const governanceLayers = [
+    {
+      icon: Users,
+      title: "Human-in-the-Loop Workflows",
+      description: "Automations are designed to assist — not override — human decision-making where it matters."
     },
     {
-      icon: HeadphonesIcon,
-      title: "Thoughtful Ongoing Support",
-      description: "Beyond delivery, we help you keep things running and improving."
+      icon: Shield,
+      title: "Role-Based Access & Controls",
+      description: "Define exactly who can trigger, edit, or view automated processes."
     },
     {
-      icon: TrendingUp,
-      title: "Built to Scale With You",
-      description: "What we create today is designed to grow with your team — not hold it back later."
+      icon: Eye,
+      title: "End-to-End Audit Trails",
+      description: "Every action and automation step is logged for review, rollback, or compliance checks."
+    },
+    {
+      icon: Settings,
+      title: "Fail-Safe & Manual Overrides",
+      description: "When something's off, your team stays in control — with pause, review, and fallback options."
+    },
+    {
+      icon: CheckCircle,
+      title: "Pre-Deployment Testing",
+      description: "Automation flows can be simulated before going live — ensuring reliability and trust."
     }
   ];
 
@@ -131,11 +141,11 @@ const DataIntelligence = () => {
                 Data Intelligence & Automation
               </Badge>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                Helping You Make Better Decisions
-                <span className="text-tech-accent block">with Data That Works for You</span>
+                From Data Chaos to Smart,
+                <span className="text-tech-accent block">Connected Systems</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                At Onelab, we build tailored solutions that turn scattered data into clear insights — and manual work into smart, streamlined processes.
+                We help businesses turn fragmented data and manual operations into streamlined, intelligent systems — using automation, analytics, and custom-built tools tailored to your workflows.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -148,19 +158,19 @@ const DataIntelligence = () => {
         </div>
       </section>
 
-      {/* Who We Work With Section */}
+      {/* Market Segments We Serve Section */}
       <section className="py-20 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Who We Work With
+              Market Segments We Serve
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We support growing teams and established organizations alike — helping them get more value from their data, with less complexity.
+              We work across data-intensive industries — where operational visibility, speed, and scale matter.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whoWeWorkWith.map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {marketSegments.map((item, index) => (
               <Card key={index} className="h-full bg-gradient-to-br from-primary/5 to-secondary/20 border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -177,19 +187,19 @@ const DataIntelligence = () => {
         </div>
       </section>
 
-      {/* What We Help You Build Section */}
+      {/* Our Services Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              What We Help You Build
+              Our Services
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Every solution is designed around your needs — whether you're just starting or scaling something that works.
+              We design intelligent systems that are easy to adopt, flexible to scale, and built for long-term clarity and control.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whatWeBuild.map((item, index) => (
+            {ourServices.map((item, index) => (
               <Card key={index} className="h-full border-l-4 border-l-accent bg-accent/5 hover:bg-accent/10 transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-6">
@@ -206,47 +216,15 @@ const DataIntelligence = () => {
         </div>
       </section>
 
-      {/* How We Work With You Section */}
+      {/* Why Choose Onelab Section */}
       <section className="py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              How We Work With You
+              Why Choose Onelab?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We keep things simple, collaborative, and grounded in your real goals — not just technical possibilities.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {howWeWork.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="bg-card rounded-xl border-2 border-dashed border-muted-foreground/20 p-6 h-full hover:border-muted-foreground/40 transition-all duration-300">
-                  <div className="text-center space-y-4">
-                    <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center mx-auto font-bold text-lg">
-                      {step.step}
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-                {index < howWeWork.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-muted-foreground/20"></div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Teams Choose Onelab Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Why Teams Choose Onelab
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We bring technical depth with a human approach — helping your team feel supported, heard, and ready to act on your data.
+              We're not just building tools — we're building systems that align with your people, process, and performance needs.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -267,16 +245,45 @@ const DataIntelligence = () => {
         </div>
       </section>
 
+      {/* Governance & Control Layers Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Governance & Control Layers in Intelligent Systems
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Automation should never feel risky or invisible. We build in transparency, safety nets, and clear human oversight.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {governanceLayers.map((item, index) => (
+              <Card key={index} className="h-full border-2 border-tech-accent/20 bg-tech-accent/5 hover:bg-tech-accent/10 hover:border-tech-accent/30 transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="w-12 h-12 rounded-full bg-tech-accent/10 flex items-center justify-center mb-6">
+                    <item.icon className="w-6 h-6 text-tech-accent" />
+                  </div>
+                  <CardTitle className="text-xl mb-4 text-tech-accent">{item.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    {item.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-20 bg-secondary/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Ready to Make Your Data Work Smarter?
+                Let's Build Intelligent Systems You Can Trust
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                We'll help you unlock insights, reduce manual work, and build the kind of systems that actually make life easier.
+                We help teams automate what matters, structure the data that drives them, and create tools they can actually rely on — from first build to full scale.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
