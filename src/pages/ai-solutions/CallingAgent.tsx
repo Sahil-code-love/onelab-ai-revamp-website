@@ -11,9 +11,8 @@ const CallingAgent = () => {
   const [callDuration, setCallDuration] = useState(0);
   const [micActive, setMicActive] = useState(true);
   const [speakerActive, setSpeakerActive] = useState(true);
-  const [currentPhase, setCurrentPhase] = useState("greeting");
-
   const [demoStep, setDemoStep] = useState(0);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   const demoSteps = [
     { 
@@ -77,11 +76,42 @@ const CallingAgent = () => {
     };
   }, [isCallActive]);
 
+  // Voice synthesis function
+  const speakText = (text: string) => {
+    if ('speechSynthesis' in window && speakerActive) {
+      setIsSpeaking(true);
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      utterance.volume = 0.8;
+      
+      utterance.onend = () => {
+        setIsSpeaking(false);
+      };
+      
+      speechSynthesis.speak(utterance);
+    }
+  };
+
+  // Voice synthesis for demo steps
+  useEffect(() => {
+    if (isCallActive && demoStep > 0) {
+      const currentStep = demoSteps[demoStep];
+      if (currentStep.action === "speaking" || currentStep.action === "complete") {
+        speakText(currentStep.status);
+      }
+    }
+  }, [demoStep, isCallActive, speakerActive]);
+
   const handleCallToggle = () => {
     if (isCallActive) {
       setIsCallActive(false);
       setCallDuration(0);
-      setCurrentPhase("greeting");
+      setDemoStep(0);
+      setIsSpeaking(false);
+      if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+      }
     } else {
       setIsCallActive(true);
     }
@@ -116,39 +146,43 @@ const CallingAgent = () => {
           </div>
 
           {/* Interactive Phone Interface */}
-          <div className="flex justify-center mb-16">
-            <div className="relative">
+          <div className="flex justify-center mb-16 px-4">
+            <div className="relative w-full max-w-2xl">
               {/* Phone Frame */}
-              <div className="w-96 h-[600px] bg-gradient-to-b from-card via-card to-muted/50 rounded-[3rem] border-8 border-border shadow-2xl relative overflow-hidden">
+              <div className="w-96 h-[600px] bg-gradient-to-b from-card via-card to-muted/50 rounded-[3rem] border-8 border-border shadow-2xl relative overflow-hidden mx-auto">
                 {/* Phone Screen */}
                 <div className="absolute inset-4 bg-background rounded-[2rem] flex flex-col">
                   {/* Status Bar */}
                   <div className="flex justify-between items-center p-4 border-b border-border/50">
                     <span className="text-sm font-medium">AI Agent</span>
                     <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-600">Connected</span>
+                      <div className={`w-2 h-2 rounded-full ${isCallActive ? 'bg-green-500 animate-pulse' : 'bg-muted-foreground'}`}></div>
+                      <span className={`text-xs ${isCallActive ? 'text-green-600' : 'text-muted-foreground'}`}>
+                        {isCallActive ? 'Connected' : 'Ready'}
+                      </span>
                     </div>
                   </div>
 
                   {/* Call Display */}
-                  <div className="flex-1 flex flex-col items-center justify-center p-8 space-y-8">
+                  <div className="flex-1 flex flex-col items-center justify-center p-6 space-y-6">
                     {/* Avatar */}
-                    <div className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-500 ${
+                    <div className={`w-28 h-28 rounded-full flex items-center justify-center transition-all duration-500 ${
                       isCallActive ? 'bg-gradient-to-br from-tech-accent to-primary animate-pulse' : 'bg-gradient-to-br from-primary to-tech-accent'
                     }`}>
-                      <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center">
-                        <Phone className="h-12 w-12 text-white" />
+                      <div className={`w-20 h-20 bg-white/20 rounded-full flex items-center justify-center transition-all ${
+                        isSpeaking ? 'scale-110' : 'scale-100'
+                      }`}>
+                        <Phone className="h-10 w-10 text-white" />
                       </div>
                     </div>
 
                     {/* Call Status */}
                     <div className="text-center space-y-2">
-                      <h3 className="text-xl font-semibold">
+                      <h3 className="text-lg font-semibold">
                         {isCallActive ? 'Call in Progress' : 'Ready to Connect'}
                       </h3>
                       {isCallActive && (
-                        <div className="text-tech-accent font-mono text-lg">
+                        <div className="text-tech-accent font-mono text-base">
                           {formatTime(callDuration)}
                         </div>
                       )}
@@ -156,28 +190,36 @@ const CallingAgent = () => {
 
                     {/* Demo Progress */}
                     {isCallActive && (
-                      <div className="bg-muted/50 rounded-2xl p-4 max-w-xs text-center space-y-2">
+                      <div className="bg-muted/50 rounded-xl p-3 max-w-xs text-center space-y-1">
                         <div className="text-xs font-medium text-primary">
                           {demoSteps[demoStep].title}
                         </div>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-foreground font-medium">
                           {demoSteps[demoStep].status}
                         </p>
                         <div className="text-xs text-tech-accent">
                           {demoSteps[demoStep].description}
                         </div>
+                        {isSpeaking && (
+                          <div className="flex items-center justify-center space-x-1 mt-2">
+                            <Volume2 className="h-3 w-3 text-green-600 animate-pulse" />
+                            <span className="text-xs text-green-600">Speaking...</span>
+                          </div>
+                        )}
                       </div>
                     )}
 
                     {/* Voice Waves */}
                     {isCallActive && (
-                      <div className="flex space-x-1 items-end h-8">
-                        {[...Array(7)].map((_, i) => (
+                      <div className="flex space-x-1 items-end h-6">
+                        {[...Array(5)].map((_, i) => (
                           <div
                             key={i}
-                            className="w-1 bg-tech-accent rounded-full transition-all duration-300"
+                            className={`w-1 rounded-full transition-all duration-300 ${
+                              isSpeaking ? 'bg-green-500' : 'bg-tech-accent'
+                            }`}
                             style={{
-                              height: `${Math.sin(Date.now() / 300 + i) * 12 + 16}px`,
+                              height: `${isSpeaking ? Math.sin(Date.now() / 200 + i) * 8 + 12 : 8}px`,
                               animationDelay: `${i * 0.1}s`
                             }}
                           />
@@ -187,44 +229,44 @@ const CallingAgent = () => {
                   </div>
 
                   {/* Call Controls */}
-                  <div className="p-6 border-t border-border/50">
-                    <div className="flex justify-center space-x-4">
+                  <div className="p-4 border-t border-border/50">
+                    <div className="flex justify-center space-x-3">
                       <Button
                         variant="outline"
-                        size="lg"
-                        className={`rounded-full w-14 h-14 ${!micActive ? 'bg-destructive/10 border-destructive' : ''}`}
+                        size="sm"
+                        className={`rounded-full w-12 h-12 ${!micActive ? 'bg-destructive/10 border-destructive' : ''}`}
                         onClick={() => setMicActive(!micActive)}
                       >
-                        {micActive ? <Mic className="h-5 w-5" /> : <MicOff className="h-5 w-5 text-destructive" />}
+                        {micActive ? <Mic className="h-4 w-4" /> : <MicOff className="h-4 w-4 text-destructive" />}
                       </Button>
                       
                       <Button
-                        size="lg"
+                        size="sm"
                         onClick={handleCallToggle}
-                        className={`rounded-full w-16 h-16 ${
+                        className={`rounded-full w-14 h-14 ${
                           isCallActive 
                             ? 'bg-destructive hover:bg-destructive/90' 
                             : 'bg-green-600 hover:bg-green-700'
                         }`}
                       >
-                        {isCallActive ? <Phone className="h-6 w-6" /> : <PhoneCall className="h-6 w-6" />}
+                        {isCallActive ? <Phone className="h-5 w-5" /> : <PhoneCall className="h-5 w-5" />}
                       </Button>
                       
                       <Button
                         variant="outline"
-                        size="lg"
-                        className={`rounded-full w-14 h-14 ${!speakerActive ? 'bg-destructive/10 border-destructive' : ''}`}
+                        size="sm"
+                        className={`rounded-full w-12 h-12 ${!speakerActive ? 'bg-destructive/10 border-destructive' : ''}`}
                         onClick={() => setSpeakerActive(!speakerActive)}
                       >
-                        {speakerActive ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5 text-destructive" />}
+                        {speakerActive ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4 text-destructive" />}
                       </Button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Metrics */}
-              <div className="absolute -left-20 top-20 space-y-4">
+              {/* Floating Metrics - Mobile Responsive */}
+              <div className="hidden lg:block absolute -left-24 top-16 space-y-3">
                 {metrics.slice(0, 2).map((metric, index) => (
                   <Card key={index} className="bg-card/80 backdrop-blur border-primary/20 hover:scale-105 transition-transform">
                     <CardContent className="p-3 flex items-center space-x-2">
@@ -238,11 +280,26 @@ const CallingAgent = () => {
                 ))}
               </div>
 
-              <div className="absolute -right-20 top-20 space-y-4">
+              <div className="hidden lg:block absolute -right-24 top-16 space-y-3">
                 {metrics.slice(2).map((metric, index) => (
                   <Card key={index} className="bg-card/80 backdrop-blur border-tech-accent/20 hover:scale-105 transition-transform">
                     <CardContent className="p-3 flex items-center space-x-2">
                       <div className="text-tech-accent">{metric.icon}</div>
+                      <div>
+                        <div className="text-sm font-semibold">{metric.value}</div>
+                        <div className="text-xs text-muted-foreground">{metric.label}</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Mobile Metrics */}
+              <div className="lg:hidden grid grid-cols-2 gap-4 mt-8">
+                {metrics.map((metric, index) => (
+                  <Card key={index} className="bg-card/80 backdrop-blur border-primary/20">
+                    <CardContent className="p-3 flex items-center space-x-2">
+                      <div className="text-primary">{metric.icon}</div>
                       <div>
                         <div className="text-sm font-semibold">{metric.value}</div>
                         <div className="text-xs text-muted-foreground">{metric.label}</div>
@@ -312,7 +369,7 @@ const CallingAgent = () => {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Where Our AI Calling Agent Delivers Real Impact</h2>
+            <h2 className="text-4xl font-bold mb-6">Use Cases & Examples</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Whether you're managing high call volumes or aiming to offer 24/7 voice support, our AI agent helps you handle conversations at scale — without sacrificing the human experience.
             </p>
@@ -367,7 +424,7 @@ const CallingAgent = () => {
       <section className="py-20 px-4 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Keep Your Tools. Just Add AI.</h2>
+            <h2 className="text-4xl font-bold mb-6">Fits Right Into Your Workflow</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our AI calling agent integrates with your existing contact center systems, CRMs, or phone platforms — so you don't have to change the way you operate.
             </p>
