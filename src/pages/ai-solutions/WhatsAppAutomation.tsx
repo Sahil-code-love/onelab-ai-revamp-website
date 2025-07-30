@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { MessageCircle, Send, Users, Clock, Zap, CheckCheck, User, Bot } from "lucide-react";
+import { MessageCircle, Send, Users, Clock, Zap, CheckCheck, User, Bot, Phone, Calendar, Star, Plug, Globe, Shield, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Navigation from "@/components/ui/navigation";
@@ -85,10 +85,15 @@ const WhatsAppAutomation = () => {
             <h1 className="text-6xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 bg-clip-text text-transparent mb-6">
               WhatsApp Automation
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
               Transform customer communication with intelligent WhatsApp automation that provides instant, 
               personalized responses while maintaining the human touch your customers love.
             </p>
+            <div className="flex justify-center">
+              <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8">
+                Build with Onelab
+              </Button>
+            </div>
           </div>
 
           {/* WhatsApp Interface Mockup */}
@@ -241,27 +246,159 @@ const WhatsAppAutomation = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-green-100/50 to-emerald-100/50 dark:from-green-950/30 dark:to-emerald-950/30">
+      {/* Use Cases Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-green-50/50 to-emerald-50/50 dark:from-green-950/20 dark:to-emerald-950/20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">WhatsApp Business Features</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">USE CASES & EXAMPLES</h2>
+            <h3 className="text-2xl font-semibold text-tech-accent mb-4">
+              Where Our WhatsApp AI Adds Real Value
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              We help teams turn WhatsApp into more than a chat tool — we make it a smart, responsive, always-on channel for growth, support, and conversion.
+            </p>
+          </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: <Zap className="h-6 w-6" />, title: "Instant Responses", desc: "Sub-second reply times for all customer inquiries" },
-              { icon: <Users className="h-6 w-6" />, title: "Multi-Agent Support", desc: "Handle thousands of conversations simultaneously" },
-              { icon: <MessageCircle className="h-6 w-6" />, title: "Rich Media", desc: "Send images, documents, and interactive buttons" },
-              { icon: <Clock className="h-6 w-6" />, title: "24/7 Availability", desc: "Round-the-clock customer support automation" },
-              { icon: <CheckCheck className="h-6 w-6" />, title: "Smart Routing", desc: "Intelligent escalation to human agents when needed" },
-              { icon: <Bot className="h-6 w-6" />, title: "AI Learning", desc: "Continuous improvement from every conversation" }
-            ].map((feature, index) => (
-              <Card key={index} className="hover:scale-105 transition-all bg-white/70 dark:bg-card/70 backdrop-blur">
-                <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <div className="text-green-600">{feature.icon}</div>
+              {
+                icon: <Zap className="h-6 w-6" />,
+                title: "Instant Lead Capture",
+                description: "Greet potential customers instantly, qualify leads, and route them to the right team — all automatically."
+              },
+              {
+                icon: <MessageCircle className="h-6 w-6" />,
+                title: "Automated Support Replies",
+                description: "Respond to frequent support queries in seconds with accurate, brand-aligned messages."
+              },
+              {
+                icon: <CheckCheck className="h-6 w-6" />,
+                title: "Order Status & Delivery Updates",
+                description: "Push real-time order confirmations, shipping alerts, and payment updates."
+              },
+              {
+                icon: <Calendar className="h-6 w-6" />,
+                title: "Appointment Reminders & Rescheduling",
+                description: "Let users confirm, cancel, or reschedule bookings — no back-and-forth required."
+              },
+              {
+                icon: <Star className="h-6 w-6" />,
+                title: "Feedback & Review Collection",
+                description: "Gather post-purchase reviews and feedback via friendly, automated prompts."
+              },
+              {
+                icon: <Send className="h-6 w-6" />,
+                title: "Event or Promo Notifications",
+                description: "Send personalized campaign messages or limited-time alerts — instantly and at scale."
+              }
+            ].map((useCase, index) => (
+              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
+                    <div className="text-tech-accent">{useCase.icon}</div>
                   </div>
-                  <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                  <CardTitle className="text-xl mb-4">{useCase.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    {useCase.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Integration Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Fits Right Into Your Workflow</h2>
+            <h3 className="text-2xl font-semibold text-tech-accent mb-4">
+              Keep Your Tools. Just Add AI.
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              You don't need to rebuild anything. We integrate with the platforms you already use — from CRM to ticketing — and let you stay in control.
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-gradient-to-br from-muted/30 to-muted/10 border-tech-accent/20">
+              <CardContent className="p-8">
+                <div className="space-y-6">
+                  {[
+                    "Works with official WhatsApp Business API",
+                    "Connects with CRMs like Salesforce, Hubspot, and Zoho",
+                    "Syncs with Freshdesk, Zendesk, Intercom, and internal helpdesks",
+                    "Maintains brand tone, sender ID, and existing workflows",
+                    "Designed for both automation and smooth handoff to human agents",
+                    "Setup is fast, non-intrusive, and doesn't disrupt daily ops"
+                  ].map((integration, index) => (
+                    <div key={index} className="flex items-start space-x-4">
+                      <div className="w-6 h-6 rounded-full bg-tech-accent/20 flex items-center justify-center flex-shrink-0 mt-1">
+                        <CheckCheck className="h-4 w-4 text-tech-accent" />
+                      </div>
+                      <p className="text-lg leading-relaxed">{integration}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Onelab Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-green-50/50 to-emerald-50/50 dark:from-green-950/20 dark:to-emerald-950/20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">WHY ONELAB?</h2>
+            <h3 className="text-2xl font-semibold text-tech-accent mb-4">
+              Smarter Conversations. Custom Built for You.
+            </h3>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Brain className="h-6 w-6" />,
+                title: "Tailored for Your Brand",
+                description: "We don't use generic bots — we train your assistant on your tone, language, and customer flow."
+              },
+              {
+                icon: <Zap className="h-6 w-6" />,
+                title: "Fast & Lightweight Setup",
+                description: "Go live in days — not weeks — with our hands-on, no-hassle onboarding."
+              },
+              {
+                icon: <Shield className="h-6 w-6" />,
+                title: "Data-Safe by Design",
+                description: "Your data stays in your system — we only connect, never copy."
+              },
+              {
+                icon: <Bot className="h-6 w-6" />,
+                title: "Always Improving",
+                description: "We monitor performance and improve flows based on real usage — automatically."
+              },
+              {
+                icon: <Users className="h-6 w-6" />,
+                title: "Easy to Maintain",
+                description: "We provide optional human override, fallback triggers, and admin tools."
+              },
+              {
+                icon: <Globe className="h-6 w-6" />,
+                title: "Built to Scale",
+                description: "Whether you handle 100 messages a day or 10,000 — the system scales with you."
+              }
+            ].map((benefit, index) => (
+              <Card key={index} className="h-full shadow-soft hover:shadow-medium transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="w-12 h-12 rounded-lg bg-tech-accent/10 flex items-center justify-center mb-6">
+                    <div className="text-tech-accent">{benefit.icon}</div>
+                  </div>
+                  <CardTitle className="text-xl mb-4">{benefit.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    {benefit.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -272,18 +409,13 @@ const WhatsAppAutomation = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-green-600/10 via-emerald-600/10 to-green-600/10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Automate WhatsApp?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your WhatsApp Channel?</h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Transform your customer service with intelligent WhatsApp automation that scales with your business.
+            Let our AI handle customer conversations while you focus on what matters most.
           </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8">
-              Start Free Trial
-            </Button>
-            <Button variant="outline" size="lg" className="px-8">
-              See Live Demo
-            </Button>
-          </div>
+          <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8">
+            Start Building with Onelab
+          </Button>
         </div>
       </section>
 
