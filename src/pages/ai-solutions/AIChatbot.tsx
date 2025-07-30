@@ -516,7 +516,7 @@ const AIChatbot = () => {
       <section className="py-16 px-4 bg-gradient-to-r from-purple-100/50 to-pink-100/50 dark:from-purple-950/30 dark:to-pink-950/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-6">Conversational AI, Customized for You</h2>
+            <h2 className="text-4xl font-bold mb-6">Why Onelab</h2>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
