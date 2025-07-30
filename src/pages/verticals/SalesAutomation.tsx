@@ -2,123 +2,123 @@ import Navigation from "@/components/ui/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Target, TrendingUp, Users, Zap, Bot, CheckCircle, ArrowRight, Building2, Briefcase, HeadphonesIcon, Mail, Phone, Settings } from "lucide-react";
+import { Target, TrendingUp, Users, Zap, Bot, CheckCircle, ArrowRight, Building2, Briefcase, HeadphonesIcon, Mail, Phone, Settings, Lightbulb, Cpu, Code, MessageSquare } from "lucide-react";
 
 const SalesAutomation = () => {
   const marketSegments = [
     {
       icon: Building2,
-      title: "Enterprise Sales Teams",
-      description: "Large organizations with complex sales processes"
-    },
-    {
-      icon: Briefcase,
-      title: "B2B Service Providers",
-      description: "Professional services and consulting firms"
-    },
-    {
-      icon: Target,
-      title: "SaaS Companies",
-      description: "Software companies with subscription models"
-    },
-    {
-      icon: HeadphonesIcon,
-      title: "Real Estate Agencies",
-      description: "Property sales and real estate professionals"
-    },
-    {
-      icon: Users,
-      title: "Insurance Companies",
-      description: "Insurance brokers and agencies"
+      title: "B2B SaaS Companies",
+      description: "Automating demo scheduling, lead qualification, and pipeline updates."
     },
     {
       icon: TrendingUp,
-      title: "Financial Services",
-      description: "Investment firms and financial advisors"
+      title: "Sales-Led Startups",
+      description: "Helping lean teams scale outreach with limited resources."
+    },
+    {
+      icon: Settings,
+      title: "CRM & Sales Tech Providers",
+      description: "Building layered automations, integrations, and tools on top of existing systems."
+    },
+    {
+      icon: Target,
+      title: "Marketing & Demand Gen Teams",
+      description: "Bridging MQLs into booked meetings with automated nurture flows."
+    },
+    {
+      icon: Users,
+      title: "Enterprise Sales Teams",
+      description: "Scaling multi-channel engagement and improving pipeline visibility."
+    },
+    {
+      icon: Briefcase,
+      title: "Sales-Focused Agencies",
+      description: "Automating prospecting and follow-up workflows for client or internal teams."
     }
   ];
 
   const services = [
     {
-      icon: Bot,
-      title: "Custom AI Sales Agents",
-      description: "Build personalized AI agents that understand your unique sales process, product portfolio, and customer personas for maximum conversion."
+      icon: Target,
+      title: "Lead Capture & Routing",
+      description: "Qualify and assign leads in real time, based on your sales logic."
     },
     {
-      icon: Phone,
-      title: "Tailored Calling Solutions",
-      description: "Custom voice AI systems that sound natural and handle objections specific to your industry and sales methodology."
+      icon: MessageSquare,
+      title: "Conversational Sales Assistants",
+      description: "Automate FAQs, meeting booking, and early objection handling via email or chat."
     },
     {
       icon: Mail,
-      title: "Personalized Email Automation",
-      description: "Customized email sequences and follow-up campaigns that reflect your brand voice and sales approach."
-    },
-    {
-      icon: Target,
-      title: "Custom Lead Qualification",
-      description: "Build intelligent lead scoring systems tailored to your ideal customer profile and sales criteria."
-    },
-    {
-      icon: TrendingUp,
-      title: "Sales Analytics Dashboard",
-      description: "Custom reporting and analytics solutions that track the metrics most important to your sales goals."
+      title: "Email Sequences & Smart Follow-Ups",
+      description: "Automatically re-engage leads based on timing, interaction, or deal stage."
     },
     {
       icon: Settings,
-      title: "CRM Integration Solutions",
-      description: "Seamless integration with your existing CRM and sales tools, customized to your workflow requirements."
+      title: "CRM & Tool Integrations",
+      description: "Seamlessly sync with Salesforce, HubSpot, Pipedrive, or custom platforms."
+    },
+    {
+      icon: Bot,
+      title: "Agent Assist & Deal Intelligence",
+      description: "Recommend next steps and responses in real-time, using historical deal data."
+    },
+    {
+      icon: TrendingUp,
+      title: "Lead Scoring & Forecast Automation",
+      description: "Use AI to prioritize pipeline and enhance win probability insights."
     }
   ];
 
   const benefits = [
     {
       icon: Target,
-      title: "Sales Process Expertise",
-      description: "Deep understanding of various sales methodologies and industry-specific approaches."
-    },
-    {
-      icon: Bot,
-      title: "AI Agent Specialization",
-      description: "Advanced expertise in building and training AI agents for sales conversations and automation."
+      title: "Sales-Aligned Thinking",
+      description: "We tailor automations to your process, not generic templates."
     },
     {
       icon: Zap,
-      title: "Rapid Implementation",
-      description: "Quick deployment of custom sales automation solutions with minimal disruption to existing processes."
+      title: "Built-In Flexibility",
+      description: "Logic flows are mapped to your actual handoffs and funnel stages."
+    },
+    {
+      icon: Settings,
+      title: "CRM-Native Integrations",
+      description: "Automations stay in sync with your existing data and tools."
     },
     {
       icon: Users,
-      title: "Team Training & Support",
-      description: "Comprehensive training and ongoing support to ensure your team maximizes the custom solution."
+      title: "Maintain Human Touch",
+      description: "Bots automate the routine — reps focus on relationships."
     },
     {
       icon: TrendingUp,
-      title: "Performance Optimization",
-      description: "Continuous optimization of custom automation based on real performance data and feedback."
+      title: "Actionable Metrics",
+      description: "Track what works and where drop-offs happen, without noise."
     },
     {
       icon: CheckCircle,
-      title: "Scalable Architecture",
-      description: "Custom solutions built to scale with your growing sales team and expanding market reach."
+      title: "Secure & Scalable",
+      description: "Built with enterprise-grade security and ready to grow with your team."
     }
   ];
 
   const automations = [
     {
-      icon: Phone,
-      title: "Voice AI Calling",
-      description: "Custom voice agents for prospecting, qualification, and appointment setting"
+      icon: Lightbulb,
+      title: "From Strategy to Execution",
+      description: "Your sales logic becomes executable code — no compromises. We capture your intent, team rules, and outreach flows, and automate them with precision."
     },
     {
-      icon: Mail,
-      title: "Email Sequences",
-      description: "Personalized automated email campaigns and follow-up sequences"
+      icon: Cpu,
+      title: "Fully Tailored, No-Code for You",
+      description: "We handle the complexity behind the scenes. You get automation that fits your existing stack and team workflows — without learning new tools or platforms."
     },
     {
-      icon: Target,
-      title: "Lead Scoring",
-      description: "Intelligent lead qualification and priority ranking systems"
+      icon: Code,
+      title: "Adaptable to Change",
+      description: "As your GTM strategy evolves, so can your automation. From changing routing rules to new ICPs — your sales agents stay in sync."
     }
   ];
 
@@ -136,16 +136,16 @@ const SalesAutomation = () => {
                 Sales Automation Agents
               </Badge>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                Custom Sales Automation 
-                <span className="text-tech-accent block"> Built for Your Process</span>
+                Smarter Sales, 
+                <span className="text-tech-accent block">Less Manual Work</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                Transform your unique sales process with fully customizable AI agents and automation tools designed specifically for your industry and methodology.
+                From lead engagement to deal closure, we build custom automation agents that streamline sales workflows, improve follow-ups, and scale outreach — without adding complexity.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="btn-tech">
-                Build Custom Sales AI
+                Start Building with Onelab
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg" className="btn-ghost-tech">
@@ -163,10 +163,10 @@ const SalesAutomation = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                  Industries <span className="text-tech-accent">We Automate For</span>
+                  Market Segments <span className="text-tech-accent">We Serve</span>
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  We build end-to-end customizable sales automation solutions for every industry and sales model.
+                  We work with sales-driven organizations across industries — helping them automate touchpoints, personalize outreach, and scale growth.
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-4">
@@ -207,10 +207,10 @@ const SalesAutomation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Our Custom <span className="text-tech-accent">Sales Solutions</span>
+              Our <span className="text-tech-accent">Offerings</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              End-to-end customizable sales automation solutions built specifically for your unique sales process and requirements.
+              We build automation systems aligned with your team, tools, and sales motion — not the other way around.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -236,11 +236,8 @@ const SalesAutomation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Why Choose <span className="text-tech-accent">OneLib</span>?
+              Why <span className="text-tech-accent">Onelab</span>?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Proven expertise in delivering custom sales automation that transforms sales performance and drives revenue growth.
-            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
@@ -265,10 +262,10 @@ const SalesAutomation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              <span className="text-tech-accent">Custom Automations</span> We Build
+              Your Sales Logic, <span className="text-tech-accent">Turned Into Automation</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Tailored automation solutions designed specifically for your sales process and customer journey.
+              We don't force your team to adapt to rigid flows. Instead, we build automation around your existing playbooks, routing logic, and GTM strategy — giving you control, without the manual work.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -295,19 +292,19 @@ const SalesAutomation = () => {
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Ready for Your Custom Sales Automation?
+                Let's Automate What Slows You Down
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Let's build a completely customized sales automation solution that fits your exact process and drives measurable results.
+                Whether you're fixing drop-offs, chasing follow-ups, or scaling faster — we build automation that works for your team.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="btn-tech">
-                Start Custom Sales Consultation
+                Start Building with Onelab
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg" className="btn-ghost-tech">
-                Download Custom Automation Guide
+                Download Automation Guide
               </Button>
             </div>
           </div>
