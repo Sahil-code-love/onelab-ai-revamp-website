@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Phone, PhoneCall, Mic, MicOff, Volume2, VolumeX, Clock, Zap, MessageSquare, Brain } from "lucide-react";
+import { Phone, PhoneCall, Mic, MicOff, Volume2, VolumeX, Clock, Zap, MessageSquare, Brain, CheckCircle, Users, Headphones, TrendingUp, Shield, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,11 +13,39 @@ const CallingAgent = () => {
   const [speakerActive, setSpeakerActive] = useState(true);
   const [currentPhase, setCurrentPhase] = useState("greeting");
 
-  const callPhases = [
-    { id: "greeting", text: "Hello! How can I help you today?", duration: 3 },
-    { id: "listening", text: "I understand you need help with...", duration: 4 },
-    { id: "processing", text: "Let me find the best solution for you.", duration: 3 },
-    { id: "response", text: "Here's what I can offer you...", duration: 4 }
+  const [demoStep, setDemoStep] = useState(0);
+
+  const demoSteps = [
+    { 
+      title: "Incoming Call", 
+      description: "Customer calls for support",
+      status: "Connecting...",
+      action: "ring"
+    },
+    { 
+      title: "AI Answers", 
+      description: "AI agent picks up instantly",
+      status: "Hi! How can I help you today?",
+      action: "speaking"
+    },
+    { 
+      title: "Understanding Query", 
+      description: "AI processes customer request",
+      status: "I understand you need order status",
+      action: "listening"
+    },
+    { 
+      title: "CRM Update", 
+      description: "Real-time data sync",
+      status: "Checking your order #12345...",
+      action: "processing"
+    },
+    { 
+      title: "Natural Response", 
+      description: "Provides accurate information",
+      status: "Your order will arrive tomorrow!",
+      action: "complete"
+    }
   ];
 
   const metrics = [
@@ -29,32 +57,25 @@ const CallingAgent = () => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    let phaseTimeout: NodeJS.Timeout;
+    let demoInterval: NodeJS.Timeout;
 
     if (isCallActive) {
       interval = setInterval(() => {
         setCallDuration(prev => prev + 1);
       }, 1000);
 
-      const cyclePhases = () => {
-        const currentIndex = callPhases.findIndex(phase => phase.id === currentPhase);
-        const nextIndex = (currentIndex + 1) % callPhases.length;
-        const nextPhase = callPhases[nextIndex];
-        
-        phaseTimeout = setTimeout(() => {
-          setCurrentPhase(nextPhase.id);
-          cyclePhases();
-        }, nextPhase.duration * 1000);
-      };
-
-      cyclePhases();
+      demoInterval = setInterval(() => {
+        setDemoStep(prev => (prev + 1) % demoSteps.length);
+      }, 3000);
+    } else {
+      setDemoStep(0);
     }
 
     return () => {
       clearInterval(interval);
-      clearTimeout(phaseTimeout);
+      clearInterval(demoInterval);
     };
-  }, [isCallActive, currentPhase]);
+  }, [isCallActive]);
 
   const handleCallToggle = () => {
     if (isCallActive) {
@@ -83,10 +104,15 @@ const CallingAgent = () => {
             <h1 className="text-6xl font-bold bg-gradient-to-r from-primary via-tech-accent to-primary bg-clip-text text-transparent mb-6">
               AI Calling Agent
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
               Experience the future of voice communication with AI agents that sound human, 
               understand context, and deliver exceptional customer experiences 24/7.
             </p>
+            <div className="flex justify-center">
+              <Button size="lg" className="btn-tech px-8">
+                Build with Onelab
+              </Button>
+            </div>
           </div>
 
           {/* Interactive Phone Interface */}
@@ -128,12 +154,18 @@ const CallingAgent = () => {
                       )}
                     </div>
 
-                    {/* AI Response */}
+                    {/* Demo Progress */}
                     {isCallActive && (
-                      <div className="bg-muted/50 rounded-2xl p-4 max-w-xs text-center">
+                      <div className="bg-muted/50 rounded-2xl p-4 max-w-xs text-center space-y-2">
+                        <div className="text-xs font-medium text-primary">
+                          {demoSteps[demoStep].title}
+                        </div>
                         <p className="text-sm text-muted-foreground">
-                          {callPhases.find(phase => phase.id === currentPhase)?.text}
+                          {demoSteps[demoStep].status}
                         </p>
+                        <div className="text-xs text-tech-accent">
+                          {demoSteps[demoStep].description}
+                        </div>
                       </div>
                     )}
 
@@ -272,6 +304,141 @@ const CallingAgent = () => {
                 <p className="text-muted-foreground">AI that improves with every conversation, adapting to your business needs and customer preferences.</p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases & Examples */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Where Our AI Calling Agent Delivers Real Impact</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Whether you're managing high call volumes or aiming to offer 24/7 voice support, our AI agent helps you handle conversations at scale — without sacrificing the human experience.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Inbound Support Calls",
+                description: "Handle common questions or requests automatically — from service info to payment queries.",
+                icon: <Headphones className="h-8 w-8 text-primary" />
+              },
+              {
+                title: "Outbound Reminders & Confirmations",
+                description: "Make automated calls for appointments, renewals, or follow-ups — with live updates.",
+                icon: <Phone className="h-8 w-8 text-tech-accent" />
+              },
+              {
+                title: "Lead Qualification",
+                description: "Pre-screen leads, collect key inputs, and route them to the right team in real-time.",
+                icon: <Users className="h-8 w-8 text-primary" />
+              },
+              {
+                title: "Post-Service Feedback Collection",
+                description: "Initiate follow-up calls after a service interaction and record user sentiment.",
+                icon: <MessageSquare className="h-8 w-8 text-tech-accent" />
+              },
+              {
+                title: "Order & Delivery Tracking",
+                description: "Let customers check their order status or reschedule delivery — without waiting in a queue.",
+                icon: <CheckCircle className="h-8 w-8 text-primary" />
+              },
+              {
+                title: "HR & Internal Operations",
+                description: "Automate repetitive voice-based workflows like attendance, leave confirmations, or info dispatch.",
+                icon: <Cog className="h-8 w-8 text-tech-accent" />
+              }
+            ].map((useCase, index) => (
+              <Card key={index} className="border-border/50 hover:border-primary/30 transition-all hover:scale-105">
+                <CardContent className="p-6">
+                  <div className="mb-4">{useCase.icon}</div>
+                  <h3 className="text-lg font-semibold mb-3">{useCase.title}</h3>
+                  <p className="text-muted-foreground">{useCase.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Workflow Integration */}
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Keep Your Tools. Just Add AI.</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Our AI calling agent integrates with your existing contact center systems, CRMs, or phone platforms — so you don't have to change the way you operate.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "Integrates with Twilio, Exotel, Ozonetel, and other major voice APIs",
+              "Connects to CRM tools like Zoho, Salesforce, Freshdesk",
+              "Syncs call transcripts, tags, and outcomes with your backend",
+              "Supports live call transfer to agents at any point",
+              "Customizable speech styles, languages, and intent flows",
+              "Built for regulatory-safe call handling and data retention"
+            ].map((feature, index) => (
+              <div key={index} className="flex items-start space-x-3">
+                <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
+                <p className="text-muted-foreground">{feature}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Onelab */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Voice AI That Feels Human — and Fits Your Process</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Natural-Language Conversations",
+                description: "Calls are handled with conversational AI tuned to your scripts, tone, and workflows.",
+                icon: <MessageSquare className="h-8 w-8 text-primary" />
+              },
+              {
+                title: "Rapid Go-Live",
+                description: "Use pre-tested flows to launch in days — with hands-on onboarding and custom tuning.",
+                icon: <Zap className="h-8 w-8 text-tech-accent" />
+              },
+              {
+                title: "Built with Privacy in Mind",
+                description: "All call data is processed securely, aligned with voice-data standards and storage rules.",
+                icon: <Shield className="h-8 w-8 text-primary" />
+              },
+              {
+                title: "Live Agent Routing",
+                description: "Smart fallback and escalation logic ensure that high-touch calls reach the right humans.",
+                icon: <Users className="h-8 w-8 text-tech-accent" />
+              },
+              {
+                title: "No-Code Updates",
+                description: "Easily update prompts, flows, or responses — no deep tech support needed.",
+                icon: <Cog className="h-8 w-8 text-primary" />
+              },
+              {
+                title: "Scales Without Limits",
+                description: "From small teams to enterprise call centers, we support volume without compromise.",
+                icon: <TrendingUp className="h-8 w-8 text-tech-accent" />
+              }
+            ].map((feature, index) => (
+              <Card key={index} className="border-border/50 hover:border-primary/30 transition-all hover:scale-105">
+                <CardContent className="p-6">
+                  <div className="mb-4">{feature.icon}</div>
+                  <h3 className="text-lg font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
