@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MessageSquare, Bot, User, Send, Sparkles, Brain, Zap, Globe, Clock, Users, CheckCircle, Target, HeadphonesIcon, UserPlus, BarChart3, Shield, Languages, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +10,7 @@ import Footer from "@/components/sections/Footer";
 const AIChatbot = () => {
   const [demoStep, setDemoStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const demoSteps = [
     { 
@@ -87,6 +88,12 @@ const AIChatbot = () => {
       text: "Here's a 2-minute guide to help you get started — let me know anytime if you need help!",
       onboarding: ["✅ How to create a project", "✅ Invite teammates", "✅ Set your first timer"],
       delay: 1500
+    },
+    {
+      type: "bot",
+      text: "Perfect! You're all set up, Alex. Your Growth Plan trial is active and you have everything you need to start tracking time with your team.\n\nI'll be here if you need any help! 🎉",
+      completion: true,
+      delay: 3000
     }
   ];
 
@@ -158,6 +165,13 @@ const AIChatbot = () => {
 
   const displayedSteps = demoSteps.filter(step => step.type !== "widget-appears").slice(0, demoStep);
 
+  // Auto-scroll to bottom when new messages appear
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [demoStep]);
+
   useEffect(() => {
     const startDemo = () => {
       setIsVisible(false);
@@ -216,26 +230,91 @@ const AIChatbot = () => {
           </div>
 
           {/* Advanced Demo - SaaS Plan Selection */}
-          <div className="max-w-5xl mx-auto mb-16">
-            <div className="relative">
-              {/* Blurred Background Website */}
-              <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 opacity-70">
-                <div className="text-center space-y-6">
-                  <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">TimeTracker Pro</h2>
-                  <p className="text-slate-600 dark:text-slate-400">The modern time tracking solution for growing teams</p>
-                  <div className="grid md:grid-cols-3 gap-6 mt-8">
-                    <div className="bg-white dark:bg-slate-800 p-6 rounded-lg border">
-                      <h3 className="font-semibold mb-2">Basic Plan</h3>
-                      <p className="text-2xl font-bold">$29/mo</p>
+          <div className="max-w-6xl mx-auto mb-16">
+            <div className="relative min-h-[600px]">
+              {/* Realistic Website Background */}
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                {/* Website Header */}
+                <div className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-6 py-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <Clock className="h-4 w-4 text-white" />
+                      </div>
+                      <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">TimeTracker Pro</h1>
                     </div>
-                    <div className="bg-white dark:bg-slate-800 p-6 rounded-lg border">
-                      <h3 className="font-semibold mb-2">Growth Plan</h3>
-                      <p className="text-2xl font-bold">$79/mo</p>
+                    <div className="flex items-center space-x-4">
+                      <nav className="hidden md:flex space-x-6">
+                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Features</a>
+                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Pricing</a>
+                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">About</a>
+                      </nav>
+                      <Button variant="outline" size="sm">Login</Button>
+                      <Button size="sm">Sign Up</Button>
                     </div>
-                    <div className="bg-white dark:bg-slate-800 p-6 rounded-lg border">
-                      <h3 className="font-semibold mb-2">Enterprise</h3>
-                      <p className="text-2xl font-bold">$199/mo</p>
-                    </div>
+                  </div>
+                </div>
+
+                {/* Website Content */}
+                <div className="p-8">
+                  {/* Hero Section */}
+                  <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+                      Time Tracking Made Simple
+                    </h2>
+                    <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+                      The modern time tracking solution for growing teams. Track time, manage projects, and boost productivity.
+                    </p>
+                    <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
+                      Start Free Trial
+                    </Button>
+                  </div>
+
+                  {/* Pricing Cards */}
+                  <div className="grid md:grid-cols-3 gap-6 opacity-90">
+                    <Card className="relative">
+                      <CardContent className="p-6">
+                        <Badge variant="secondary" className="mb-4">STARTER</Badge>
+                        <h3 className="text-2xl font-bold mb-2">Basic Plan</h3>
+                        <p className="text-3xl font-bold text-blue-600 mb-4">$29<span className="text-sm text-muted-foreground">/mo</span></p>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li>✓ Up to 5 team members</li>
+                          <li>✓ Basic time tracking</li>
+                          <li>✓ Simple reporting</li>
+                          <li>✓ Email support</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="relative border-blue-500 shadow-lg">
+                      <CardContent className="p-6">
+                        <Badge className="mb-4 bg-blue-500">POPULAR</Badge>
+                        <h3 className="text-2xl font-bold mb-2">Growth Plan</h3>
+                        <p className="text-3xl font-bold text-blue-600 mb-4">$79<span className="text-sm text-muted-foreground">/mo</span></p>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li>✓ Up to 20 team members</li>
+                          <li>✓ Advanced tracking</li>
+                          <li>✓ Detailed analytics</li>
+                          <li>✓ Priority support</li>
+                          <li>✓ Integrations</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="relative">
+                      <CardContent className="p-6">
+                        <Badge variant="secondary" className="mb-4">ENTERPRISE</Badge>
+                        <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
+                        <p className="text-3xl font-bold text-blue-600 mb-4">$199<span className="text-sm text-muted-foreground">/mo</span></p>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li>✓ Unlimited team members</li>
+                          <li>✓ Custom workflows</li>
+                          <li>✓ White-label options</li>
+                          <li>✓ Dedicated support</li>
+                          <li>✓ API access</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
                   </div>
                 </div>
               </div>
@@ -294,16 +373,23 @@ const AIChatbot = () => {
                               ))}
                             </div>
                           )}
-                          {step.onboarding && (
+                           {step.onboarding && (
                             <div className="mt-2 space-y-1">
                               {step.onboarding.map((tip, tipIndex) => (
                                 <p key={tipIndex} className="text-xs text-green-600 dark:text-green-400">{tip}</p>
                               ))}
                             </div>
                           )}
+                          {step.completion && (
+                            <div className="mt-2 flex items-center space-x-1">
+                              <CheckCircle className="h-3 w-3 text-green-600 dark:text-green-400" />
+                              <span className="text-xs text-green-600 dark:text-green-400 font-medium">Task Completed</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
+                    <div ref={messagesEndRef} />
                   </div>
 
                   {/* Input Area */}
