@@ -20,80 +20,77 @@ const AIChatbot = () => {
     },
     {
       type: "bot",
-      text: "Need help picking the right plan? I can get you set up in under 60 seconds.",
-      buttons: ["Get Started", "Compare Plans", "Not Now"],
+      text: "Hi there! Looking for something in particular? I can help you find it fast.",
+      buttons: ["Find a Product", "Browse Deals", "Just Looking"],
       delay: 1000
     },
     {
       type: "user",
-      text: "Get Started",
+      text: "Find a Product",
       delay: 2000
     },
     {
       type: "bot",
-      text: "Awesome! How many people are on your team?",
-      buttons: ["1–5", "6–20", "21–100", "100+"],
-      delay: 1500
-    },
-    {
-      type: "user",
-      text: "6–20",
-      delay: 2000
-    },
-    {
-      type: "bot",
-      text: "What's your main focus right now?",
-      buttons: ["Track Time", "Collaborate Remotely", "Manage Projects"],
-      delay: 1500
-    },
-    {
-      type: "user",
-      text: "Track Time",
-      delay: 2000
-    },
-    {
-      type: "bot",
-      text: "For 6–20 person teams focused on time tracking, most choose our Growth Plan — includes timesheets, productivity reports, and integrations.\n\nWant to start a free 14-day trial?",
-      buttons: ["Start Free Trial", "See Features"],
-      delay: 1500
-    },
-    {
-      type: "user",
-      text: "Start Free Trial",
-      delay: 2000
-    },
-    {
-      type: "bot",
-      text: "Great — what's your work email?",
+      text: "Awesome. What are you looking for?",
       delay: 1000
     },
     {
       type: "user",
-      text: "alex@acmeco.com",
+      text: "Wireless headphones under $100",
       delay: 2500
     },
     {
       type: "bot",
-      text: "Thanks, Alex! We've sent a confirmation link to alex@acmeco.com. You're all set — your trial starts now.\n\nWant a quick walkthrough?",
-      buttons: ["Take Product Tour", "No Thanks"],
+      text: "Here are some options you might like:",
+      products: [
+        { name: "Sony ZX Series", price: "$79", image: "🎧" },
+        { name: "Audio-Technica ATH", price: "$89", image: "🎧" },
+        { name: "JBL Tune 500BT", price: "$59", image: "🎧" }
+      ],
       delay: 1500
     },
     {
       type: "user",
-      text: "Take Product Tour",
+      text: "Sony ZX Series",
       delay: 2000
     },
     {
       type: "bot",
-      text: "Here's a 2-minute guide to help you get started — let me know anytime if you need help!",
-      onboarding: ["✅ How to create a project", "✅ Invite teammates", "✅ Set your first timer"],
+      text: "Great choice! Want me to add this to your cart?",
+      buttons: ["Yes", "See More Options"],
+      delay: 1000
+    },
+    {
+      type: "user",
+      text: "Yes",
       delay: 1500
     },
     {
       type: "bot",
-      text: "Perfect! You're all set up, Alex. Your Growth Plan trial is active and you have everything you need to start tracking time with your team.\n\nI'll be here if you need any help! 🎉",
+      text: "Item added. Let's place the order — please confirm your delivery details:",
+      form: [
+        { label: "Name", value: "Alex Carter" },
+        { label: "Address", value: "221B Willow Street, Chicago, IL" },
+        { label: "Phone", value: "(312) 555-0147" }
+      ],
+      delay: 1500
+    },
+    {
+      type: "bot",
+      text: "How would you like to pay?",
+      buttons: ["Credit/Debit Card", "PayPal", "Cash on Delivery"],
+      delay: 2000
+    },
+    {
+      type: "user",
+      text: "Credit/Debit Card",
+      delay: 1500
+    },
+    {
+      type: "bot",
+      text: "Thanks, Alex! Your order for the 'Sony ZX Series' headphones has been successfully placed.\n\n📧 Order confirmation sent to your email\n📦 Estimated delivery: 2-3 business days\n🆔 Order ID: #WH2024-4792",
       completion: true,
-      delay: 3000
+      delay: 2000
     }
   ];
 
@@ -165,10 +162,10 @@ const AIChatbot = () => {
 
   const displayedSteps = demoSteps.filter(step => step.type !== "widget-appears").slice(0, demoStep);
 
-  // Auto-scroll to bottom when new messages appear
+  // Auto-scroll to bottom when new messages appear (without affecting page scroll)
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
     }
   }, [demoStep]);
 
@@ -200,7 +197,7 @@ const AIChatbot = () => {
     // Loop the demo
     const interval = setInterval(() => {
       startDemo();
-    }, 45000); // Reset every 45 seconds
+    }, 35000); // Reset every 35 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -229,90 +226,90 @@ const AIChatbot = () => {
             </div>
           </div>
 
-          {/* Advanced Demo - SaaS Plan Selection */}
+          {/* Advanced Demo - E-commerce */}
           <div className="max-w-6xl mx-auto mb-16">
-            <div className="relative min-h-[600px]">
-              {/* Realistic Website Background */}
-              <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div className="relative h-[600px] overflow-hidden">
+              {/* E-commerce Website Background */}
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 h-full">
                 {/* Website Header */}
                 <div className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-6 py-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <Clock className="h-4 w-4 text-white" />
+                      <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+                        <span className="text-white font-bold text-sm">E</span>
                       </div>
-                      <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">TimeTracker Pro</h1>
+                      <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">ElectroStore</h1>
                     </div>
                     <div className="flex items-center space-x-4">
                       <nav className="hidden md:flex space-x-6">
-                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Features</a>
-                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Pricing</a>
-                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">About</a>
+                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Products</a>
+                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Deals</a>
+                        <a href="#" className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100">Support</a>
                       </nav>
-                      <Button variant="outline" size="sm">Login</Button>
-                      <Button size="sm">Sign Up</Button>
+                      <Button variant="outline" size="sm">🛒 Cart (0)</Button>
+                      <Button size="sm">Sign In</Button>
                     </div>
                   </div>
                 </div>
 
                 {/* Website Content */}
-                <div className="p-8">
+                <div className="p-8 h-full overflow-hidden">
                   {/* Hero Section */}
-                  <div className="text-center mb-12">
+                  <div className="text-center mb-8">
                     <h2 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-                      Time Tracking Made Simple
+                      Latest Electronics & Gadgets
                     </h2>
-                    <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-                      The modern time tracking solution for growing teams. Track time, manage projects, and boost productivity.
+                    <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
+                      Discover the newest tech at unbeatable prices. Free shipping on orders over $50.
                     </p>
-                    <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
-                      Start Free Trial
-                    </Button>
+                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg inline-block">
+                      🔥 Black Friday Sale - Up to 70% Off!
+                    </div>
                   </div>
 
-                  {/* Pricing Cards */}
-                  <div className="grid md:grid-cols-3 gap-6 opacity-90">
-                    <Card className="relative">
-                      <CardContent className="p-6">
-                        <Badge variant="secondary" className="mb-4">STARTER</Badge>
-                        <h3 className="text-2xl font-bold mb-2">Basic Plan</h3>
-                        <p className="text-3xl font-bold text-blue-600 mb-4">$29<span className="text-sm text-muted-foreground">/mo</span></p>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                          <li>✓ Up to 5 team members</li>
-                          <li>✓ Basic time tracking</li>
-                          <li>✓ Simple reporting</li>
-                          <li>✓ Email support</li>
-                        </ul>
+                  {/* Product Grid */}
+                  <div className="grid md:grid-cols-4 gap-4 opacity-90">
+                    <Card className="relative hover:shadow-lg transition-shadow">
+                      <CardContent className="p-4">
+                        <div className="aspect-square bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-lg mb-3 flex items-center justify-center text-2xl">
+                          🎧
+                        </div>
+                        <h3 className="font-semibold text-sm mb-1">Sony ZX Series</h3>
+                        <p className="text-green-600 font-bold">$79</p>
+                        <p className="text-xs text-muted-foreground line-through">$129</p>
                       </CardContent>
                     </Card>
                     
-                    <Card className="relative border-blue-500 shadow-lg">
-                      <CardContent className="p-6">
-                        <Badge className="mb-4 bg-blue-500">POPULAR</Badge>
-                        <h3 className="text-2xl font-bold mb-2">Growth Plan</h3>
-                        <p className="text-3xl font-bold text-blue-600 mb-4">$79<span className="text-sm text-muted-foreground">/mo</span></p>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                          <li>✓ Up to 20 team members</li>
-                          <li>✓ Advanced tracking</li>
-                          <li>✓ Detailed analytics</li>
-                          <li>✓ Priority support</li>
-                          <li>✓ Integrations</li>
-                        </ul>
+                    <Card className="relative hover:shadow-lg transition-shadow">
+                      <CardContent className="p-4">
+                        <div className="aspect-square bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-lg mb-3 flex items-center justify-center text-2xl">
+                          📱
+                        </div>
+                        <h3 className="font-semibold text-sm mb-1">iPhone 15 Pro</h3>
+                        <p className="text-green-600 font-bold">$999</p>
+                        <p className="text-xs text-muted-foreground line-through">$1199</p>
                       </CardContent>
                     </Card>
                     
-                    <Card className="relative">
-                      <CardContent className="p-6">
-                        <Badge variant="secondary" className="mb-4">ENTERPRISE</Badge>
-                        <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
-                        <p className="text-3xl font-bold text-blue-600 mb-4">$199<span className="text-sm text-muted-foreground">/mo</span></p>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                          <li>✓ Unlimited team members</li>
-                          <li>✓ Custom workflows</li>
-                          <li>✓ White-label options</li>
-                          <li>✓ Dedicated support</li>
-                          <li>✓ API access</li>
-                        </ul>
+                    <Card className="relative hover:shadow-lg transition-shadow">
+                      <CardContent className="p-4">
+                        <div className="aspect-square bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-lg mb-3 flex items-center justify-center text-2xl">
+                          💻
+                        </div>
+                        <h3 className="font-semibold text-sm mb-1">MacBook Air M3</h3>
+                        <p className="text-green-600 font-bold">$1099</p>
+                        <p className="text-xs text-muted-foreground line-through">$1299</p>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="relative hover:shadow-lg transition-shadow">
+                      <CardContent className="p-4">
+                        <div className="aspect-square bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-lg mb-3 flex items-center justify-center text-2xl">
+                          ⌚
+                        </div>
+                        <h3 className="font-semibold text-sm mb-1">Apple Watch S9</h3>
+                        <p className="text-green-600 font-bold">$329</p>
+                        <p className="text-xs text-muted-foreground line-through">$399</p>
                       </CardContent>
                     </Card>
                   </div>
@@ -329,7 +326,7 @@ const AIChatbot = () => {
                         <Bot className="h-4 w-4" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-sm">AI Assistant</h3>
+                        <h3 className="font-semibold text-sm">Shopping Assistant</h3>
                         <p className="text-xs opacity-90">Online</p>
                       </div>
                       <div className="ml-auto">
@@ -339,7 +336,7 @@ const AIChatbot = () => {
                   </div>
 
                   {/* Messages */}
-                  <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
+                  <div className="p-4 space-y-3 h-80 overflow-y-auto scrollbar-hide" style={{ scrollBehavior: 'smooth' }}>
                     {displayedSteps.map((step, index) => (
                       <div key={index} className={`flex items-start space-x-2 ${
                         step.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''
@@ -359,6 +356,35 @@ const AIChatbot = () => {
                             : 'bg-muted rounded-tl-md'
                         }`}>
                           <p className="whitespace-pre-line">{step.text}</p>
+                          
+                          {step.products && (
+                            <div className="mt-2 space-y-2">
+                              {step.products.map((product, prodIndex) => (
+                                <div key={prodIndex} className="bg-white/10 rounded-lg p-2 flex items-center space-x-2 border border-white/20">
+                                  <span className="text-lg">{product.image}</span>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="font-medium text-xs truncate">{product.name}</p>
+                                    <p className="text-green-400 font-bold text-xs">{product.price}</p>
+                                  </div>
+                                  <Button size="sm" className="h-5 px-2 text-xs bg-green-500 hover:bg-green-600">
+                                    Select
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          
+                          {step.form && (
+                            <div className="mt-2 space-y-2 bg-white/10 rounded-lg p-2 border border-white/20">
+                              {step.form.map((field, fieldIndex) => (
+                                <div key={fieldIndex} className="flex justify-between text-xs">
+                                  <span className="text-white/70">{field.label}:</span>
+                                  <span className="font-medium">{field.value}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          
                           {step.buttons && (
                             <div className="flex flex-wrap gap-1 mt-2">
                               {step.buttons.map((button, btnIndex) => (
@@ -373,17 +399,11 @@ const AIChatbot = () => {
                               ))}
                             </div>
                           )}
-                           {step.onboarding && (
-                            <div className="mt-2 space-y-1">
-                              {step.onboarding.map((tip, tipIndex) => (
-                                <p key={tipIndex} className="text-xs text-green-600 dark:text-green-400">{tip}</p>
-                              ))}
-                            </div>
-                          )}
+                          
                           {step.completion && (
                             <div className="mt-2 flex items-center space-x-1">
                               <CheckCircle className="h-3 w-3 text-green-600 dark:text-green-400" />
-                              <span className="text-xs text-green-600 dark:text-green-400 font-medium">Task Completed</span>
+                              <span className="text-xs text-green-600 dark:text-green-400 font-medium">Order Completed Successfully!</span>
                             </div>
                           )}
                         </div>
@@ -405,6 +425,28 @@ const AIChatbot = () => {
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Demo Statistics */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="grid md:grid-cols-4 gap-6 text-center">
+              <div className="bg-white/50 dark:bg-card/50 rounded-2xl p-6 border border-purple-200/50">
+                <h3 className="text-3xl font-bold text-purple-600 mb-2">2.5x</h3>
+                <p className="text-sm text-muted-foreground">Faster Lead Qualification</p>
+              </div>
+              <div className="bg-white/50 dark:bg-card/50 rounded-2xl p-6 border border-purple-200/50">
+                <h3 className="text-3xl font-bold text-purple-600 mb-2">84%</h3>
+                <p className="text-sm text-muted-foreground">Reduction in Support Tickets</p>
+              </div>
+              <div className="bg-white/50 dark:bg-card/50 rounded-2xl p-6 border border-purple-200/50">
+                <h3 className="text-3xl font-bold text-purple-600 mb-2">24/7</h3>
+                <p className="text-sm text-muted-foreground">Always Available Support</p>
+              </div>
+              <div className="bg-white/50 dark:bg-card/50 rounded-2xl p-6 border border-purple-200/50">
+                <h3 className="text-3xl font-bold text-purple-600 mb-2">95%</h3>
+                <p className="text-sm text-muted-foreground">Customer Satisfaction Rate</p>
+              </div>
             </div>
           </div>
         </div>
