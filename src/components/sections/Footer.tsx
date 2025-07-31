@@ -1,4 +1,4 @@
-import { MessageCircle, Mail, Linkedin, Github, Phone, MapPin } from "lucide-react";
+import { MessageCircle, Mail, Linkedin, Github, Phone } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -35,9 +35,7 @@ const Footer = () => {
             {/* One last nudge CTA */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
               <p className="text-sm font-medium mb-2">Got an AI idea or existing app you want to enhance with AI?</p>
-              <button className="text-tech-accent font-semibold hover:scale-105 transition-transform duration-200 cursor-pointer">
-                Let's talk.
-              </button>
+              <p className="text-tech-accent font-semibold">Let's talk.</p>
             </div>
 
             <div className="flex space-x-4">
@@ -70,9 +68,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Conversational AI */}
+          {/* AI Solutions */}
           <div>
-            <h3 className="font-semibold mb-4">Conversational AI</h3>
+            <h3 className="font-semibold mb-4">AI Solutions</h3>
             <ul className="space-y-2">
               {aiSolutions.map((solution, index) => (
                 <li key={index}>
@@ -110,17 +108,6 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Location */}
-          <div>
-            <h3 className="font-semibold mb-4">Location</h3>
-            <div className="flex items-start text-sm text-primary-foreground/80">
-              <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
-              <p className="leading-relaxed">
-                Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Bottom bar */}
@@ -136,10 +123,10 @@ const Footer = () => {
             <a href="/terms" className="hover:text-primary-foreground transition-colors">
               Terms of Service
             </a>
-            <a href="tel:+918827135321" className="flex items-center hover:text-primary-foreground transition-colors">
+            <div className="flex items-center">
               <Phone className="w-4 h-4 mr-2" />
-              <span>088271 35321</span>
-            </a>
+              <span>+1 (555) 123-4567</span>
+            </div>
           </div>
         </div>
       </div>
