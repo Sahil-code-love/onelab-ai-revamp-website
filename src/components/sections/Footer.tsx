@@ -1,4 +1,4 @@
-import { MessageCircle, Mail, Linkedin, Github, Phone } from "lucide-react";
+import { MessageCircle, Mail, Linkedin, Github, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,9 +22,9 @@ const Footer = () => {
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company info */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 pr-8">
             <div className="text-2xl font-space-grotesk font-bold mb-4">
               OneLab Ventures
             </div>
@@ -34,9 +34,12 @@ const Footer = () => {
             
             {/* Location */}
             <div className="mb-6">
-              <p className="text-primary-foreground/80 text-sm">
-                Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
-              </p>
+              <div className="flex items-start text-primary-foreground/80 text-sm">
+                <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+                <p>
+                  Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
+                </p>
+              </div>
             </div>
             
             {/* One last nudge CTA */}
