@@ -32,10 +32,19 @@ const Footer = () => {
               AI-First Product Development Studio. We build intelligent applications, automation workflows, and custom AI agents that actually ship.
             </p>
             
+            {/* Location */}
+            <div className="mb-6">
+              <p className="text-primary-foreground/80 text-sm">
+                Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
+              </p>
+            </div>
+            
             {/* One last nudge CTA */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
               <p className="text-sm font-medium mb-2">Got an AI idea or existing app you want to enhance with AI?</p>
-              <p className="text-tech-accent font-semibold">Let's talk.</p>
+              <button className="text-tech-accent font-semibold hover:scale-105 transition-transform duration-200 cursor-pointer">
+                Let's talk.
+              </button>
             </div>
 
             <div className="flex space-x-4">
@@ -68,9 +77,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* AI Solutions */}
+          {/* Conversational AI */}
           <div>
-            <h3 className="font-semibold mb-4">AI Solutions</h3>
+            <h3 className="font-semibold mb-4">Conversational AI</h3>
             <ul className="space-y-2">
               {aiSolutions.map((solution, index) => (
                 <li key={index}>
@@ -123,10 +132,10 @@ const Footer = () => {
             <a href="/terms" className="hover:text-primary-foreground transition-colors">
               Terms of Service
             </a>
-            <div className="flex items-center">
+            <a href="tel:08827135321" className="flex items-center hover:text-primary-foreground transition-colors cursor-pointer">
               <Phone className="w-4 h-4 mr-2" />
-              <span>+1 (555) 123-4567</span>
-            </div>
+              <span>088271 35321</span>
+            </a>
           </div>
         </div>
       </div>
