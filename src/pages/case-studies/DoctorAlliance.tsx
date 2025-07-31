@@ -9,8 +9,6 @@ import { useState, useRef, useEffect } from "react";
 
 const DoctorAlliance = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
-  const [draggedItem, setDraggedItem] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const stats = [
     { label: "Monthly Patient Interactions", value: "10,000+", icon: Users },
@@ -44,36 +42,9 @@ const DoctorAlliance = () => {
   ];
 
   const techStack = [
-    { name: "React", color: "bg-blue-500" },
-    { name: "Node.js", color: "bg-green-500" },
-    { name: "PostgreSQL", color: "bg-indigo-500" },
-    { name: "AWS", color: "bg-orange-500" },
-    { name: "GPT-4", color: "bg-purple-500" },
-    { name: "Whisper", color: "bg-pink-500" },
-    { name: "FHIR API", color: "bg-teal-500" },
-    { name: "Redis", color: "bg-red-500" },
-    { name: "Docker", color: "bg-cyan-500" },
-    { name: "TypeScript", color: "bg-blue-600" }
+    "React", "Node.js", "PostgreSQL", "AWS", "GPT-4", 
+    "Whisper API", "FHIR", "Redis", "Docker", "TypeScript"
   ];
-
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>, tech: string) => {
-    setDraggedItem(tech);
-    e.dataTransfer.effectAllowed = "move";
-  };
-
-  const handleDragEnd = () => {
-    setDraggedItem(null);
-  };
-
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
-  };
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setDraggedItem(null);
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -331,71 +302,25 @@ const DoctorAlliance = () => {
       </section>
 
       {/* Technical Implementation */}
-      <section className="py-12 bg-muted/20">
+      <section className="py-8 bg-muted/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-space-grotesk font-bold text-foreground mb-2">
-              Tech Stack
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-space-grotesk font-semibold text-foreground mb-2">
+              Technical Implementation
             </h2>
-            <p className="text-sm text-muted-foreground">
-              Drag and play with the technologies we used
-            </p>
           </div>
 
-          <Card className="relative overflow-hidden bg-slate-50/50 dark:bg-slate-900/50 border-2 border-dashed border-muted-foreground/20">
-            <div 
-              ref={containerRef}
-              className="relative h-48 p-6"
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-950/30 dark:to-purple-950/30 pointer-events-none" />
-              
-              <div className="relative z-10 flex flex-wrap gap-3 h-full items-center justify-center">
-                {techStack.map((tech, index) => (
-                  <div
-                    key={tech.name}
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, tech.name)}
-                    onDragEnd={handleDragEnd}
-                    className={`
-                      ${tech.color} text-white px-4 py-2 rounded-full cursor-move 
-                      select-none font-medium text-sm shadow-lg hover:shadow-xl 
-                      transition-all duration-200 hover:scale-110 hover:rotate-3
-                      ${draggedItem === tech.name ? 'opacity-50 scale-95' : ''}
-                      animate-bounce
-                    `}
-                    style={{
-                      animationDelay: `${index * 0.1}s`,
-                      animationDuration: '2s',
-                      animationIterationCount: '1',
-                    }}
-                  >
-                    {tech.name}
-                  </div>
-                ))}
-              </div>
-
-              {/* Floating particles */}
-              <div className="absolute inset-0 pointer-events-none">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-2 h-2 bg-primary/20 rounded-full animate-pulse"
-                    style={{
-                      left: `${20 + i * 15}%`,
-                      top: `${30 + (i % 2) * 40}%`,
-                      animationDelay: `${i * 0.5}s`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-            
-            <div className="px-6 pb-4 text-center">
-              <p className="text-xs text-muted-foreground">
-                🎯 Hover and drag the tech blocks around • Built for scale and performance
-              </p>
+          <Card className="p-4">
+            <div className="flex flex-wrap gap-2 justify-center">
+              {techStack.map((tech) => (
+                <Badge 
+                  key={tech} 
+                  variant="secondary" 
+                  className="px-3 py-1 text-xs font-medium"
+                >
+                  {tech}
+                </Badge>
+              ))}
             </div>
           </Card>
         </div>
