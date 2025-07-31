@@ -37,18 +37,12 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        {/* 3-column grid layout - properly centered for 5 items */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {/* 2x2 grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {reasons.map((reason, index) => (
             <div 
               key={index} 
-              className={`group ${
-                index >= 3 ? 'md:col-start-1 lg:col-start-auto' : ''
-              } ${
-                index === 3 ? 'md:col-span-1 lg:col-span-1' : ''
-              } ${
-                index === 4 ? 'md:col-start-2 lg:col-start-auto' : ''
-              }`}
+              className="group"
             >
               <div className="bg-card rounded-2xl border-2 border-border hover:border-primary/40 transition-all duration-500 p-8 h-full group-hover:shadow-xl group-hover:-translate-y-1">
                 
