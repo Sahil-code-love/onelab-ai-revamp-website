@@ -25,36 +25,54 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-space-grotesk font-bold text-foreground mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-foreground mb-6">
             Why Teams Choose Us
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Trusted AI execution partners — fast, hands-on, and built for real-world outcomes.
           </p>
         </div>
 
-        {/* 2x2 grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* 3-column grid layout - properly centered for 5 items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {reasons.map((reason, index) => (
-            <div key={index} className="group">
-              <div className="bg-card rounded-xl border-2 border-border hover:border-primary/40 transition-all duration-500 p-6 h-full group-hover:shadow-lg group-hover:-translate-y-1">
+            <div 
+              key={index} 
+              className={`group ${
+                index >= 3 ? 'md:col-start-1 lg:col-start-auto' : ''
+              } ${
+                index === 3 ? 'md:col-span-1 lg:col-span-1' : ''
+              } ${
+                index === 4 ? 'md:col-start-2 lg:col-start-auto' : ''
+              }`}
+            >
+              <div className="bg-card rounded-2xl border-2 border-border hover:border-primary/40 transition-all duration-500 p-8 h-full group-hover:shadow-xl group-hover:-translate-y-1">
                 
-                {/* Compact Icon Container */}
-                <div className="relative mb-6 flex justify-center">
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-primary to-tech-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-md">
-                    <reason.icon className="w-8 h-8 text-white relative z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-tech-accent rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-lg transform scale-125"></div>
+                {/* Enhanced Icon Container */}
+                <div className="relative mb-8 flex justify-center">
+                  {/* Main icon background */}
+                  <div className="relative w-20 h-20 bg-gradient-to-br from-primary via-primary to-tech-accent rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                    <reason.icon className="w-10 h-10 text-white relative z-10" />
+                    
+                    {/* Animated background glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-tech-accent rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-lg transform scale-125"></div>
                   </div>
-                  <div className="absolute inset-0 w-16 h-16 border-2 border-primary/20 rounded-xl group-hover:scale-125 group-hover:border-primary/50 transition-all duration-700"></div>
+                  
+                  {/* Outer ring animation */}
+                  <div className="absolute inset-0 w-20 h-20 border-2 border-primary/20 rounded-2xl group-hover:scale-125 group-hover:border-primary/50 transition-all duration-700 group-hover:rotate-180"></div>
+                  
+                  {/* Corner accent dots */}
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-tech-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 </div>
                 
                 {/* Content */}
                 <div className="text-center">
-                  <h3 className="text-lg font-space-grotesk font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-space-grotesk font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
                     {reason.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed text-sm">
@@ -63,7 +81,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Bottom accent line */}
-                <div className="mt-4 w-10 h-0.5 bg-gradient-to-r from-primary to-tech-accent mx-auto rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                <div className="mt-6 w-12 h-1 bg-gradient-to-r from-primary to-tech-accent mx-auto rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               </div>
             </div>
           ))}

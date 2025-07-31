@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Users, Target, TrendingUp, Clock, CheckCircle, Play, Pause } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
 const DoctorAlliance = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
@@ -39,11 +39,6 @@ const DoctorAlliance = () => {
     "24/7 patient support availability",
     "40% improvement in staff productivity",
     "95% patient satisfaction rate"
-  ];
-
-  const techStack = [
-    "React", "Node.js", "PostgreSQL", "AWS", "GPT-4", 
-    "Whisper API", "FHIR", "Redis", "Docker", "TypeScript"
   ];
 
   return (
@@ -302,27 +297,54 @@ const DoctorAlliance = () => {
       </section>
 
       {/* Technical Implementation */}
-      <section className="py-8 bg-muted/20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-space-grotesk font-semibold text-foreground mb-2">
+      <section className="py-16 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-space-grotesk font-bold text-foreground mb-4">
               Technical Implementation
             </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A comprehensive breakdown of the technologies and methodologies used to deliver this solution.
+            </p>
           </div>
 
-          <Card className="p-4">
-            <div className="flex flex-wrap gap-2 justify-center">
-              {techStack.map((tech) => (
-                <Badge 
-                  key={tech} 
-                  variant="secondary" 
-                  className="px-3 py-1 text-xs font-medium"
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="p-6">
+              <h3 className="text-xl font-semibold mb-4">AI & Machine Learning</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                  <span className="font-medium">Natural Language Processing</span>
+                  <Badge variant="secondary">GPT-4</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                  <span className="font-medium">Speech Recognition</span>
+                  <Badge variant="secondary">Whisper API</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                  <span className="font-medium">Scheduling Algorithm</span>
+                  <Badge variant="secondary">Custom ML</Badge>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="text-xl font-semibold mb-4">Infrastructure & Integration</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                  <span className="font-medium">Cloud Platform</span>
+                  <Badge variant="secondary">AWS</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                  <span className="font-medium">Database</span>
+                  <Badge variant="secondary">PostgreSQL</Badge>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                  <span className="font-medium">EHR Integration</span>
+                  <Badge variant="secondary">FHIR API</Badge>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
       </section>
 
