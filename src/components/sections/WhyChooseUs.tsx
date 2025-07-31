@@ -5,32 +5,27 @@ const WhyChooseUs = () => {
     {
       icon: Search,
       title: "We Start Where It's Messy",
-      description: "Unstructured data, unclear workflows, no documentation — that's where we shine. We bring clarity and ship working solutions where others hesitate.",
-      accent: "primary"
+      description: "Unstructured data, unclear workflows, no documentation — that's where we shine. We bring clarity and ship working solutions where others hesitate."
     },
     {
       icon: Users,
       title: "150+ Builders. Zero Bureaucracy.",
-      description: "A sharp, cross-functional team of AI engineers, full-stack developers, designers, and PMs — ready to own delivery end-to-end, without handoffs or friction.",
-      accent: "tech-accent"
+      description: "A sharp, cross-functional team of AI engineers, full-stack developers, designers, and PMs — ready to own delivery end-to-end, without handoffs or friction."
     },
     {
       icon: Building2,
       title: "All Under One Roof",
-      description: "LLM agents, workflow automations, intelligent platforms — we design, build, and scale everything in-house. No vendor juggling. No shortcuts.",
-      accent: "primary"
+      description: "LLM agents, workflow automations, intelligent platforms — we design, build, and scale everything in-house. No vendor juggling. No shortcuts."
     },
     {
       icon: Zap,
       title: "Leaner Than In-House. Stronger Than Freelance.",
-      description: "We offer high-leverage talent and fast iterations at a cost structure built for startups and scale-ups — without compromising on quality or accountability.",
-      accent: "tech-accent"
+      description: "We offer high-leverage talent and fast iterations at a cost structure built for startups and scale-ups — without compromising on quality or accountability."
     },
     {
       icon: Shield,
       title: "Execution You Can Trust",
-      description: "No bloated decks. No excuses. Just clear ownership, fast progress, and a partner who treats your product like their own.",
-      accent: "primary"
+      description: "No bloated decks. No excuses. Just clear ownership, fast progress, and a partner who treats your product like their own."
     }
   ];
 
@@ -50,40 +45,22 @@ const WhyChooseUs = () => {
           {reasons.map((reason, index) => (
             <div 
               key={index} 
-              className={`group animate-fade-in ${
-                index === 0 ? 'md:col-span-2' : 
-                index === 4 ? 'md:col-span-2 lg:col-span-3' :
-                ''
-              }`}
+              className="group animate-fade-in"
               style={{animationDelay: `${index * 150}ms`}}
             >
-              <div className="relative h-full bg-card rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-500 p-8 group-hover:shadow-strong">
-                {/* Background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-tech-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+              <div className="relative h-full bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 p-8 group-hover:shadow-lg">
                 {/* Icon */}
-                <div className="relative mb-6">
-                  <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${
-                    reason.accent === 'primary' 
-                      ? 'bg-gradient-to-br from-primary to-primary/80' 
-                      : 'bg-gradient-to-br from-tech-accent to-tech-accent/80'
-                  }`}>
-                    <reason.icon className="w-8 h-8 text-white" />
-                  </div>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-tech-accent rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <reason.icon className="w-8 h-8 text-white" />
                 </div>
                 
                 {/* Content */}
-                <div className="relative">
-                  <h3 className="text-2xl font-space-grotesk font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                    {reason.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {reason.description}
-                  </p>
-                </div>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-tech-accent rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <h3 className="text-xl font-space-grotesk font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                  {reason.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {reason.description}
+                </p>
               </div>
             </div>
           ))}
