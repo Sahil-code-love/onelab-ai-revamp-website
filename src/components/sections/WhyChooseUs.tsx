@@ -21,11 +21,6 @@ const WhyChooseUs = () => {
       icon: Zap,
       title: "Leaner Than In-House. Stronger Than Freelance.",
       description: "We offer high-leverage talent and fast iterations at a cost structure built for startups and scale-ups — without compromising on quality or accountability."
-    },
-    {
-      icon: Shield,
-      title: "Execution You Can Trust",
-      description: "No bloated decks. No excuses. Just clear ownership, fast progress, and a partner who treats your product like their own."
     }
   ];
 
