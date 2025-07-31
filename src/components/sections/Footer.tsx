@@ -113,33 +113,33 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Location above the bottom bar */}
+        <div className="flex justify-end pb-6">
+          <div className="flex items-start text-xs text-primary-foreground/80 max-w-xs">
+            <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+            <span>
+              Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
+            </span>
+          </div>
+        </div>
+
         {/* Bottom bar */}
         <div className="border-t border-white/20 py-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-primary-foreground/80 text-sm mb-4 md:mb-0">
             © {currentYear} OneLab Ventures. All rights reserved.
           </div>
           
-          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 text-sm text-primary-foreground/80">
-            <div className="flex items-center space-x-6">
-              <a href="/privacy" className="hover:text-primary-foreground transition-colors">
-                Privacy Policy
-              </a>
-              <a href="/terms" className="hover:text-primary-foreground transition-colors">
-                Terms of Service
-              </a>
-              <a href="tel:08827135321" className="flex items-center hover:text-primary-foreground transition-colors cursor-pointer">
-                <Phone className="w-4 h-4 mr-2" />
-                <span>088271 35321</span>
-              </a>
-            </div>
-            
-            {/* Location */}
-            <div className="flex items-start text-xs text-primary-foreground/80 max-w-xs">
-              <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
-              <span>
-                Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
-              </span>
-            </div>
+          <div className="flex items-center space-x-6 text-sm text-primary-foreground/80">
+            <a href="/privacy" className="hover:text-primary-foreground transition-colors">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="hover:text-primary-foreground transition-colors">
+              Terms of Service
+            </a>
+            <a href="tel:08827135321" className="flex items-center hover:text-primary-foreground transition-colors cursor-pointer">
+              <Phone className="w-4 h-4 mr-2" />
+              <span>088271 35321</span>
+            </a>
           </div>
         </div>
       </div>
