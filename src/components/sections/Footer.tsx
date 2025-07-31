@@ -1,4 +1,4 @@
-import { MessageCircle, Mail, Linkedin, Github, Phone } from "lucide-react";
+import { MessageCircle, Mail, Linkedin, Github, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,12 +32,6 @@ const Footer = () => {
               AI-First Product Development Studio. We build intelligent applications, automation workflows, and custom AI agents that actually ship.
             </p>
             
-            {/* Location */}
-            <div className="mb-6">
-              <p className="text-primary-foreground/80 text-sm">
-                Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
-              </p>
-            </div>
             
             {/* One last nudge CTA */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
@@ -125,17 +119,27 @@ const Footer = () => {
             © {currentYear} OneLab Ventures. All rights reserved.
           </div>
           
-          <div className="flex items-center space-x-6 text-sm text-primary-foreground/80">
-            <a href="/privacy" className="hover:text-primary-foreground transition-colors">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="hover:text-primary-foreground transition-colors">
-              Terms of Service
-            </a>
-            <a href="tel:08827135321" className="flex items-center hover:text-primary-foreground transition-colors cursor-pointer">
-              <Phone className="w-4 h-4 mr-2" />
-              <span>088271 35321</span>
-            </a>
+          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 text-sm text-primary-foreground/80">
+            <div className="flex items-center space-x-6">
+              <a href="/privacy" className="hover:text-primary-foreground transition-colors">
+                Privacy Policy
+              </a>
+              <a href="/terms" className="hover:text-primary-foreground transition-colors">
+                Terms of Service
+              </a>
+              <a href="tel:08827135321" className="flex items-center hover:text-primary-foreground transition-colors cursor-pointer">
+                <Phone className="w-4 h-4 mr-2" />
+                <span>088271 35321</span>
+              </a>
+            </div>
+            
+            {/* Location */}
+            <div className="flex items-start text-xs text-primary-foreground/80 max-w-xs">
+              <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+              <span>
+                Basement Floor, Pesh Infotech, Plot No 46, Phase 1, Hinjawadi Rajiv Gandhi Infotech Park, Hinjawadi, Pune, Pimpri-Chinchwad, Maharashtra 411057
+              </span>
+            </div>
           </div>
         </div>
       </div>
