@@ -27,12 +27,14 @@ const WhatWeBuild = () => {
 
   return (
     <section className="py-32 bg-gradient-subtle relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute top-20 right-20 w-72 h-72 bg-[hsl(var(--tech-accent))] rounded-full opacity-[0.03] blur-3xl"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-[hsl(var(--primary))] rounded-full opacity-[0.02] blur-3xl"></div>
+      {/* Flowing background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-[hsl(var(--tech-accent))] rounded-full opacity-[0.04] blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 -left-32 w-96 h-96 bg-[hsl(var(--primary))] rounded-full opacity-[0.03] blur-3xl"></div>
+      </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-24 animate-fade-up">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="text-center mb-20 animate-fade-up">
           <h2 className="text-5xl md:text-6xl font-space-grotesk font-bold text-foreground mb-8">
             Our Capabilities
           </h2>
@@ -41,46 +43,123 @@ const WhatWeBuild = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {offerings.map((offering, index) => (
-            <div key={index} className="group animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
-              <div className="relative bg-card rounded-3xl border border-border/60 hover:border-[hsl(var(--tech-accent))]/30 transition-all duration-700 hover:shadow-strong overflow-hidden">
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary))]/[0.01] to-[hsl(var(--tech-accent))]/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        {/* Asymmetric grid layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
+          
+          {/* First capability - spans more space */}
+          <div className="lg:col-span-7 animate-fade-in">
+            <div className="group relative h-full">
+              <div className="relative bg-card rounded-[2rem] border border-border/60 hover:border-[hsl(var(--tech-accent))]/40 transition-all duration-700 overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary))]/[0.02] via-transparent to-[hsl(var(--tech-accent))]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 
-                {/* Icon section */}
-                <div className="relative p-10 pb-6">
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="relative">
-                      <div className="w-24 h-24 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--tech-accent))] rounded-2xl flex items-center justify-center shadow-medium group-hover:shadow-strong group-hover:scale-110 transition-all duration-500">
-                        <offering.icon className="w-12 h-12 text-primary-foreground" />
+                <div className="relative p-10 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-6 mb-8">
+                      <div className="relative">
+                        <div className="w-20 h-20 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--tech-accent))] rounded-2xl flex items-center justify-center shadow-medium group-hover:shadow-strong transition-all duration-500">
+                          <MessageSquare className="w-10 h-10 text-primary-foreground" />
+                        </div>
+                        <div className="absolute -inset-2 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--tech-accent))] rounded-2xl opacity-0 group-hover:opacity-10 blur transition-all duration-500"></div>
                       </div>
-                      {/* Decorative ring */}
-                      <div className="absolute -inset-1 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--tech-accent))] rounded-2xl opacity-0 group-hover:opacity-20 blur-sm transition-all duration-500"></div>
+                      <div className="h-16 w-0.5 bg-gradient-to-b from-[hsl(var(--tech-accent))] to-transparent opacity-30"></div>
                     </div>
                     
-                    {/* Number indicator */}
-                    <div className="text-6xl font-space-grotesk font-bold text-[hsl(var(--tech-accent))]/10 group-hover:text-[hsl(var(--tech-accent))]/20 transition-colors duration-500">
-                      0{index + 1}
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-space-grotesk font-bold text-foreground group-hover:text-[hsl(var(--tech-accent))] transition-colors duration-500">
-                      {offering.title}
+                    <h3 className="text-3xl font-space-grotesk font-bold text-foreground group-hover:text-[hsl(var(--tech-accent))] transition-colors duration-500 mb-6">
+                      {offerings[0].title}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed text-lg">
-                      {offering.description}
+                      {offerings[0].description}
                     </p>
                   </div>
                   
-                  {/* Bottom accent line */}
-                  <div className="absolute bottom-0 left-10 right-10 h-1 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--tech-accent))] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 rounded-full"></div>
+                  <div className="mt-8 flex items-center text-[hsl(var(--tech-accent))]/60 group-hover:text-[hsl(var(--tech-accent))] transition-colors duration-500">
+                    <div className="flex-1 h-px bg-gradient-to-r from-[hsl(var(--tech-accent))]/20 to-transparent"></div>
+                    <div className="w-2 h-2 rounded-full bg-[hsl(var(--tech-accent))]/40 mx-4"></div>
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Second capability - smaller card */}
+          <div className="lg:col-span-5 animate-fade-in" style={{animationDelay: '200ms'}}>
+            <div className="group relative h-full">
+              <div className="relative bg-card rounded-[2rem] border border-border/60 hover:border-[hsl(var(--primary))]/40 transition-all duration-700 overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--tech-accent))]/[0.02] to-[hsl(var(--primary))]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <div className="relative p-8 h-full flex flex-col">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--tech-accent))] to-[hsl(var(--primary))] rounded-xl flex items-center justify-center shadow-medium group-hover:shadow-strong transition-all duration-500 mb-6">
+                    <Cog className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  
+                  <h3 className="text-xl font-space-grotesk font-bold text-foreground group-hover:text-[hsl(var(--primary))] transition-colors duration-500 mb-4">
+                    {offerings[1].title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed flex-1">
+                    {offerings[1].description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Third capability - medium card */}
+          <div className="lg:col-span-5 animate-fade-in" style={{animationDelay: '400ms'}}>
+            <div className="group relative h-full">
+              <div className="relative bg-card rounded-[2rem] border border-border/60 hover:border-[hsl(var(--tech-accent))]/40 transition-all duration-700 overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary))]/[0.02] to-[hsl(var(--tech-accent))]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <div className="relative p-8 h-full flex flex-col">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--tech-accent))] rounded-xl flex items-center justify-center shadow-medium group-hover:shadow-strong transition-all duration-500 mb-6">
+                    <Globe className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  
+                  <h3 className="text-xl font-space-grotesk font-bold text-foreground group-hover:text-[hsl(var(--tech-accent))] transition-colors duration-500 mb-4">
+                    {offerings[2].title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed flex-1">
+                    {offerings[2].description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Fourth capability - larger card */}
+          <div className="lg:col-span-7 animate-fade-in" style={{animationDelay: '600ms'}}>
+            <div className="group relative h-full">
+              <div className="relative bg-card rounded-[2rem] border border-border/60 hover:border-[hsl(var(--primary))]/40 transition-all duration-700 overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--tech-accent))]/[0.02] via-transparent to-[hsl(var(--primary))]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <div className="relative p-10 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-6 mb-8">
+                      <div className="relative">
+                        <div className="w-20 h-20 bg-gradient-to-br from-[hsl(var(--tech-accent))] to-[hsl(var(--primary))] rounded-2xl flex items-center justify-center shadow-medium group-hover:shadow-strong transition-all duration-500">
+                          <Database className="w-10 h-10 text-primary-foreground" />
+                        </div>
+                        <div className="absolute -inset-2 bg-gradient-to-br from-[hsl(var(--tech-accent))] to-[hsl(var(--primary))] rounded-2xl opacity-0 group-hover:opacity-10 blur transition-all duration-500"></div>
+                      </div>
+                      <div className="h-16 w-0.5 bg-gradient-to-b from-[hsl(var(--primary))] to-transparent opacity-30"></div>
+                    </div>
+                    
+                    <h3 className="text-3xl font-space-grotesk font-bold text-foreground group-hover:text-[hsl(var(--primary))] transition-colors duration-500 mb-6">
+                      {offerings[3].title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-lg">
+                      {offerings[3].description}
+                    </p>
+                  </div>
+                  
+                  <div className="mt-8 flex items-center text-[hsl(var(--primary))]/60 group-hover:text-[hsl(var(--primary))] transition-colors duration-500">
+                    <div className="w-2 h-2 rounded-full bg-[hsl(var(--primary))]/40 mr-4"></div>
+                    <div className="flex-1 h-px bg-gradient-to-l from-[hsl(var(--primary))]/20 to-transparent"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
