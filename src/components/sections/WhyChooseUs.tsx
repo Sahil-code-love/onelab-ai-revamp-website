@@ -42,40 +42,51 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        {/* 3-column grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+        {/* 3-column grid layout - properly centered for 5 items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {reasons.map((reason, index) => (
-            <div key={index} className="group text-center">
-              <div className="bg-card rounded-2xl border border-border hover:border-primary/30 transition-all duration-500 p-8 h-full group-hover:shadow-xl group-hover:-translate-y-2">
+            <div 
+              key={index} 
+              className={`group ${
+                index >= 3 ? 'md:col-start-1 lg:col-start-auto' : ''
+              } ${
+                index === 3 ? 'md:col-span-1 lg:col-span-1' : ''
+              } ${
+                index === 4 ? 'md:col-start-2 lg:col-start-auto' : ''
+              }`}
+            >
+              <div className="bg-card rounded-2xl border-2 border-border hover:border-primary/40 transition-all duration-500 p-8 h-full group-hover:shadow-xl group-hover:-translate-y-1">
                 
                 {/* Enhanced Icon Container */}
                 <div className="relative mb-8 flex justify-center">
                   {/* Main icon background */}
-                  <div className="relative w-24 h-24 bg-gradient-to-br from-primary via-primary to-tech-accent rounded-3xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl">
-                    <reason.icon className="w-12 h-12 text-white relative z-10" />
+                  <div className="relative w-20 h-20 bg-gradient-to-br from-primary via-primary to-tech-accent rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                    <reason.icon className="w-10 h-10 text-white relative z-10" />
                     
                     {/* Animated background glow */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-tech-accent rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl transform scale-150"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-tech-accent rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-lg transform scale-125"></div>
                   </div>
                   
                   {/* Outer ring animation */}
-                  <div className="absolute inset-0 w-24 h-24 border-2 border-primary/20 rounded-3xl group-hover:scale-125 group-hover:border-primary/40 transition-all duration-700 group-hover:rotate-180"></div>
+                  <div className="absolute inset-0 w-20 h-20 border-2 border-primary/20 rounded-2xl group-hover:scale-125 group-hover:border-primary/50 transition-all duration-700 group-hover:rotate-180"></div>
                   
-                  {/* Floating particles */}
-                  <div className="absolute top-0 right-0 w-3 h-3 bg-tech-accent/60 rounded-full group-hover:animate-bounce"></div>
-                  <div className="absolute bottom-0 left-0 w-2 h-2 bg-primary/60 rounded-full group-hover:animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  {/* Corner accent dots */}
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-tech-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-xl font-space-grotesk font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                  {reason.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {reason.description}
-                </p>
+                <div className="text-center">
+                  <h3 className="text-xl font-space-grotesk font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                    {reason.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    {reason.description}
+                  </p>
+                </div>
 
                 {/* Bottom accent line */}
-                <div className="mt-6 w-16 h-1 bg-gradient-to-r from-primary to-tech-accent mx-auto rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                <div className="mt-6 w-12 h-1 bg-gradient-to-r from-primary to-tech-accent mx-auto rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               </div>
             </div>
           ))}
