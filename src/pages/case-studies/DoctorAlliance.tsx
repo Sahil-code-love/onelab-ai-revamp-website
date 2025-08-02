@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Users, Target, TrendingUp, Clock, CheckCircle, Play, Pause } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import DecisionTreeFlow from "@/components/DecisionTreeFlow";
 
 const DoctorAlliance = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
@@ -227,105 +228,38 @@ const DoctorAlliance = () => {
         </div>
       </section>
 
-      {/* Challenge → Solution → Result Flow */}
+      {/* Challenge → Solution → Result Decision Tree */}
       <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
             <h2 className="text-3xl font-space-grotesk font-bold text-foreground mb-4">
-              Our Approach: From Challenge to Success
+              Our Strategic Approach: Challenge to Success
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              See how we systematically addressed each challenge with targeted AI solutions and achieved measurable results.
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+              Explore our systematic problem-solving methodology through this interactive decision tree, 
+              showing how each challenge was addressed with targeted AI solutions.
             </p>
+            
+            {/* Legend */}
+            <div className="flex justify-center space-x-6 text-sm mb-8">
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 rounded border-2 border-destructive/30 bg-destructive/5"></div>
+                <span className="text-muted-foreground">Challenges</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 rounded border-2 border-primary/30 bg-primary/5"></div>
+                <span className="text-muted-foreground">AI Solutions</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 rounded border-2 border-green-500/30 bg-green-50/50"></div>
+                <span className="text-muted-foreground">Results</span>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-8">
-            {challengesSolutionsResults.map((item, index) => (
-              <div key={index} className="relative">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-                  
-                  {/* Challenge */}
-                  <div className="relative">
-                    <Card className="h-full p-5 border-l-4 border-l-destructive bg-destructive/5 hover:shadow-md transition-all duration-300">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
-                        <div className="flex-1">
-                          <div className="text-xs font-semibold text-destructive mb-2 uppercase tracking-wide">
-                            Challenge {index + 1}
-                          </div>
-                          <p className="text-sm text-foreground leading-relaxed">{item.challenge}</p>
-                        </div>
-                      </div>
-                    </Card>
-                    
-                    {/* Desktop Arrow */}
-                    <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 z-10">
-                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-l-2 border-l-primary border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
-                      </div>
-                    </div>
-                    
-                    {/* Mobile Arrow */}
-                    <div className="md:hidden flex justify-center my-4">
-                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-t-2 border-t-primary border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Solution */}
-                  <div className="relative">
-                    <Card className="h-full p-5 border-l-4 border-l-primary bg-primary/5 hover:shadow-md transition-all duration-300">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <div className="flex-1">
-                          <div className="text-xs font-semibold text-primary mb-2 uppercase tracking-wide">
-                            AI Solution
-                          </div>
-                          <p className="text-sm text-foreground leading-relaxed">{item.solution}</p>
-                        </div>
-                      </div>
-                    </Card>
-                    
-                    {/* Desktop Arrow */}
-                    <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 z-10">
-                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-l-2 border-l-green-500 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
-                      </div>
-                    </div>
-                    
-                    {/* Mobile Arrow */}
-                    <div className="md:hidden flex justify-center my-4">
-                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-t-2 border-t-green-500 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Result */}
-                  <div>
-                    <Card className="h-full p-5 border-l-4 border-l-green-500 bg-green-50/50 dark:bg-green-950/20 hover:shadow-md transition-all duration-300">
-                      <div className="flex items-start space-x-3">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                        <div className="flex-1">
-                          <div className="text-xs font-semibold text-green-600 dark:text-green-400 mb-2 uppercase tracking-wide">
-                            Result Achieved
-                          </div>
-                          <p className="text-sm text-foreground leading-relaxed font-medium">{item.result}</p>
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-                </div>
-
-                {/* Connecting Line Between Rows */}
-                {index < challengesSolutionsResults.length - 1 && (
-                  <div className="flex justify-center my-6">
-                    <div className="w-px h-8 bg-border"></div>
-                  </div>
-                )}
-              </div>
-            ))}
+          {/* Decision Tree Flow */}
+          <div className="bg-muted/20 rounded-lg p-6 border border-border/50">
+            <DecisionTreeFlow challengesSolutionsResults={challengesSolutionsResults} />
           </div>
         </div>
       </section>
