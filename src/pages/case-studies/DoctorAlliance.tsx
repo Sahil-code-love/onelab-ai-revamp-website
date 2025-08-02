@@ -228,9 +228,9 @@ const DoctorAlliance = () => {
       </section>
 
       {/* Challenge → Solution → Result Flow */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+      <section className="py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
             <h2 className="text-3xl font-space-grotesk font-bold text-foreground mb-4">
               Our Approach: From Challenge to Success
             </h2>
@@ -239,63 +239,78 @@ const DoctorAlliance = () => {
             </p>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-8">
             {challengesSolutionsResults.map((item, index) => (
               <div key={index} className="relative">
-                {/* Flow Container */}
-                <div className="grid grid-cols-1 lg:grid-cols-7 gap-4 lg:gap-6 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                   
                   {/* Challenge */}
-                  <div className="lg:col-span-2">
-                    <Card className="p-6 border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-950/20 hover:shadow-lg transition-all duration-300">
+                  <div className="relative">
+                    <Card className="h-full p-5 border-l-4 border-l-destructive bg-destructive/5 hover:shadow-md transition-all duration-300">
                       <div className="flex items-start space-x-3">
-                        <div className="w-3 h-3 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <div className="text-sm font-medium text-red-600 dark:text-red-400 mb-2">Challenge #{index + 1}</div>
+                        <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="flex-1">
+                          <div className="text-xs font-semibold text-destructive mb-2 uppercase tracking-wide">
+                            Challenge {index + 1}
+                          </div>
                           <p className="text-sm text-foreground leading-relaxed">{item.challenge}</p>
                         </div>
                       </div>
                     </Card>
-                  </div>
-
-                  {/* Arrow 1 */}
-                  <div className="lg:col-span-1 flex justify-center">
-                    <div className="hidden lg:flex items-center">
-                      <div className="w-8 h-0.5 bg-gradient-to-r from-red-300 to-blue-300"></div>
-                      <div className="w-0 h-0 border-l-4 border-l-blue-300 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                    
+                    {/* Desktop Arrow */}
+                    <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 z-10">
+                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
+                        <div className="w-0 h-0 border-l-2 border-l-primary border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                      </div>
                     </div>
-                    <div className="lg:hidden w-0.5 h-8 bg-gradient-to-b from-red-300 to-blue-300 mx-auto"></div>
+                    
+                    {/* Mobile Arrow */}
+                    <div className="md:hidden flex justify-center my-4">
+                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
+                        <div className="w-0 h-0 border-t-2 border-t-primary border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Solution */}
-                  <div className="lg:col-span-2">
-                    <Card className="p-6 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20 hover:shadow-lg transition-all duration-300">
+                  <div className="relative">
+                    <Card className="h-full p-5 border-l-4 border-l-primary bg-primary/5 hover:shadow-md transition-all duration-300">
                       <div className="flex items-start space-x-3">
-                        <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <div className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">AI Solution</div>
+                        <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="flex-1">
+                          <div className="text-xs font-semibold text-primary mb-2 uppercase tracking-wide">
+                            AI Solution
+                          </div>
                           <p className="text-sm text-foreground leading-relaxed">{item.solution}</p>
                         </div>
                       </div>
                     </Card>
-                  </div>
-
-                  {/* Arrow 2 */}
-                  <div className="lg:col-span-1 flex justify-center">
-                    <div className="hidden lg:flex items-center">
-                      <div className="w-8 h-0.5 bg-gradient-to-r from-blue-300 to-green-300"></div>
-                      <div className="w-0 h-0 border-l-4 border-l-green-300 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                    
+                    {/* Desktop Arrow */}
+                    <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 z-10">
+                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
+                        <div className="w-0 h-0 border-l-2 border-l-green-500 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                      </div>
                     </div>
-                    <div className="lg:hidden w-0.5 h-8 bg-gradient-to-b from-blue-300 to-green-300 mx-auto"></div>
+                    
+                    {/* Mobile Arrow */}
+                    <div className="md:hidden flex justify-center my-4">
+                      <div className="w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center">
+                        <div className="w-0 h-0 border-t-2 border-t-green-500 border-l-2 border-l-transparent border-r-2 border-r-transparent"></div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Result */}
-                  <div className="lg:col-span-2">
-                    <Card className="p-6 border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-950/20 hover:shadow-lg transition-all duration-300">
+                  <div>
+                    <Card className="h-full p-5 border-l-4 border-l-green-500 bg-green-50/50 dark:bg-green-950/20 hover:shadow-md transition-all duration-300">
                       <div className="flex items-start space-x-3">
                         <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                        <div>
-                          <div className="text-sm font-medium text-green-600 dark:text-green-400 mb-2">Result Achieved</div>
+                        <div className="flex-1">
+                          <div className="text-xs font-semibold text-green-600 dark:text-green-400 mb-2 uppercase tracking-wide">
+                            Result Achieved
+                          </div>
                           <p className="text-sm text-foreground leading-relaxed font-medium">{item.result}</p>
                         </div>
                       </div>
@@ -303,94 +318,14 @@ const DoctorAlliance = () => {
                   </div>
                 </div>
 
-                {/* Connecting Line for Mobile */}
+                {/* Connecting Line Between Rows */}
                 {index < challengesSolutionsResults.length - 1 && (
-                  <div className="lg:hidden flex justify-center mt-8 mb-4">
-                    <div className="w-0.5 h-12 bg-gradient-to-b from-muted-foreground/30 to-muted-foreground/10"></div>
+                  <div className="flex justify-center my-6">
+                    <div className="w-px h-8 bg-border"></div>
                   </div>
                 )}
               </div>
             ))}
-          </div>
-
-          {/* Summary Stats */}
-          <div className="mt-16 pt-12 border-t border-border">
-            <div className="text-center mb-8">
-              <h3 className="text-xl font-space-grotesk font-semibold text-foreground mb-2">
-                Overall Impact Summary
-              </h3>
-              <p className="text-muted-foreground">Combined results across all implemented solutions</p>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center p-4 rounded-lg bg-muted/30">
-                <div className="text-2xl font-bold text-tech-accent mb-1">60%</div>
-                <div className="text-sm text-muted-foreground">Time Saved</div>
-              </div>
-              <div className="text-center p-4 rounded-lg bg-muted/30">
-                <div className="text-2xl font-bold text-tech-accent mb-1">85%</div>
-                <div className="text-sm text-muted-foreground">Fewer Missed Appointments</div>
-              </div>
-              <div className="text-center p-4 rounded-lg bg-muted/30">
-                <div className="text-2xl font-bold text-tech-accent mb-1">24/7</div>
-                <div className="text-sm text-muted-foreground">Support Available</div>
-              </div>
-              <div className="text-center p-4 rounded-lg bg-muted/30">
-                <div className="text-2xl font-bold text-tech-accent mb-1">95%</div>
-                <div className="text-sm text-muted-foreground">Patient Satisfaction</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Implementation */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-space-grotesk font-bold text-foreground mb-4">
-              Technical Implementation
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              A comprehensive breakdown of the technologies and methodologies used to deliver this solution.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">AI & Machine Learning</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                  <span className="font-medium">Natural Language Processing</span>
-                  <Badge variant="secondary">GPT-4</Badge>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                  <span className="font-medium">Speech Recognition</span>
-                  <Badge variant="secondary">Whisper API</Badge>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                  <span className="font-medium">Scheduling Algorithm</span>
-                  <Badge variant="secondary">Custom ML</Badge>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Infrastructure & Integration</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                  <span className="font-medium">Cloud Platform</span>
-                  <Badge variant="secondary">AWS</Badge>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                  <span className="font-medium">Database</span>
-                  <Badge variant="secondary">PostgreSQL</Badge>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                  <span className="font-medium">EHR Integration</span>
-                  <Badge variant="secondary">FHIR API</Badge>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </section>
