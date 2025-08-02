@@ -229,38 +229,35 @@ const DoctorAlliance = () => {
       </section>
 
       {/* Challenge → Solution → Result Decision Tree */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
+          <div className="text-center mb-12">
             <h2 className="text-3xl font-space-grotesk font-bold text-foreground mb-4">
               Our Strategic Approach: Challenge to Success
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-              Explore our systematic problem-solving methodology through this interactive decision tree, 
-              showing how each challenge was addressed with targeted AI solutions.
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+              Explore our systematic problem-solving methodology, showing how each challenge was addressed with targeted AI solutions.
             </p>
             
             {/* Legend */}
-            <div className="flex justify-center space-x-6 text-sm mb-8">
+            <div className="flex justify-center space-x-8 text-sm">
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 rounded border-2 border-destructive/30 bg-destructive/5"></div>
+                <div className="w-4 h-4 rounded border-2 border-red-200/60 bg-red-50/50 dark:border-red-800/40 dark:bg-red-950/20"></div>
                 <span className="text-muted-foreground">Challenges</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 rounded border-2 border-primary/30 bg-primary/5"></div>
+                <div className="w-4 h-4 rounded border-2 border-blue-200/60 bg-blue-50/50 dark:border-blue-800/40 dark:bg-blue-950/20"></div>
                 <span className="text-muted-foreground">AI Solutions</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 rounded border-2 border-green-500/30 bg-green-50/50"></div>
+                <div className="w-4 h-4 rounded border-2 border-green-200/60 bg-green-50/50 dark:border-green-800/40 dark:bg-green-950/20"></div>
                 <span className="text-muted-foreground">Results</span>
               </div>
             </div>
           </div>
 
           {/* Decision Tree Flow */}
-          <div className="bg-muted/20 rounded-lg p-6 border border-border/50">
-            <DecisionTreeFlow challengesSolutionsResults={challengesSolutionsResults} />
-          </div>
+          <DecisionTreeFlow challengesSolutionsResults={challengesSolutionsResults} />
         </div>
       </section>
 
