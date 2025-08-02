@@ -17,28 +17,32 @@ const DoctorAlliance = () => {
     { label: "Patient Satisfaction", value: "95%", icon: TrendingUp }
   ];
 
-  const challenges = [
-    "Manual appointment scheduling causing delays",
-    "High volume of patient calls overwhelming staff",
-    "Missed appointments due to poor communication",
-    "Inefficient patient data management",
-    "Limited after-hours support for patients"
-  ];
-
-  const solutions = [
-    "AI-powered appointment scheduling system",
-    "Automated patient reminders via SMS and email",
-    "24/7 virtual assistant for basic inquiries",
-    "Smart patient triage and routing",
-    "Integrated EHR system with voice commands"
-  ];
-
-  const results = [
-    "60% reduction in appointment scheduling time",
-    "85% decrease in missed appointments",
-    "24/7 patient support availability",
-    "40% improvement in staff productivity",
-    "95% patient satisfaction rate"
+  const challengesSolutionsResults = [
+    {
+      challenge: "Manual appointment scheduling causing delays",
+      solution: "AI-powered appointment scheduling system",
+      result: "60% reduction in appointment scheduling time"
+    },
+    {
+      challenge: "High volume of patient calls overwhelming staff",
+      solution: "24/7 virtual assistant for basic inquiries",
+      result: "40% improvement in staff productivity"
+    },
+    {
+      challenge: "Missed appointments due to poor communication",
+      solution: "Automated patient reminders via SMS and email",
+      result: "85% decrease in missed appointments"
+    },
+    {
+      challenge: "Inefficient patient data management",
+      solution: "Integrated EHR system with voice commands",
+      result: "95% patient satisfaction rate"
+    },
+    {
+      challenge: "Limited after-hours support for patients",
+      solution: "Smart patient triage and routing",
+      result: "24/7 patient support availability"
+    }
   ];
 
   return (
@@ -223,75 +227,118 @@ const DoctorAlliance = () => {
         </div>
       </section>
 
-      {/* Detailed Content */}
+      {/* Challenge → Solution → Result Flow */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Challenges */}
-            <Card className="p-6">
-              <CardHeader className="p-0 mb-6">
-                <CardTitle className="text-xl font-space-grotesk text-red-600 dark:text-red-400">
-                  Challenges
-                </CardTitle>
-                <CardDescription>
-                  Key issues Doctor Alliance faced before implementing our solution
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <ul className="space-y-3">
-                  {challenges.map((challenge, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-sm text-muted-foreground">{challenge}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-space-grotesk font-bold text-foreground mb-4">
+              Our Approach: From Challenge to Success
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              See how we systematically addressed each challenge with targeted AI solutions and achieved measurable results.
+            </p>
+          </div>
 
-            {/* Solutions */}
-            <Card className="p-6">
-              <CardHeader className="p-0 mb-6">
-                <CardTitle className="text-xl font-space-grotesk text-blue-600 dark:text-blue-400">
-                  Solutions
-                </CardTitle>
-                <CardDescription>
-                  AI-powered solutions we implemented to address each challenge
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <ul className="space-y-3">
-                  {solutions.map((solution, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-sm text-muted-foreground">{solution}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="space-y-12">
+            {challengesSolutionsResults.map((item, index) => (
+              <div key={index} className="relative">
+                {/* Flow Container */}
+                <div className="grid grid-cols-1 lg:grid-cols-7 gap-4 lg:gap-6 items-center">
+                  
+                  {/* Challenge */}
+                  <div className="lg:col-span-2">
+                    <Card className="p-6 border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-950/20 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-3 h-3 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <div className="text-sm font-medium text-red-600 dark:text-red-400 mb-2">Challenge #{index + 1}</div>
+                          <p className="text-sm text-foreground leading-relaxed">{item.challenge}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
 
-            {/* Results */}
-            <Card className="p-6">
-              <CardHeader className="p-0 mb-6">
-                <CardTitle className="text-xl font-space-grotesk text-green-600 dark:text-green-400">
-                  Results
-                </CardTitle>
-                <CardDescription>
-                  Measurable outcomes achieved after implementation
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <ul className="space-y-3">
-                  {results.map((result, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{result}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+                  {/* Arrow 1 */}
+                  <div className="lg:col-span-1 flex justify-center">
+                    <div className="hidden lg:flex items-center">
+                      <div className="w-8 h-0.5 bg-gradient-to-r from-red-300 to-blue-300"></div>
+                      <div className="w-0 h-0 border-l-4 border-l-blue-300 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                    </div>
+                    <div className="lg:hidden w-0.5 h-8 bg-gradient-to-b from-red-300 to-blue-300 mx-auto"></div>
+                  </div>
+
+                  {/* Solution */}
+                  <div className="lg:col-span-2">
+                    <Card className="p-6 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <div className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">AI Solution</div>
+                          <p className="text-sm text-foreground leading-relaxed">{item.solution}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+
+                  {/* Arrow 2 */}
+                  <div className="lg:col-span-1 flex justify-center">
+                    <div className="hidden lg:flex items-center">
+                      <div className="w-8 h-0.5 bg-gradient-to-r from-blue-300 to-green-300"></div>
+                      <div className="w-0 h-0 border-l-4 border-l-green-300 border-t-2 border-t-transparent border-b-2 border-b-transparent"></div>
+                    </div>
+                    <div className="lg:hidden w-0.5 h-8 bg-gradient-to-b from-blue-300 to-green-300 mx-auto"></div>
+                  </div>
+
+                  {/* Result */}
+                  <div className="lg:col-span-2">
+                    <Card className="p-6 border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-950/20 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-start space-x-3">
+                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+                        <div>
+                          <div className="text-sm font-medium text-green-600 dark:text-green-400 mb-2">Result Achieved</div>
+                          <p className="text-sm text-foreground leading-relaxed font-medium">{item.result}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Connecting Line for Mobile */}
+                {index < challengesSolutionsResults.length - 1 && (
+                  <div className="lg:hidden flex justify-center mt-8 mb-4">
+                    <div className="w-0.5 h-12 bg-gradient-to-b from-muted-foreground/30 to-muted-foreground/10"></div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Summary Stats */}
+          <div className="mt-16 pt-12 border-t border-border">
+            <div className="text-center mb-8">
+              <h3 className="text-xl font-space-grotesk font-semibold text-foreground mb-2">
+                Overall Impact Summary
+              </h3>
+              <p className="text-muted-foreground">Combined results across all implemented solutions</p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center p-4 rounded-lg bg-muted/30">
+                <div className="text-2xl font-bold text-tech-accent mb-1">60%</div>
+                <div className="text-sm text-muted-foreground">Time Saved</div>
+              </div>
+              <div className="text-center p-4 rounded-lg bg-muted/30">
+                <div className="text-2xl font-bold text-tech-accent mb-1">85%</div>
+                <div className="text-sm text-muted-foreground">Fewer Missed Appointments</div>
+              </div>
+              <div className="text-center p-4 rounded-lg bg-muted/30">
+                <div className="text-2xl font-bold text-tech-accent mb-1">24/7</div>
+                <div className="text-sm text-muted-foreground">Support Available</div>
+              </div>
+              <div className="text-center p-4 rounded-lg bg-muted/30">
+                <div className="text-2xl font-bold text-tech-accent mb-1">95%</div>
+                <div className="text-sm text-muted-foreground">Patient Satisfaction</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
