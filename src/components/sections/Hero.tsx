@@ -61,20 +61,20 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Interactive Mouse-Following Background */}
       <div 
         className="absolute inset-0 opacity-30"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(139, 92, 246, 0.15), transparent 40%)`
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(178 84% 42% / 0.15), transparent 40%)`
         }}
       />
       
       {/* Dynamic Grid Background */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: `
-          linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px)
+          linear-gradient(hsl(178 84% 42% / 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, hsl(178 84% 42% / 0.1) 1px, transparent 1px)
         `,
         backgroundSize: '100px 100px',
         animation: 'grid-move 20s linear infinite'
@@ -93,20 +93,20 @@ const Hero = () => {
               animationDelay: `${element.delay}ms`
             }}
           >
-            <Icon className="w-8 h-8 text-purple-400 animate-pulse group-hover:text-yellow-400 transition-colors" />
+            <Icon className="w-8 h-8 text-tech-accent animate-pulse group-hover:text-yellow-400 transition-colors" />
           </div>
         );
       })}
 
       {/* Animated Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-tech-accent/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse delay-1000" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Interactive Header Badge */}
         <div className="text-center animate-fade-up">
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-12 group hover:bg-white/20 transition-all duration-300 cursor-pointer">
-            <Globe className="w-5 h-5 text-purple-400 group-hover:rotate-180 transition-transform duration-500" />
+            <Globe className="w-5 h-5 text-tech-accent group-hover:rotate-180 transition-transform duration-500" />
             <span className="text-white text-sm font-medium">Trusted by Fortune 500 Companies Globally</span>
             <Sparkles className="w-4 h-4 text-yellow-400 animate-pulse" />
           </div>
@@ -114,10 +114,10 @@ const Hero = () => {
           {/* Interactive Main Headline */}
           <div className="relative">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-space-grotesk font-bold mb-12 leading-[0.85] tracking-tight">
-              <span className="block text-white hover:text-purple-300 transition-colors duration-300 cursor-default">
+              <span className="block text-white hover:text-tech-accent/80 transition-colors duration-300 cursor-default">
                 AI-First Product
               </span>
-              <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
+              <span className="block bg-gradient-to-r from-tech-accent via-primary to-tech-accent bg-clip-text text-transparent animate-pulse">
                 Development
               </span>
               <span className="block text-4xl md:text-5xl lg:text-6xl text-white/90 hover:text-white transition-colors duration-300 cursor-default">
@@ -126,20 +126,20 @@ const Hero = () => {
             </h1>
             
             {/* Interactive Accent Line */}
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse" />
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-tech-accent to-primary rounded-full animate-pulse" />
           </div>
           
           {/* Enhanced Description */}
           <p className="text-xl md:text-2xl text-white/80 mb-16 max-w-5xl mx-auto leading-relaxed font-light">
             We architect and deploy enterprise-grade AI solutions, intelligent automation workflows, 
-            conversational agents, and scalable platforms for <span className="text-purple-400 font-medium">global market leaders</span>.
+            conversational agents, and scalable platforms for <span className="text-tech-accent font-medium">global market leaders</span>.
           </p>
 
           {/* Interactive CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-20">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg px-12 py-6 rounded-2xl group shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-primary to-tech-accent hover:from-primary/90 hover:to-tech-accent/90 text-white text-lg px-12 py-6 rounded-2xl group shadow-2xl hover:shadow-tech-accent/25 transition-all duration-300 hover:scale-105"
             >
               <Rocket className="mr-3 h-5 w-5 group-hover:rotate-12 transition-transform" />
               Start Your AI Journey
@@ -148,7 +148,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="text-white border-white/30 hover:bg-white/10 text-lg px-10 py-6 rounded-2xl backdrop-blur-md hover:border-purple-400/50 transition-all duration-300 hover:scale-105"
+              className="text-white border-white/30 hover:bg-white/10 text-lg px-10 py-6 rounded-2xl backdrop-blur-md hover:border-tech-accent/50 transition-all duration-300 hover:scale-105"
             >
               <Target className="mr-2 h-5 w-5" />
               View Portfolio
@@ -160,7 +160,7 @@ const Hero = () => {
             {[
               { icon: Shield, text: "Enterprise Security", color: "text-green-400" },
               { icon: Zap, text: "Rapid Deployment", color: "text-yellow-400" },
-              { icon: Trophy, text: "Award Winning", color: "text-purple-400" }
+              { icon: Trophy, text: "Award Winning", color: "text-tech-accent" }
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -190,14 +190,14 @@ const Hero = () => {
                 >
                   <div className={`relative bg-white/5 backdrop-blur-md rounded-3xl p-8 border transition-all duration-500 hover:bg-white/15 ${
                     metric.isActive 
-                      ? 'border-purple-400/50 bg-white/10 shadow-lg shadow-purple-500/20' 
-                      : 'border-white/10 hover:border-purple-400/30'
+                      ? 'border-tech-accent/50 bg-white/10 shadow-lg shadow-tech-accent/20' 
+                      : 'border-white/10 hover:border-tech-accent/30'
                   }`}>
                     {metric.isActive && (
-                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-purple-400 rounded-full animate-ping" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-tech-accent rounded-full animate-ping" />
                     )}
                     <div className={`text-5xl md:text-6xl font-bold mb-4 transition-all duration-300 ${
-                      metric.isActive ? 'text-purple-400' : 'text-white group-hover:text-purple-400'
+                      metric.isActive ? 'text-tech-accent' : 'text-white group-hover:text-tech-accent'
                     }`}>
                       {metric.value}{metric.suffix}
                     </div>
@@ -214,8 +214,8 @@ const Hero = () => {
 
       {/* Interactive Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 group cursor-pointer">
-        <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center backdrop-blur-md group-hover:border-purple-400/50 transition-colors duration-300 group-hover:scale-110">
-          <div className="w-1.5 h-4 bg-purple-400 rounded-full mt-2 animate-bounce group-hover:bg-yellow-400 transition-colors"></div>
+        <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center backdrop-blur-md group-hover:border-tech-accent/50 transition-colors duration-300 group-hover:scale-110">
+          <div className="w-1.5 h-4 bg-tech-accent rounded-full mt-2 animate-bounce group-hover:bg-yellow-400 transition-colors"></div>
         </div>
         <p className="text-white/50 text-xs mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Scroll to explore</p>
       </div>
