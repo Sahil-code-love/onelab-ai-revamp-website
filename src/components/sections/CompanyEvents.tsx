@@ -30,8 +30,11 @@ const CompanyEvents = () => {
         {/* Header */}
         <div className="text-center mb-20 animate-fade-up">
           <h2 className="text-4xl md:text-5xl font-space-grotesk font-bold text-foreground mb-6">
-            Our Memories
+            Company Events
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Capturing moments that define our journey together
+          </p>
         </div>
 
         {/* Image Gallery */}
@@ -80,39 +83,6 @@ const CompanyEvents = () => {
             </CarouselContent>
           </Carousel>
 
-          {/* Secondary smaller images row */}
-          <div className="mt-12">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              plugins={[
-                Autoplay({
-                  delay: 2500,
-                  stopOnInteraction: false,
-                }),
-              ]}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-3">
-                {memoryImages.slice().reverse().map((image, index) => (
-                  <CarouselItem key={`small-${index}`} className="pl-3 basis-1/3 md:basis-1/4 lg:basis-1/6">
-                    <div className="relative group cursor-pointer">
-                      <div className="aspect-square overflow-hidden rounded-2xl shadow-lg">
-                        <img
-                          src={image}
-                          alt={`Memory ${index + 1}`}
-                          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300" />
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
 
           {/* Floating decorative elements */}
           <div className="absolute -top-16 -left-16 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-pulse" />
