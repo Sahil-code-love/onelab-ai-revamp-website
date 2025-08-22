@@ -200,23 +200,26 @@ const DoctorAlliance = () => {
 
               {/* Video Selection List - Right Side */}
               <div className="col-span-1 flex flex-col space-y-4">
-                {videos.map((video, index) => (
-                  <Card 
-                    key={video.id}
-                    className={`overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 transform-gpu ${activeVideo === index ? 'ring-2 ring-primary' : ''}`}
-                    onClick={() => setActiveVideo(index)}
-                  >
-                    <div className={`aspect-video relative bg-gradient-to-br ${video.color} flex items-center justify-center group`}>
-                      <div className="absolute top-2 left-2 z-20">
-                        <Badge className="bg-black/50 text-white border-white/20 backdrop-blur-sm text-xs">
-                          {video.title}
-                        </Badge>
+                {videos.filter((video, index) => index !== activeVideo).map((video, index) => {
+                  const originalIndex = videos.findIndex(v => v.id === video.id);
+                  return (
+                    <Card 
+                      key={video.id}
+                      className={`overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 transform-gpu`}
+                      onClick={() => setActiveVideo(originalIndex)}
+                    >
+                      <div className={`aspect-video relative bg-gradient-to-br ${video.color} flex items-center justify-center group`}>
+                        <div className="absolute top-2 left-2 z-20">
+                          <Badge className="bg-black/50 text-white border-white/20 backdrop-blur-sm text-xs">
+                            {video.title}
+                          </Badge>
+                        </div>
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                        <Play className="w-4 h-4 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
                       </div>
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                      <Play className="w-4 h-4 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                  </Card>
-                ))}
+                    </Card>
+                  );
+                })}
               </div>
             </div>
           </div>
