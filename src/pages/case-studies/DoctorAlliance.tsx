@@ -150,92 +150,74 @@ const DoctorAlliance = () => {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            {/* Main Video Display */}
-            <div className="relative mb-8">
-              <Card className="overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 border-0">
-                <div className={`aspect-video relative bg-gradient-to-br ${videos[activeVideo].color} flex items-center justify-center transition-all duration-500`}>
-                  {/* Video Title Tag */}
-                  <div className="absolute top-4 left-4 z-20">
-                    <Badge className="bg-black/50 text-white border-white/20 backdrop-blur-sm">
-                      {videos[activeVideo].title}
-                    </Badge>
-                  </div>
-                  
-                  {/* Simulated Video Interface */}
-                  <div className="absolute inset-0 bg-black/20"></div>
-                  <div className="absolute top-4 right-4 flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  </div>
-                  
-                  <div className="text-center z-10">
-                    <Button
-                      size="lg"
-                      onClick={() => setIsVideoPlaying(!isVideoPlaying)}
-                      className="bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm border border-white/20"
-                    >
-                      {isVideoPlaying ? <Pause className="w-6 h-6 mr-2" /> : <Play className="w-6 h-6 mr-2" />}
-                      {isVideoPlaying ? "Pause" : "Play"} Demo
-                    </Button>
-                  </div>
+            <div className="grid grid-cols-4 gap-6">
+              {/* Main Video Display - Left Side */}
+              <div className="col-span-3">
+                <Card className="overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 border-0">
+                  <div className={`aspect-video relative bg-gradient-to-br ${videos[activeVideo].color} flex items-center justify-center transition-all duration-500`}>
+                    {/* Video Title Tag */}
+                    <div className="absolute top-4 left-4 z-20">
+                      <Badge className="bg-black/50 text-white border-white/20 backdrop-blur-sm">
+                        {videos[activeVideo].title}
+                      </Badge>
+                    </div>
+                    
+                    {/* Simulated Video Interface */}
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute top-4 right-4 flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    
+                    <div className="text-center z-10">
+                      <Button
+                        size="lg"
+                        onClick={() => setIsVideoPlaying(!isVideoPlaying)}
+                        className="bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm border border-white/20"
+                      >
+                        {isVideoPlaying ? <Pause className="w-6 h-6 mr-2" /> : <Play className="w-6 h-6 mr-2" />}
+                        {isVideoPlaying ? "Pause" : "Play"} Demo
+                      </Button>
+                    </div>
 
-                  {/* Animated elements to simulate video */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                      <div className="flex items-center justify-between text-white text-sm">
-                        <span>AI Assistant: "Good morning! I can help schedule your appointment..."</span>
-                        <div className="flex space-x-1">
-                          <div className={`w-2 h-2 rounded-full ${isVideoPlaying ? 'bg-green-400' : 'bg-gray-400'} animate-pulse`}></div>
-                          <div className={`w-2 h-2 rounded-full ${isVideoPlaying ? 'bg-green-400' : 'bg-gray-400'} animate-pulse delay-100`}></div>
-                          <div className={`w-2 h-2 rounded-full ${isVideoPlaying ? 'bg-green-400' : 'bg-gray-400'} animate-pulse delay-200`}></div>
+                    {/* Animated elements to simulate video */}
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                        <div className="flex items-center justify-between text-white text-sm">
+                          <span>AI Assistant: "Good morning! I can help schedule your appointment..."</span>
+                          <div className="flex space-x-1">
+                            <div className={`w-2 h-2 rounded-full ${isVideoPlaying ? 'bg-green-400' : 'bg-gray-400'} animate-pulse`}></div>
+                            <div className={`w-2 h-2 rounded-full ${isVideoPlaying ? 'bg-green-400' : 'bg-gray-400'} animate-pulse delay-100`}></div>
+                            <div className={`w-2 h-2 rounded-full ${isVideoPlaying ? 'bg-green-400' : 'bg-gray-400'} animate-pulse delay-200`}></div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Card>
-            </div>
-
-            {/* Video Selection Grid */}
-            <div className="grid grid-cols-6 gap-4">
-              {/* Top large video */}
-              <div className="col-span-6">
-                <Card 
-                  className={`overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 transform-gpu ${activeVideo === 0 ? 'ring-2 ring-primary' : ''}`}
-                  onClick={() => setActiveVideo(0)}
-                >
-                  <div className={`aspect-[3/1] relative bg-gradient-to-br ${videos[0].color} flex items-center justify-center group`}>
-                    <div className="absolute top-2 left-2 z-20">
-                      <Badge className="bg-black/50 text-white border-white/20 backdrop-blur-sm text-xs">
-                        {videos[0].title}
-                      </Badge>
-                    </div>
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    <Play className="w-8 h-8 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
-                  </div>
                 </Card>
               </div>
 
-              {/* Middle row - 3 videos */}
-              {[1, 2, 3].map((videoIndex) => (
-                <div key={videoIndex} className="col-span-2">
+              {/* Video Selection List - Right Side */}
+              <div className="col-span-1 flex flex-col space-y-4">
+                {videos.map((video, index) => (
                   <Card 
-                    className={`overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 transform-gpu ${activeVideo === videoIndex ? 'ring-2 ring-primary' : ''}`}
-                    onClick={() => setActiveVideo(videoIndex)}
+                    key={video.id}
+                    className={`overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 transform-gpu ${activeVideo === index ? 'ring-2 ring-primary' : ''}`}
+                    onClick={() => setActiveVideo(index)}
                   >
-                    <div className={`aspect-video relative bg-gradient-to-br ${videos[videoIndex].color} flex items-center justify-center group`}>
+                    <div className={`aspect-video relative bg-gradient-to-br ${video.color} flex items-center justify-center group`}>
                       <div className="absolute top-2 left-2 z-20">
                         <Badge className="bg-black/50 text-white border-white/20 backdrop-blur-sm text-xs">
-                          {videos[videoIndex].title}
+                          {video.title}
                         </Badge>
                       </div>
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                      <Play className="w-6 h-6 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
+                      <Play className="w-4 h-4 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </Card>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
