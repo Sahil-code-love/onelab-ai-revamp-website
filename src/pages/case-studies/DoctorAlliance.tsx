@@ -7,10 +7,22 @@ import { ArrowLeft, Calendar, Users, Target, TrendingUp, Clock, CheckCircle, Pla
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DecisionTreeFlow from "@/components/DecisionTreeFlow";
+import "@/components/ui/flip-animation.css";
 
 const DoctorAlliance = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [activeVideo, setActiveVideo] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+
+  const handleVideoChange = (newVideoIndex: number) => {
+    if (newVideoIndex !== activeVideo) {
+      setIsFlipping(true);
+      setTimeout(() => {
+        setActiveVideo(newVideoIndex);
+        setTimeout(() => setIsFlipping(false), 300);
+      }, 300);
+    }
+  };
 
   const videos = [
     {
@@ -153,8 +165,9 @@ const DoctorAlliance = () => {
             <div className="grid grid-cols-4 gap-6">
               {/* Main Video Display - Left Side */}
               <div className="col-span-3">
-                <Card className="overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 border-0">
-                  <div className={`aspect-video relative bg-gradient-to-br ${videos[activeVideo].color} flex items-center justify-center transition-all duration-500`}>
+                <div className="relative perspective-1000">
+                  <Card className={`overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 border-0 transition-all duration-500 transform-style-preserve-3d ${isFlipping ? 'animate-flip' : ''}`}>
+                    <div className={`aspect-video relative bg-gradient-to-br ${videos[activeVideo].color} flex items-center justify-center transition-all duration-500`}>
                     {/* Video Title Tag */}
                     <div className="absolute top-4 left-4 z-20">
                       <Badge className="bg-black/50 text-white border-white/20 backdrop-blur-sm">
@@ -196,6 +209,7 @@ const DoctorAlliance = () => {
                     </div>
                   </div>
                 </Card>
+                </div>
               </div>
 
               {/* Video Selection List - Right Side */}
@@ -206,7 +220,7 @@ const DoctorAlliance = () => {
                     <Card 
                       key={video.id}
                       className={`overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 transform-gpu`}
-                      onClick={() => setActiveVideo(originalIndex)}
+                      onClick={() => handleVideoChange(originalIndex)}
                     >
                       <div className={`aspect-video relative bg-gradient-to-br ${video.color} flex items-center justify-center group`}>
                         <div className="absolute top-2 left-2 z-20">
