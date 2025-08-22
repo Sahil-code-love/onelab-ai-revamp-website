@@ -19,8 +19,8 @@ const DoctorAlliance = () => {
       setIsFlipping(true);
       setTimeout(() => {
         setActiveVideo(newVideoIndex);
-        setTimeout(() => setIsFlipping(false), 300);
-      }, 300);
+        setTimeout(() => setIsFlipping(false), 500);
+      }, 500);
     }
   };
 

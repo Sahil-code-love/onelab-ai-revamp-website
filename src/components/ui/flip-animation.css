@@ -8,7 +8,7 @@
 }
 
 .animate-flip {
-  animation: cardFlip 0.6s ease-in-out;
+  animation: cardFlip 1s ease-in-out;
 }
 
 @keyframes cardFlip {
@@ -16,11 +16,11 @@
     transform: rotateY(0deg);
   }
   50% {
-    transform: rotateY(180deg);
+    transform: rotateY(90deg);
     scale: 0.8;
   }
   100% {
-    transform: rotateY(360deg);
+    transform: rotateY(180deg);
   }
 }
 
