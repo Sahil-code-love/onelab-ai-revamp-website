@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Flip Animation</title>
+    <link rel="stylesheet" href="video-flip-styles.css">
+</head>
+<body>
+    <section class="demo-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">See the Solution in Action</h2>
+                <p class="section-description">Watch how our AI assistant seamlessly handles patient scheduling and appointment management</p>
+            </div>
+
+            <div class="video-container">
+                <div class="video-grid">
+                    <!-- Main Video Display - Left Side -->
+                    <div class="main-video">
+                        <div class="perspective-1000">
+                            <div class="video-card main-card" id="mainVideoCard">
+                                <div class="video-content bg-blue-purple">
+                                    <!-- Video Title Tag -->
+                                    <div class="video-badge">
+                                        <span class="badge">AI Scheduling Assistant</span>
+                                    </div>
+                                    
+                                    <!-- Simulated Video Interface -->
+                                    <div class="video-overlay"></div>
+                                    <div class="window-controls">
+                                        <div class="control red"></div>
+                                        <div class="control yellow"></div>
+                                        <div class="control green"></div>
+                                    </div>
+                                    
+                                    <div class="play-button-container">
+                                        <button class="play-button" onclick="toggleVideo()">
+                                            <span class="play-icon">▶</span>
+                                            Play Demo
+                                        </button>
+                                    </div>
+
+                                    <!-- Animated elements to simulate video -->
+                                    <div class="video-caption">
+                                        <div class="caption-content">
+                                            <span>AI Assistant: "Good morning! I can help schedule your appointment..."</span>
+                                            <div class="audio-indicators">
+                                                <div class="indicator"></div>
+                                                <div class="indicator delay-1"></div>
+                                                <div class="indicator delay-2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Selection List - Right Side -->
+                    <div class="video-list">
+                        <div class="video-card side-card bg-green-teal" onclick="switchVideo(1, 'Patient Mobile App', 'bg-green-teal')">
+                            <div class="video-content">
+                                <div class="video-badge">
+                                    <span class="badge small">Patient Mobile App</span>
+                                </div>
+                                <div class="video-overlay"></div>
+                                <div class="play-icon-small">▶</div>
+                            </div>
+                        </div>
+
+                        <div class="video-card side-card bg-purple-pink" onclick="switchVideo(2, 'Voice AI Assistant', 'bg-purple-pink')">
+                            <div class="video-content">
+                                <div class="video-badge">
+                                    <span class="badge small">Voice AI Assistant</span>
+                                </div>
+                                <div class="video-overlay"></div>
+                                <div class="play-icon-small">▶</div>
+                            </div>
+                        </div>
+
+                        <div class="video-card side-card bg-orange-red" onclick="switchVideo(3, 'Analytics Dashboard', 'bg-orange-red')">
+                            <div class="video-content">
+                                <div class="video-badge">
+                                    <span class="badge small">Analytics Dashboard</span>
+                                </div>
+                                <div class="video-overlay"></div>
+                                <div class="play-icon-small">▶</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let activeVideo = 0;
+        let isFlipping = false;
+        let isVideoPlaying = true;
+
+        function switchVideo(videoIndex, title, bgClass) {
+            if (videoIndex !== activeVideo && !isFlipping) {
+                isFlipping = true;
+                const mainCard = document.getElementById('mainVideoCard');
+                
+                // Start flip animation
+                mainCard.classList.add('animate-flip');
+                
+                // Change content at midpoint
+                setTimeout(() => {
+                    // Update the main video content
+                    const badge = mainCard.querySelector('.badge');
+                    const videoContent = mainCard.querySelector('.video-content');
+                    
+                    badge.textContent = title;
+                    videoContent.className = `video-content ${bgClass}`;
+                    
+                    activeVideo = videoIndex;
+                    
+                    // End flip animation
+                    setTimeout(() => {
+                        mainCard.classList.remove('animate-flip');
+                        isFlipping = false;
+                    }, 500);
+                }, 500);
+            }
+        }
+
+        function toggleVideo() {
+            const playButton = document.querySelector('.play-button');
+            const playIcon = document.querySelector('.play-icon');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            isVideoPlaying = !isVideoPlaying;
+            
+            if (isVideoPlaying) {
+                playIcon.textContent = '⏸';
+                playButton.querySelector('span:last-child').textContent = 'Pause Demo';
+                indicators.forEach(indicator => indicator.classList.add('active'));
+            } else {
+                playIcon.textContent = '▶';
+                playButton.querySelector('span:last-child').textContent = 'Play Demo';
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+            }
+        }
+    </script>
+</body>
+</html>
